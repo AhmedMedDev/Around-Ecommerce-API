@@ -21,13 +21,13 @@ Route::group([
 
 ], function ($router) {
 
-    Route::post('login', 'AuthController@login');
-    Route::post('register', 'AuthController@register');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-    Route::post('preResetPassword', 'ResetPassController@preResetPassword');
-    Route::post('confirmPIN', 'ResetPassController@confirmPIN');
-    Route::post('resetPassword', 'ResetPassController@resetPassword');
+    Route::post('login', 'Auth\AuthController@login');
+    Route::post('register', 'Auth\RegisterController@register');
+    Route::post('logout', 'Auth\LogOutController@logout');
+    Route::post('refresh', 'Auth\AuthController@refresh');
+    Route::post('me', 'Auth\AuthController@me');
+    Route::post('preResetPassword', 'Auth\ResetPassController@preResetPassword');
+    Route::post('confirmPIN', 'Auth\ResetPassController@confirmPIN');
+    Route::post('resetPassword', 'Auth\ResetPassController@resetPassword');
 
 });

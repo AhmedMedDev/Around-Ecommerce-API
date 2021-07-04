@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -20,7 +20,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','register','verify']]);
+        $this->middleware('auth:api', ['except' => ['login']]);
     }
 
     /**
@@ -39,54 +39,6 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function register(CreateUserRequest $request)
-    {
-        $request['verify_code'] = Str::random(50);
-
-        $request['password'] = Hash::make($request->password);
-        
-        $user = User::create( $request->all() ); 
-
-        //send mail to verify
-        Mail::to($user)->send(new VerifyEmail($user));
-
-        //201 response
-        return response()->json(
-            ['message' => 'Check your email'],
-            201
-        );
-
-    }
-
-    public function verify($verify_code)
-    {
-        $user = User::where('verify_code',$verify_code)->first();
-
-        if( $user->email_verified_at == null ):
-
-            //Update User  ** should return view 
-            User::where('id', $user->id)->update([
-                'email_verified_at' => now()
-            ]);
-
-            //201 response ** should return view 
-            return response()->json(
-                ['message' => 'Your account has been verified'],
-                201
-            );
-
-        else:
-
-            //Error response ** should return view 
-            return response()->json(
-                ['error' => "User Has Verified Before"],
-                405
-            );
-
-        endif; 
-
-    }
-
     /**
      * Get the authenticated User.
      *
@@ -95,18 +47,6 @@ class AuthController extends Controller
     public function me()
     {
         return response()->json(auth()->user());
-    }
-
-    /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function logout()
-    {
-        auth()->logout();
-
-        return response()->json(['message' => 'Successfully logged out']);
     }
 
     /**
