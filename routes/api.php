@@ -39,27 +39,14 @@ Route::group([
 //cart products
 //search 
 
-  /**
-   * product_images controller
-   * Product controller 
-   * 
-   */
-
-/**
- * Reviews 
- */
-/**
- * review model
- * 
- */
-
-//Reviews CRUD
-
 /************************************************/
 
  Route::group([
 
-    'middleware' => 'api',
+    'middleware' => [
+        'api',
+        // 'auth',
+    ],
 
 ], function ($router) {
 
@@ -83,13 +70,29 @@ Route::group([
 
     Route::get('product/{product}/productImages', 'Api\ProductController@productImages');
 
+    //Product's Reviews
+
+    //Route::get('product/{product}/productImages', 'Api\ProductController@productImages');
+
     /**
      * Product Images APIs
      */
 
-     //Product Images CRUD
+    //Product Images CRUD
 
     Route::apiResource('productImages', 'Api\ProductImageController');
 
+    /**
+     * Reviews 
+     * 
+     * Model , Factory , Controller, Route
+     */
+
+    //Reviews CRUD
+
+    Route::apiResource('reviews', 'Api\ReviewController');
+
     
 });
+
+// return to Handling Middlewares, Securty
