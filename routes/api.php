@@ -83,15 +83,24 @@ Route::group([
     Route::apiResource('productImages', 'Api\ProductImageController');
 
     /**
-     * Reviews 
-     * 
-     * Model , Factory , Controller, Route
+     * Reviews APIs
      */
 
     //Reviews CRUD
 
     Route::apiResource('reviews', 'Api\ReviewController');
 
+    /**
+     * Cart APIs
+     * 
+     * [
+     *      Color APIs
+     *      Size APIs
+     * ]
+     * Model, Factory, Controller, Route
+     */
+
+    //Cart CRUD
     
 });
 

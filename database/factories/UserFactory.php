@@ -3,9 +3,11 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Review;
+use App\Models\Size;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -64,5 +66,17 @@ $factory->define(Review::class, function (Faker $faker) {
         're_rate'       => $faker->numberBetween(1,5),
         'product_id'    => $faker->numberBetween(1,10),
         'user_id'       => $faker->numberBetween(1,10),
+    ];
+});
+
+$factory->define(Color::class, function (Faker $faker) {
+    return [
+        'pro_color' => $faker->hexcolor,
+    ];
+});
+
+$factory->define(Size::class, function (Faker $faker) {
+    return [
+        'pro_size'  => $faker->numberBetween(32,45),
     ];
 });
