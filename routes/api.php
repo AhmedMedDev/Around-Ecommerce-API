@@ -39,24 +39,11 @@ Route::group([
 //cart products
 //search 
 
-/**
- * Product
- */
-
- /**
-  * category model
-  * product model
-  * product_images model
-  */
-
   /**
-   * category controller
    * product_images controller
    * Product controller 
    * 
    */
-
-//Product CRUD
 
 /**
  * Reviews 
@@ -83,6 +70,14 @@ Route::group([
     //Category CRUD
 
     Route::apiResource('categories', 'Api\CategoryController');
+
+    /**
+     * Product APIs
+     */
+
+    //Product CRUD
+
+    Route::apiResource('products', 'Api\ProductController');
 
     
 });

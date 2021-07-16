@@ -42,7 +42,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'pro_des'       => $faker->text,
         'price'         => $faker->randomFloat,
         'category_id'   => $faker->numberBetween(1,10),
-        'pro_rate'      => $faker->numberBetween(1.5),
+        'pro_rate'      => $faker->numberBetween(1,5),
         'pro_gender'    => $faker->randomElement(array ('M','F','B')),
         // 'favHeader'     => $faker->name,
         // 'trending'      => $faker->name,

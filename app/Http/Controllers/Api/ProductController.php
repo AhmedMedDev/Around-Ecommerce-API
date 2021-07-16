@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -14,17 +18,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $products = DB::table('products')->paginate(5);
+        
+        return response()->json([
+            'success' => true,
+            'payload' => $products
+        ]);
     }
 
     /**
@@ -33,9 +32,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        $request = $request->validated();
+
+        $category = Product::create( $request );
+
+        return response()->json([
+            'success' => true,
+        ]);
     }
 
     /**
@@ -44,20 +49,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json([
+            'success' => true,
+            'payload' => $product
+        ]);
     }
 
     /**
@@ -67,9 +64,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $request = $request->validated();
+
+        $product = $product->update( $request );
+
+        return response()->json([
+            'success' => true,
+        ]);
     }
 
     /**
@@ -78,8 +81,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product = $product->delete( $product );
+
+        if ($product) return response()->json([
+            'success' => true,
+        ]);
     }
 }
