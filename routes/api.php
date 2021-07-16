@@ -70,10 +70,19 @@ Route::group([
 
 /************************************************/
 
-/**
- * Category APIs
- */
+ Route::group([
 
- //Category CRUD
+    'middleware' => 'api',
 
- 
+], function ($router) {
+
+    /**
+     * Category APIs
+     */
+
+    //Category CRUD
+
+    Route::apiResource('categories', 'Api\CategoryController');
+
+    
+});
