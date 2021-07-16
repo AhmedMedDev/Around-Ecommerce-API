@@ -31,3 +31,33 @@ Route::group([
     Route::post('resetPassword', 'Auth\ResetPassController@resetPassword');
 
 });
+
+/**
+ * Nav
+ */
+
+//cart products
+//search 
+
+/**
+ * Product
+ */
+
+ /**
+  * product model
+  * category model
+  * product_images model
+  * 
+  */
+
+//Product CRUD
+
+/**
+ * Reviews 
+ */
+/**
+ * review model
+ * 
+ */
+
+//Reviews CRUD
