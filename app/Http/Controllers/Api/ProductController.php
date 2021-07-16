@@ -89,4 +89,22 @@ class ProductController extends Controller
             'success' => true,
         ]);
     }
+
+    /**
+     * Get List of Product's Images
+     * 
+     * @param Product
+     */
+    public function productImages(Product $product)
+    {
+        $productImages = DB::table('products')
+        ->join('product_images','products.id','product_images.product_id')
+        ->where('product_images.product_id',$product->id)
+        ->paginate(5);
+
+        return response()->json([
+            'success' => true,
+            'payload' => $productImages
+        ]);
+    }
 }

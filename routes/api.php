@@ -79,5 +79,17 @@ Route::group([
 
     Route::apiResource('products', 'Api\ProductController');
 
+    //Product's Images
+
+    //Route::get('product/{product}/productImages', 'Api\ProductController@productImages');
+
+    /**
+     * Product Images APIs
+     */
+
+     //Product Images CRUD
+
+    Route::apiResource('productImages', 'Api\ProductImageController');
+
     
 });

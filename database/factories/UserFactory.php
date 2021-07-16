@@ -51,7 +51,7 @@ $factory->define(Product::class, function (Faker $faker) {
 
 $factory->define(ProductImage::class, function (Faker $faker) {
     return [
-        'pro_img'      => $faker->name,
-        'product_id'   => $faker->imageUrl(283,241),
+        'pro_img'   => $faker->imageUrl(283,241),
+        'product_id'   => $faker->numberBetween(1,10),
     ];
 });

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductImage\StoreProductImageRequest;
+use App\Http\Requests\ProductImage\UpdateProductImageRequest;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductImageController extends Controller
 {
@@ -14,17 +18,12 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $products = DB::table('product_images')->paginate(5);
+        
+        return response()->json([
+            'success' => true,
+            'payload' => $products
+        ]);
     }
 
     /**
@@ -33,9 +32,15 @@ class ProductImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductImageRequest $request)
     {
-        //
+        $request = $request->validated();
+
+        $category = ProductImage::create( $request );
+
+        return response()->json([
+            'success' => true,
+        ]);
     }
 
     /**
@@ -44,20 +49,12 @@ class ProductImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ProductImage $productImage)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json([
+            'success' => true,
+            'payload' => $productImage
+        ]);
     }
 
     /**
@@ -67,9 +64,15 @@ class ProductImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductImageRequest $request, ProductImage $productImage)
     {
-        //
+        $request = $request->validated();
+
+        $productImage = $productImage->update( $request );
+
+        return response()->json([
+            'success' => true,
+        ]);
     }
 
     /**
@@ -78,8 +81,12 @@ class ProductImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductImage $productImage)
     {
-        //
+        $productImage = $productImage->delete( $productImage );
+
+        if ($productImage) return response()->json([
+            'success' => true,
+        ]);
     }
 }
