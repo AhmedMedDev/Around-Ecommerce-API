@@ -107,4 +107,22 @@ class ProductController extends Controller
             'payload' => $productImages
         ]);
     }
+
+    /**
+     * Get List of Product's reviews
+     * 
+     * @param Product
+     */
+    public function reviews(Product $product)
+    {
+        $productReviews = DB::table('products')
+        ->join('reviews','products.id','reviews.product_id')
+        ->where('reviews.product_id',$product->id)
+        ->paginate(5);
+
+        return response()->json([
+            'success' => true,
+            'payload' => $productReviews
+        ]);
+    }
 }

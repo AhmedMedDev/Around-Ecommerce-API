@@ -72,7 +72,7 @@ Route::group([
 
     //Product's Reviews
 
-    //Route::get('product/{product}/productImages', 'Api\ProductController@productImages');
+    Route::get('product/{product}/reviews', 'Api\ProductController@reviews');
 
     /**
      * Product Images APIs
