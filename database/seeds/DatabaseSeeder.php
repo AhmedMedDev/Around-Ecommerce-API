@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
@@ -23,7 +24,8 @@ class DatabaseSeeder extends Seeder
         // factory(ProductImage::class, 15)->create();
         // factory(User::class, 15)->create();
         // factory(Review::class, 15)->create();
-        factory(Color::class, 15)->create();
-        factory(Size::class, 15)->create();
+        // factory(Color::class, 15)->create();
+        // factory(Size::class, 15)->create();
+        factory(Cart::class, 15)->create();
     }
 }

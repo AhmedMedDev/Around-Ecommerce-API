@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
@@ -78,5 +79,15 @@ $factory->define(Color::class, function (Faker $faker) {
 $factory->define(Size::class, function (Faker $faker) {
     return [
         'pro_size'  => $faker->numberBetween(32,45),
+    ];
+});
+
+$factory->define(Cart::class, function (Faker $faker) {
+    return [
+        'product_id'    => $faker->numberBetween(1,10),
+        'user_id'       => $faker->numberBetween(1,10),
+        'quantity'      => $faker->randomDigit,
+        'size_id'       => $faker->numberBetween(1,10),
+        'color_id'      => $faker->numberBetween(1,10),
     ];
 });

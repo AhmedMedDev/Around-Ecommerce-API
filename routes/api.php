@@ -74,6 +74,9 @@ Route::group([
 
     Route::get('product/{product}/reviews', 'Api\ProductController@reviews');
 
+    //Product's Color
+    //Product's Size
+
     /**
      * Product Images APIs
      */
@@ -93,15 +96,43 @@ Route::group([
     /**
      * Cart APIs
      * 
-     * [
-     *      Color APIs
-     *      Size APIs
-     * ]
      * Model, Factory, Controller, Route
      */
 
     //Cart CRUD
+
+    Route::apiResource('carts', 'Api\CartController');
+
+    /**
+     * Color APIs
+     */
+
+    //Color CRUD
+
+    Route::apiResource('colors', 'Api\ColorController');
+
+    /**
+     * Size APIs
+     */
+
+    //Size CRUD
+
+    Route::apiResource('sizes', 'Api\SizeController');
+
+    /**
+     * User 
+     */
+
+    //User Cart
     
 });
+
+//Product's Color
+//Product's Size
+// Cart_product view
+// Address Module
+// Order Module
+// Orderproducts Module
+// Favorite Module
 
 // return to Handling Middlewares, Securty
