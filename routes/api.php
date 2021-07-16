@@ -44,11 +44,17 @@ Route::group([
  */
 
  /**
-  * product model
   * category model
+  * product model
   * product_images model
-  * 
   */
+
+  /**
+   * category controller
+   * product_images controller
+   * Product controller 
+   * 
+   */
 
 //Product CRUD
 
