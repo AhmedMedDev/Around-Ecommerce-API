@@ -67,3 +67,13 @@ Route::group([
  */
 
 //Reviews CRUD
+
+/************************************************/
+
+/**
+ * Category APIs
+ */
+
+ //Category CRUD
+
+ 
