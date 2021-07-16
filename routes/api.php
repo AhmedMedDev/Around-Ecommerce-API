@@ -81,7 +81,7 @@ Route::group([
 
     //Product's Images
 
-    //Route::get('product/{product}/productImages', 'Api\ProductController@productImages');
+    Route::get('product/{product}/productImages', 'Api\ProductController@productImages');
 
     /**
      * Product Images APIs
