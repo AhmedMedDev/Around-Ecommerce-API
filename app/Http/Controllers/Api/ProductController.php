@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['index','show','productImages','reviews']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

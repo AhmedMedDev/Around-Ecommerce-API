@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\DB;
 class ProductColorController extends Controller
 {
     /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['index','show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -43,6 +53,7 @@ class ProductColorController extends Controller
         for ($i = 0; $i < count($request['color_id']); $i++) 
         { 
             $editedRequest[$i]['product_id'] = $request['product_id'];
+            
             $editedRequest[$i]['color_id'] = $request['color_id'][$i];
         }
 
