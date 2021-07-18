@@ -91,11 +91,15 @@ Route::group([
 
     //Product Colors CRUD
 
+    Route::apiResource('productColors', 'Api\ProductColorController');
+
     /**
      * Product Sizes APIs
      */
 
     //Product Sizes CRUD
+
+    Route::apiResource('productSizes', 'Api\ProductSizeController');
 
     /**
      * Reviews APIs

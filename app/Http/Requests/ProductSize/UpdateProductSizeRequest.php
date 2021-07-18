@@ -13,7 +13,7 @@ class UpdateProductSizeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateProductSizeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'size_id' => 'exists:App\Models\Size,id',
         ];
     }
 }

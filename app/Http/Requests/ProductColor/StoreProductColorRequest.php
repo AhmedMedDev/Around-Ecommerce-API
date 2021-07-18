@@ -13,7 +13,7 @@ class StoreProductColorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreProductColorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'color_id' => 'exists:App\Models\Color,id',
+            'product_id' => 'exists:App\Models\Product,id',
         ];
     }
 }
