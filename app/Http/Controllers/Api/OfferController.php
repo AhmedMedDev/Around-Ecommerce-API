@@ -18,11 +18,11 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $colors = DB::table('colors')->paginate(5);
+        $offers = DB::table('offers')->paginate(5);
         
         return response()->json([
             'success' => true,
-            'payload' => $colors
+            'payload' => $offers
         ]);
     }
 

@@ -45,13 +45,14 @@ Route::group([
 
     'middleware' => [
         'api',
-        // 'auth',
+        // 'auth:api',
+        // 'admin',
     ],
 
 ], function ($router) {
 
     /**
-     * Category APIs
+     * Category APIs //For admin only
      * 
      * Model, Factory, Controller, Route, Postman
      * 
@@ -62,7 +63,7 @@ Route::group([
     Route::apiResource('categories', 'Api\CategoryController');
 
     /**
-     * Product APIs
+     * Product APIs //For admin only Execpt index, show, productImages, reviews
      */
 
     //Product CRUD
@@ -78,7 +79,7 @@ Route::group([
     Route::get('product/{product}/reviews', 'Api\ProductController@reviews');
 
     /**
-     * Product Images APIs
+     * Product Images APIs //For admin only
      */
 
     //Product Images CRUD
@@ -86,7 +87,7 @@ Route::group([
     Route::apiResource('productImages', 'Api\ProductImageController');
 
     /**
-     * Product Colors APIs
+     * Product Colors APIs //For admin only Execpt show
      */
 
     //Product Colors CRUD
@@ -94,7 +95,7 @@ Route::group([
     Route::apiResource('productColors', 'Api\ProductColorController');
 
     /**
-     * Product Sizes APIs
+     * Product Sizes APIs //For admin only Execpt show
      */
 
     //Product Sizes CRUD
@@ -102,7 +103,7 @@ Route::group([
     Route::apiResource('productSizes', 'Api\ProductSizeController');
 
     /**
-     * Offer APIs
+     * Offer APIs //For admin only Execpt show
      */
 
     //Offer CRUD
@@ -110,7 +111,7 @@ Route::group([
     Route::apiResource('offers', 'Api\OfferController');
 
     /**
-     * Reviews APIs
+     * Reviews APIs //For admin only Execpt show
      */
 
     //Reviews CRUD
@@ -118,7 +119,7 @@ Route::group([
     Route::apiResource('reviews', 'Api\ReviewController');
 
     /**
-     * Cart APIs
+     * Cart APIs //For Spacific User
      * 
      */
 
@@ -127,7 +128,7 @@ Route::group([
     Route::apiResource('carts', 'Api\CartController');
 
     /**
-     * Color APIs
+     * Color APIs //For admin only
      */
 
     //Color CRUD
@@ -135,7 +136,7 @@ Route::group([
     Route::apiResource('colors', 'Api\ColorController');
 
     /**
-     * Size APIs
+     * Size APIs //For admin only
      */
 
     //Size CRUD
@@ -143,7 +144,7 @@ Route::group([
     Route::apiResource('sizes', 'Api\SizeController');
 
     /**
-     * User APIs
+     * User APIs //For admin only Execpt cart
      */
 
     //User CRUD
