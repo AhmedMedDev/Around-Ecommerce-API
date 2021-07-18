@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     /**
-     * Create a new AuthController instance.
+     * Create a new ProductController instance.
      *
      * @return void
      */
@@ -25,8 +25,11 @@ class ProductController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
+     * 
      */
-    public function index()
+    public function index() // Secured Endpoint
     {
         $products = DB::table('products')->paginate(5);
         
@@ -41,8 +44,11 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreProductRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -56,10 +62,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Product $product
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
+     * 
      */
-    public function show(Product $product)
+    public function show(Product $product) // Secured Endpoint
     {
         return response()->json([
             'success' => true,
@@ -71,10 +80,13 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Product $product
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -88,10 +100,13 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Product $product
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product) // Secured Endpoint
     {
         $product = $product->delete( $product );
 
@@ -103,9 +118,12 @@ class ProductController extends Controller
     /**
      * Get List of Product's Images
      * 
-     * @param Product
+     * @param Product $product
+     * 
+     * Just For auth user 
+     * 
      */
-    public function productImages(Product $product)
+    public function productImages(Product $product) // Secured Endpoint
     {
         $productImages = DB::table('products')
         ->join('product_images','products.id','product_images.product_id')
@@ -121,9 +139,12 @@ class ProductController extends Controller
     /**
      * Get List of Product's reviews
      * 
-     * @param Product
+     * @param Product $product
+     * 
+     * Just For auth user 
+     * 
      */
-    public function reviews(Product $product)
+    public function reviews(Product $product) // Secured Endpoint
     {
         $productReviews = DB::table('products')
         ->join('reviews','products.id','reviews.product_id')

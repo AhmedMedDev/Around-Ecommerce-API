@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class ProductImageController extends Controller
 {
     /**
-     * Create a new AuthController instance.
+     * Create a new ProductImageController instance.
      *
      * @return void
      */
@@ -25,8 +25,11 @@ class ProductImageController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
+     * 
      */
-    public function index()
+    public function index()  // Secured Endpoint
     {
         $products = DB::table('product_images')->paginate(5);
         
@@ -41,8 +44,11 @@ class ProductImageController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function store(StoreProductImageRequest $request)
+    public function store(StoreProductImageRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -68,10 +74,13 @@ class ProductImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  ProductImage $productImage
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
+     * 
      */
-    public function show(ProductImage $productImage)
+    public function show(ProductImage $productImage) // Secured Endpoint
     {
         return response()->json([
             'success' => true,
@@ -83,10 +92,13 @@ class ProductImageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  ProductImage $productImage
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function update(UpdateProductImageRequest $request, ProductImage $productImage)
+    public function update(UpdateProductImageRequest $request, ProductImage $productImage) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -100,10 +112,13 @@ class ProductImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  ProductImage $productImage
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function destroy(ProductImage $productImage)
+    public function destroy(ProductImage $productImage) // Secured Endpoint
     {
         $productImage = $productImage->delete( $productImage );
 

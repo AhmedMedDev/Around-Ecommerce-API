@@ -50,7 +50,7 @@ Route::group([
 ], function ($router) {
 
     /**
-     * Product APIs //For admin only Except index, show, productImages, reviews //
+     * Product APIs //For admin only Except index, show, productImages, reviews // Secured
      */
 
     //Product CRUD
@@ -66,7 +66,7 @@ Route::group([
     Route::get('product/{product}/reviews', 'Api\ProductController@reviews');
 
     /**
-     * Product Images APIs //For admin only Except index, show //
+     * Product Images APIs //For admin only Except index, show // Secured
      */
 
     //Product Images CRUD
