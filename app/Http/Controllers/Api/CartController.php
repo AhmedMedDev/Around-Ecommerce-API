@@ -16,8 +16,10 @@ class CartController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * for admin only 
      */
-    public function index() // for admin only 
+    public function index() // Secured Endpoint
     {
         $carts = DB::table('carts')->paginate(5);
         
@@ -32,8 +34,10 @@ class CartController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     *  for Auth user
      */
-    public function store(StoreCartRequest $request) // for specific user
+    public function store(StoreCartRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -49,8 +53,10 @@ class CartController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * for admin only 
      */
-    public function show(Cart $cart) // for admin only
+    public function show(Cart $cart) // Secured Endpoint
     {
         return response()->json([
             'success' => true,
@@ -64,8 +70,11 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * for specific user, who created this recored 
+     * 
      */
-    public function update(UpdateCartRequest $request, Cart $cart) // for specific user
+    public function update(UpdateCartRequest $request, Cart $cart) // Secured Endpoint
     {
         if ($cart->user_id != Auth::user()->id ) 
         {
@@ -88,8 +97,11 @@ class CartController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * for specific user, who created this recored
+     * 
      */
-    public function destroy(Cart $cart) // for specific user
+    public function destroy(Cart $cart) // Secured Endpoint
     {
         if ($cart->user_id != Auth::user()->id ) 
         {
