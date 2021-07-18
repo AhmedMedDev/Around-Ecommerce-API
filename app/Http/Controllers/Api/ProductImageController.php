@@ -36,7 +36,19 @@ class ProductImageController extends Controller
     {
         $request = $request->validated();
 
-        $category = ProductImage::create( $request );
+        /* Turn request into Associative Array */
+
+        $editedRequest = [[]];
+
+        for ($i = 0; $i < count($request['pro_img']); $i++) 
+        { 
+            $editedRequest[$i]['product_id'] = $request['product_id'];
+            $editedRequest[$i]['pro_img'] = $request['pro_img'][$i];
+        }
+
+        /* Turn request into Associative Array */
+        
+        $productImage = ProductImage::insert( $editedRequest );
 
         return response()->json([
             'success' => true,
