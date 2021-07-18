@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 // Route::view('/verifyEmail', 'mails.verifyEmail');
 
-Route::get('user/verify/{verify_code}','Auth\AuthController@verify')->name('verify');
+Route::get('user/verify/{verify_code}','Auth\VerificationController@verify')->name('verify');

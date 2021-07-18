@@ -21,7 +21,7 @@ Route::group([
 
 ], function ($router) {
 
-    Route::post('login', 'Auth\AuthController@login');
+    Route::post('login', 'Auth\AuthController@login')->name('login');
     Route::post('register', 'Auth\RegisterController@register');
     Route::post('logout', 'Auth\LogOutController@logout');
     Route::post('refresh', 'Auth\AuthController@refresh');
@@ -102,6 +102,14 @@ Route::group([
     Route::apiResource('productSizes', 'Api\ProductSizeController');
 
     /**
+     * Offer APIs
+     */
+
+    //Offer CRUD
+
+    Route::apiResource('offers', 'Api\OfferController');
+
+    /**
      * Reviews APIs
      */
 
@@ -140,19 +148,23 @@ Route::group([
 
     //User CRUD
 
-    //Route::apiResource('users', 'Api\UserController');
+    Route::apiResource('users', 'Api\UserController');
 
     //User Cart
 
     Route::get('user/{user}/cart', 'Api\UserController@cart');
+
+    
+    //Change Pasword
+
+    Route::put('user/{user}/changePassword', 'Api\UserController@changePassword');
     
 });
 
-// Offer Module
+// User Module
 // Address Module
 // Order Module
 // Orderproducts Module
 // Favorite Module
-// User Module
 
 // return to Handling Middlewares, Securty

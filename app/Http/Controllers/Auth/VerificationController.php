@@ -25,14 +25,12 @@ class VerificationController extends Controller
                 201
             );
 
-        else:
-
-            //Error response ** should return view 
-            return response()->json(
-                ['error' => "User Has Verified Before"],
-                405
-            );
-
         endif; 
+
+        //Error response ** should return view 
+        return response()->json(
+            ['error' => "User Has Verified Before"],
+            405
+        );
     }
 }
