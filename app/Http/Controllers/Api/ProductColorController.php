@@ -36,7 +36,19 @@ class ProductColorController extends Controller
     {
         $request = $request->validated();
 
-        $productcolor = ProductColor::create( $request );
+        /* Turn request into Associative Array */
+
+        $editedRequest = [[]];
+
+        for ($i = 0; $i < count($request['color_id']); $i++) 
+        { 
+            $editedRequest[$i]['product_id'] = $request['product_id'];
+            $editedRequest[$i]['color_id'] = $request['color_id'][$i];
+        }
+
+        /* Turn request into Associative Array */
+
+        $productcolor = ProductColor::insert( $editedRequest );
 
         return response()->json([
             'success' => true,

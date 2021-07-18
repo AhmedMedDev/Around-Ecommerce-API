@@ -148,8 +148,6 @@ Route::group([
     
 });
 
-// return to Handling Product's Images, Product's Color, Product's Sizes 
-
 // Address Module
 // Order Module
 // Orderproducts Module

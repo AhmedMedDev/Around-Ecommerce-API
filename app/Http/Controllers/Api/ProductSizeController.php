@@ -36,7 +36,19 @@ class ProductSizeController extends Controller
     {
         $request = $request->validated();
 
-        $productsize = ProductSize::create( $request );
+        /* Turn request into Associative Array */
+
+        $editedRequest = [[]];
+
+        for ($i = 0; $i < count($request['size_id']); $i++) 
+        { 
+            $editedRequest[$i]['product_id'] = $request['product_id'];
+            $editedRequest[$i]['size_id'] = $request['size_id'][$i];
+        }
+
+        /* Turn request into Associative Array */
+
+        $productsize = ProductSize::insert( $editedRequest );
 
         return response()->json([
             'success' => true,
