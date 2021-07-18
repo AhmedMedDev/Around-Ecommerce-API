@@ -52,6 +52,9 @@ Route::group([
 
     /**
      * Category APIs
+     * 
+     * Model, Factory, Controller, Route, Postman
+     * 
      */
 
     //Category CRUD
@@ -74,9 +77,6 @@ Route::group([
 
     Route::get('product/{product}/reviews', 'Api\ProductController@reviews');
 
-    //Product's Color
-    //Product's Size
-
     /**
      * Product Images APIs
      */
@@ -84,6 +84,18 @@ Route::group([
     //Product Images CRUD
 
     Route::apiResource('productImages', 'Api\ProductImageController');
+
+    /**
+     * Product Colors APIs
+     */
+
+    //Product Colors CRUD
+
+    /**
+     * Product Sizes APIs
+     */
+
+    //Product Sizes CRUD
 
     /**
      * Reviews APIs
@@ -96,7 +108,6 @@ Route::group([
     /**
      * Cart APIs
      * 
-     * Model, Factory, Controller, Route
      */
 
     //Cart CRUD
