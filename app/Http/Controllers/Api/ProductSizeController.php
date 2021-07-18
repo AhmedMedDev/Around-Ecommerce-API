@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class ProductSizeController extends Controller
 {
     /**
-     * Create a new AuthController instance.
+     * Create a new ProductSizeController instance.
      *
      * @return void
      */
@@ -25,8 +25,11 @@ class ProductSizeController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
+     * 
      */
-    public function index()
+    public function index() // Secured Endpoint
     {
         $productsizes = DB::table('product_sizes')->paginate(5);
         
@@ -41,8 +44,11 @@ class ProductSizeController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function store(StoreProductSizeRequest $request)
+    public function store(StoreProductSizeRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -70,8 +76,11 @@ class ProductSizeController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
+     * 
      */
-    public function show(ProductSize $productsize)
+    public function show(ProductSize $productsize) // Secured Endpoint
     {
         return response()->json([
             'success' => true,
@@ -85,8 +94,11 @@ class ProductSizeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function update(UpdateProductSizeRequest $request, ProductSize $productsize)
+    public function update(UpdateProductSizeRequest $request, ProductSize $productsize) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -102,8 +114,11 @@ class ProductSizeController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function destroy(ProductSize $productsize)
+    public function destroy(ProductSize $productsize) // Secured Endpoint
     {
         $productsize = $productsize->delete( $productsize );
 

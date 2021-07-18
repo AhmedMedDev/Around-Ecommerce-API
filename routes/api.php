@@ -74,7 +74,7 @@ Route::group([
     Route::apiResource('productImages', 'Api\ProductImageController');
 
     /**
-     * Product Colors APIs //For admin only Except index, show //
+     * Product Colors APIs //For admin only Except index, show // Secured
      */
 
     //Product Colors CRUD
@@ -82,7 +82,7 @@ Route::group([
     Route::apiResource('productColors', 'Api\ProductColorController');
 
     /**
-     * Product Sizes APIs //For admin only Except index, show //
+     * Product Sizes APIs //For admin only Except index, show // Secured
      */
 
     //Product Sizes CRUD
@@ -90,7 +90,7 @@ Route::group([
     Route::apiResource('productSizes', 'Api\ProductSizeController');
 
     /**
-     * Offer APIs //For admin only Except index, show // 
+     * Offer APIs //For admin only Except index, show // Secured
      */
 
     //Offer CRUD

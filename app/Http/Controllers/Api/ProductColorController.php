@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class ProductColorController extends Controller
 {
     /**
-     * Create a new AuthController instance.
+     * Create a new ProductColorController instance.
      *
      * @return void
      */
@@ -25,8 +25,11 @@ class ProductColorController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
+     * 
      */
-    public function index()
+    public function index() // Secured Endpoint
     {
         $productcolors = DB::table('product_colors')->paginate(5);
         
@@ -41,8 +44,11 @@ class ProductColorController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function store(StoreProductColorRequest $request)
+    public function store(StoreProductColorRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -71,8 +77,11 @@ class ProductColorController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
+     * 
      */
-    public function show(ProductColor $productcolor)
+    public function show(ProductColor $productcolor) // Secured Endpoint
     {
         return response()->json([
             'success' => true,
@@ -86,8 +95,11 @@ class ProductColorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function update(UpdateProductColorRequest $request, ProductColor $productcolor)
+    public function update(UpdateProductColorRequest $request, ProductColor $productcolor) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -103,8 +115,11 @@ class ProductColorController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function destroy(ProductColor $productcolor)
+    public function destroy(ProductColor $productcolor) // Secured Endpoint
     {
         $productcolor = $productcolor->delete( $productcolor );
 
