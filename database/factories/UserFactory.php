@@ -6,7 +6,9 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\ProductColor;
 use App\Models\ProductImage;
+use App\Models\ProductSize;
 use App\Models\Review;
 use App\Models\Size;
 use App\User;
@@ -89,5 +91,19 @@ $factory->define(Cart::class, function (Faker $faker) {
         'quantity'      => $faker->randomDigit,
         'size_id'       => $faker->numberBetween(1,10),
         'color_id'      => $faker->numberBetween(1,10),
+    ];
+});
+
+$factory->define(ProductColor::class, function (Faker $faker) {
+    return [
+        'product_id'    => $faker->numberBetween(1,10),
+        'color_id'      => $faker->numberBetween(1,10),
+    ];
+});
+
+$factory->define(ProductSize::class, function (Faker $faker) {
+    return [
+        'product_id'    => $faker->numberBetween(1,10),
+        'size_id'      => $faker->numberBetween(1,10),
     ];
 });

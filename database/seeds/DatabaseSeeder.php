@@ -4,7 +4,9 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\ProductColor;
 use App\Models\ProductImage;
+use App\Models\ProductSize;
 use App\Models\Review;
 use App\Models\Size;
 use App\User;
@@ -26,6 +28,8 @@ class DatabaseSeeder extends Seeder
         // factory(Review::class, 15)->create();
         // factory(Color::class, 15)->create();
         // factory(Size::class, 15)->create();
-        factory(Cart::class, 15)->create();
+        // factory(Cart::class, 15)->create();
+        factory(ProductColor::class, 15)->create();
+        factory(ProductSize::class, 15)->create();
     }
 }
