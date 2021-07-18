@@ -27,8 +27,10 @@ class UserController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
      */
-    public function index()
+    public function index() // Secured Endpoint 
     {
         $sizes = DB::table('sizes')->paginate(5);
         
@@ -41,10 +43,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user 
      */
-    public function show(User $user)
+    public function show(User $user) 
     {
         return response()->json([
             'success' => true,
@@ -56,11 +60,20 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  User $user
+     * @param  User $user
      * @return \Illuminate\Http\Response
+     * 
+     * For Specific User , who created this rec
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request, User $user) // Secured Endpoint
     {
+        if ($user->id != Auth::user()->id ) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+
         $request = $request->validated();
 
         $user = $user->update( $request );
@@ -71,14 +84,23 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update User's Password in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  User $user
+     * @param  User $user
      * @return \Illuminate\Http\Response
+     * 
+     * For Specific User , who created this rec
      */
-    public function changePassword(ChangePasswordRequest $request, User $user)
+    public function changePassword(ChangePasswordRequest $request, User $user) // Secured Endpoint
     {
+        if ($user->id != Auth::user()->id ) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+        
         $request = $request->validated();
 
         if (!Hash::check($request['old_password'], $user->password)) 
@@ -101,11 +123,20 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  User $user
+     * @param  User $user
      * @return \Illuminate\Http\Response
+     * 
+     * For Specific User , who created this rec
      */
-    public function destroy(User $user)
+    public function destroy(User $user) // Secured Endpoint
     {
+        if ($user->id != Auth::user()->id ) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+
         $user = $user->delete( $user );
 
         if ($user) return response()->json([
@@ -114,12 +145,14 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Get User's Cart
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user
      */
-    public function cart(User $user)
+    public function cart(User $user) // Secured Endpoint
     {
         $usercart = DB::table('products')
         ->join('carts','products.id','carts.product_id')

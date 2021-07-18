@@ -106,7 +106,7 @@ Route::group([
     Route::apiResource('reviews', 'Api\ReviewController');
 
     /**
-     * Cart APIs //For Spacific User 
+     * Cart APIs //For Spacific User // Secured
      * 
      */
 
