@@ -90,7 +90,7 @@ Route::group([
     Route::apiResource('productSizes', 'Api\ProductSizeController');
 
     /**
-     * Offer APIs //For admin only Except index, show //
+     * Offer APIs //For admin only Except index, show // 
      */
 
     //Offer CRUD
@@ -98,7 +98,7 @@ Route::group([
     Route::apiResource('offers', 'Api\OfferController');
 
     /**
-     * Reviews APIs //For admin only Except index, show //
+     * Reviews APIs //For admin only Except index, show // Secured
      */
 
     //Reviews CRUD

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class OfferController extends Controller
 {
     /**
-     * Create a new AuthController instance.
+     * Create a new OfferController instance.
      *
      * @return void
      */
@@ -25,8 +25,11 @@ class OfferController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user
+     * 
      */
-    public function index()
+    public function index() // Secured Endpoint
     {
         $offers = DB::table('offers')->paginate(5);
         
@@ -41,8 +44,11 @@ class OfferController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function store(StoreOfferRequest $request)
+    public function store(StoreOfferRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -56,10 +62,13 @@ class OfferController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Offer $offer
      * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user
+     * 
      */
-    public function show(Offer $offer)
+    public function show(Offer $offer) // Secured Endpoint
     {
         return response()->json([
             'success' => true,
@@ -71,10 +80,13 @@ class OfferController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Offer $offer
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function update(UpdateOfferRequest $request, Offer $offer)
+    public function update(UpdateOfferRequest $request, Offer $offer) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -88,10 +100,13 @@ class OfferController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  Offer $offer
+     * @param  Offer $offer
      * @return \Illuminate\Http\Response
+     * 
+     * For Admin Only
+     * 
      */
-    public function destroy(Offer $offer)
+    public function destroy(Offer $offer) // Secured Endpoint
     {
         $offer = $offer->delete( $offer );
 
