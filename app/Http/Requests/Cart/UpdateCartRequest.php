@@ -24,8 +24,6 @@ class UpdateCartRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id'       => 'exists:App\User,id',
-            // 'user_id'    =>'exists:App\User,id|in:' . Auth::user()->id ,
             'quantity'      => 'integer',
             'size_id'       => 'exists:App\Models\Size,id',
             'color_id'      => 'exists:App\Models\Color,id',

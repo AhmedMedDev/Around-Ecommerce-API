@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Cart;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreCartRequest extends FormRequest
 {
@@ -25,8 +26,7 @@ class StoreCartRequest extends FormRequest
     {
         return [
             'product_id'    => 'exists:App\Models\Product,id',
-            'user_id'    =>'exists:App\User,id',
-            // 'user_id'    =>'exists:App\User,id|in:' . Auth::user()->id ,
+            'user_id'       =>'exists:App\User,id|in:' . Auth::user()->id ,
             'quantity'      => 'integer',
             'size_id'       => 'exists:App\Models\Size,id',
             'color_id'      => 'exists:App\Models\Color,id',

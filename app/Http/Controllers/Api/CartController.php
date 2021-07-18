@@ -7,6 +7,7 @@ use App\Http\Requests\Cart\StoreCartRequest;
 use App\Http\Requests\Cart\UpdateCartRequest;
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
@@ -16,7 +17,7 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() // for admin only 
     {
         $carts = DB::table('carts')->paginate(5);
         
@@ -32,7 +33,7 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCartRequest $request)
+    public function store(StoreCartRequest $request) // for specific user
     {
         $request = $request->validated();
 
@@ -49,7 +50,7 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show(Cart $cart) // for admin only
     {
         return response()->json([
             'success' => true,
@@ -64,8 +65,15 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCartRequest $request, Cart $cart)
+    public function update(UpdateCartRequest $request, Cart $cart) // for specific user
     {
+        if ($cart->user_id != Auth::user()->id ) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+        
         $request = $request->validated();
 
         $cart = $cart->update( $request );
@@ -81,8 +89,15 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy(Cart $cart) // for specific user
     {
+        if ($cart->user_id != Auth::user()->id ) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+
         $cart = $cart->delete( $cart );
 
         if ($cart) return response()->json([
