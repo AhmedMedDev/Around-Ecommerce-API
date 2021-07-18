@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
-     * Create a new AuthController instance.
+     * Create a new UserController instance.
      *
      * @return void
      */

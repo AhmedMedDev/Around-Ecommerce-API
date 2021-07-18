@@ -28,8 +28,7 @@ class StoreReviewRequest extends FormRequest
             're_des'     =>'string|max:255',
             're_rate'    =>'integer|digits_between:1,5',
             'product_id' => 'exists:App\Models\Product,id',
-            'user_id'    =>'exists:App\User,id',
-            // 'user_id'    =>'exists:App\User,id|in:' . Auth::user()->id ,
+            'user_id'    =>'exists:App\User,id|in:' . Auth::user()->id ,
         ];
     }
 }

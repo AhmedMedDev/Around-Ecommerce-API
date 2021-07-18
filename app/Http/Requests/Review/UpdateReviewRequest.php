@@ -27,8 +27,6 @@ class UpdateReviewRequest extends FormRequest
         return [
             're_des'     =>'string|max:255',
             're_rate'    =>'integer|digits_between:1,5',
-            'user_id'    =>'exists:App\User,id',
-            // 'user_id'    =>'exists:App\User,id|in:' . Auth::user()->id ,
         ];
     }
 }

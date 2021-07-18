@@ -115,7 +115,7 @@ Route::group([
     Route::apiResource('carts', 'Api\CartController');
 
     /**
-     * User APIs //For admin only Except cart, Update, Destroy, changePassword //
+     * User APIs //For admin only Except cart, Update, Destroy, changePassword // Secured
      */
 
     //User CRUD
