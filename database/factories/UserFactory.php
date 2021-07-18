@@ -5,6 +5,7 @@
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Offer;
 use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductImage;
@@ -105,5 +106,12 @@ $factory->define(ProductSize::class, function (Faker $faker) {
     return [
         'product_id'    => $faker->numberBetween(1,10),
         'size_id'      => $faker->numberBetween(1,10),
+    ];
+});
+
+$factory->define(Offer::class, function (Faker $faker) {
+    return [
+        'product_id'    => $faker->numberBetween(1,10),
+        'percentage'      => $faker->numberBetween(30,100),
     ];
 });

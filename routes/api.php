@@ -135,7 +135,7 @@ Route::group([
     Route::apiResource('sizes', 'Api\SizeController');
 
     /**
-     * User 
+     * User APIs
      */
 
     //User CRUD
@@ -148,6 +148,7 @@ Route::group([
     
 });
 
+// Offer Module
 // Address Module
 // Order Module
 // Orderproducts Module

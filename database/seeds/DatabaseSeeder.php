@@ -3,6 +3,7 @@
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Offer;
 use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductImage;
@@ -29,7 +30,8 @@ class DatabaseSeeder extends Seeder
         // factory(Color::class, 15)->create();
         // factory(Size::class, 15)->create();
         // factory(Cart::class, 15)->create();
-        factory(ProductColor::class, 15)->create();
-        factory(ProductSize::class, 15)->create();
+        // factory(ProductColor::class, 15)->create();
+        // factory(ProductSize::class, 15)->create();
+        factory(Offer::class, 15)->create();
     }
 }
