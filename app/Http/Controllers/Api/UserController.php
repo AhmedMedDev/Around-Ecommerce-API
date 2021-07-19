@@ -67,7 +67,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id ) 
+        if ($user->id != Auth::user()->id) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -94,7 +94,7 @@ class UserController extends Controller
      */
     public function changePassword(ChangePasswordRequest $request, User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id ) 
+        if ($user->id != Auth::user()->id) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -130,7 +130,7 @@ class UserController extends Controller
      */
     public function destroy(User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id ) 
+        if ($user->id != Auth::user()->id) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -154,6 +154,13 @@ class UserController extends Controller
      */
     public function cart(User $user) // Secured Endpoint
     {
+        if ($user->id != Auth::user()->id) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+
         $usercart = DB::table('products')
         ->join('carts','products.id','carts.product_id')
         ->where('carts.user_id',$user->id)
@@ -164,4 +171,88 @@ class UserController extends Controller
             'payload' => $usercart
         ]);
     }
+
+    /**
+     * Get User's Favorite
+     *
+     * @param  User $user
+     * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user
+     */
+    public function favorite(User $user) // Secured Endpoint
+    {
+        if ($user->id != Auth::user()->id) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+
+        $userfavorite = DB::table('products')
+        ->join('favorites','products.id','favorites.product_id')
+        ->where('favorites.user_id',$user->id)
+        ->paginate(5);
+
+        return response()->json([
+            'success' => true,
+            'payload' => $userfavorite
+        ]);
+    }
+
+    /**
+     * Get User's Favorite
+     *
+     * @param  User $user
+     * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user
+     */
+    public function orders(User $user) // Secured Endpoint
+    {
+        if ($user->id != Auth::user()->id) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+
+        $userorders = DB::table('orders')
+        ->where('orders.user_id',$user->id)
+        ->paginate(5);
+
+        return response()->json([
+            'success' => true,
+            'payload' => $userorders
+        ]);
+    }
+
+    /**
+     * Get User's Favorite
+     *
+     * @param  User $user
+     * @return \Illuminate\Http\Response
+     * 
+     * Just For auth user
+     */
+    public function addresses(User $user) // Secured Endpoint
+    {
+        if ($user->id != Auth::user()->id) 
+        {
+            return response()->json([
+                'message' => "Unauthenticated, this action for specific user only",
+            ],401);
+        }
+        
+        $useraddresses = DB::table('orders')
+        ->join('addresses','orders.address_id','addresses.id')
+        ->where('orders.user_id',$user->id)
+        ->paginate(5);
+
+        return response()->json([
+            'success' => true,
+            'payload' => $useraddresses
+        ]);
+    }
+
 }

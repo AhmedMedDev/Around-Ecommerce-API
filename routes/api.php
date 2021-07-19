@@ -164,17 +164,15 @@ Route::group([
 
     //User's Favorite
 
-    // Route::get('user/{user}/cart', 'Api\UserController@cart');
+    Route::get('user/{user}/favorite', 'Api\UserController@favorite');
 
-    
     //User's Addresses
 
-    // Route::get('user/{user}/cart', 'Api\UserController@cart');
+    Route::get('user/{user}/addresses', 'Api\UserController@addresses');
 
-    
     //User's Orders
 
-    // Route::get('user/{user}/cart', 'Api\UserController@cart');
+    Route::get('user/{user}/orders', 'Api\UserController@orders');
 
     
 });
