@@ -106,13 +106,45 @@ Route::group([
     Route::apiResource('reviews', 'Api\ReviewController');
 
     /**
-     * Cart APIs //For Spacific User // Secured
+     * Cart APIs //For Admin only Except Store, Update, Destroy  // Secured
      * 
      */
 
     //Cart CRUD
 
     Route::apiResource('carts', 'Api\CartController');
+
+    /** 
+     * Favorite APIs //For Admin only Except Store, Update, Destroy // Secured
+     */
+
+    //Favorite CRUD
+
+    Route::apiResource('favorites', 'Api\FavoriteController');
+
+    /**
+     * Address APIs //For Admin only Except Store, Update, Destroy // Secured
+     */
+
+    //Address CRUD
+
+    Route::apiResource('addresses', 'Api\AddressController');
+
+    /**
+     * Order APIs //For Admin only Except Store // Secured
+     */
+
+    //Order CRUD
+
+    Route::apiResource('orders', 'Api\OrderController');
+
+    /**
+     * Orderproducts APIs //For Admin only Except Store // Secured
+     */
+
+    //Orderproducts CRUD
+
+    Route::apiResource('orderProducts', 'Api\OrderProductController');
 
     /**
      * User APIs //For admin only Except cart, Update, Destroy, changePassword // Secured
@@ -129,6 +161,21 @@ Route::group([
     //Change Pasword
 
     Route::put('user/{user}/changePassword', 'Api\UserController@changePassword');
+
+    //User's Favorite
+
+    // Route::get('user/{user}/cart', 'Api\UserController@cart');
+
+    
+    //User's Addresses
+
+    // Route::get('user/{user}/cart', 'Api\UserController@cart');
+
+    
+    //User's Orders
+
+    // Route::get('user/{user}/cart', 'Api\UserController@cart');
+
     
 });
 
@@ -170,45 +217,4 @@ Route::group([
 
     Route::apiResource('sizes', 'Api\SizeController');
 
-    /***********************************************************************/
-
-    /**
-     * Favorite APIs 
-     */
-
-    //Favorite CRUD
-
-    Route::apiResource('favorites', 'Api\FavoriteController');
-
-    /**
-     * Address APIs 
-     */
-
-    //Address CRUD
-
-    Route::apiResource('addresses', 'Api\AddressController');
-
-    /**
-     * Order APIs 
-     */
-
-    //Order CRUD
-
-    Route::apiResource('orders', 'Api\OrderController');
-
-    /**
-     * Orderproducts APIs 
-     */
-
-    //Orderproducts CRUD
-
-    Route::apiResource('orderProducts', 'Api\OrderProductController');
-    
 });
-
-// Favorite Module
-// Address Module
-// Order Module
-// Orderproducts Module
-
-// return to Handling Middlewares, Securty

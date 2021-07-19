@@ -12,14 +12,24 @@ use Illuminate\Support\Facades\DB;
 class FavoriteController extends Controller
 {
     /**
+     * Create a new CartController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['store','update','destroy']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      * 
-     * for Auth user
+     * for Admin only
      * 
      */
-    public function index()
+    public function index() // Secured Endpoint
     {
         $favorites = DB::table('favorites')->paginate(5);
         
@@ -34,8 +44,11 @@ class FavoriteController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * for Auth User
+     * 
      */
-    public function store(FavoriteRequest $request)
+    public function store(FavoriteRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -51,8 +64,11 @@ class FavoriteController extends Controller
      *
      * @param  Favorite $favorite
      * @return \Illuminate\Http\Response
+     * 
+     * for Admin only
+     * 
      */
-    public function show(Favorite $favorite)
+    public function show(Favorite $favorite) // Secured Endpoint
     {
         return response()->json([
             'success' => true,
@@ -66,8 +82,11 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  Favorite $favorite
      * @return \Illuminate\Http\Response
+     * 
+     * for specific user, who created this recored 
+     * 
      */
-    public function update(FavoriteRequest $request, Favorite $favorite)
+    public function update(FavoriteRequest $request, Favorite $favorite) // Secured Endpoint
     {
         if ($favorite->user_id != Auth::user()->id ) 
         {
@@ -90,8 +109,11 @@ class FavoriteController extends Controller
      *
      * @param  Favorite $favorite
      * @return \Illuminate\Http\Response
+     * 
+     * for specific user, who created this recored 
+     * 
      */
-    public function destroy(Favorite $favorite)
+    public function destroy(Favorite $favorite) // Secured Endpoint
     {
         if ($favorite->user_id != Auth::user()->id ) 
         {

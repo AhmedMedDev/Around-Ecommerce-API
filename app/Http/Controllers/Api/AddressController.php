@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\DB;
 class AddressController extends Controller
 {
     /**
+     * Create a new CartController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['store','update','destroy']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -19,7 +29,7 @@ class AddressController extends Controller
      * for admin only 
      * 
      */
-    public function index()
+    public function index() // Secured Endpoint
     {
         $addresses = DB::table('addresses')->paginate(5);
         
@@ -34,8 +44,11 @@ class AddressController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     *  for Auth user
+     * 
      */
-    public function store(AddressRequest $request)
+    public function store(AddressRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
 
@@ -51,8 +64,11 @@ class AddressController extends Controller
      *
      * @param  Address $address
      * @return \Illuminate\Http\Response
+     * 
+     * for admin only 
+     * 
      */
-    public function show(Address $address)
+    public function show(Address $address) // Secured Endpoint
     {
         return response()->json([
             'success' => true,
@@ -66,8 +82,11 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  Address $address
      * @return \Illuminate\Http\Response
+     * 
+     * for specific user, who created this recored 
+     * 
      */
-    public function update(AddressRequest $request, Address $address)
+    public function update(AddressRequest $request, Address $address) // Secured Endpoint
     {
         if ($address->user_id != Auth::user()->id ) 
         {
@@ -90,8 +109,11 @@ class AddressController extends Controller
      *
      * @param  Address $address
      * @return \Illuminate\Http\Response
+     * 
+     * for specific user, who created this recored 
+     * 
      */
-    public function destroy(Address $address)
+    public function destroy(Address $address) // Secured Endpoint
     {
         if ($address->user_id != Auth::user()->id ) 
         {

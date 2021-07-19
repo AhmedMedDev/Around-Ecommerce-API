@@ -12,9 +12,22 @@ use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     /**
+     * Create a new OrderController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['store']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * for admin only 
+     * 
      */
     public function index()
     {
@@ -31,6 +44,9 @@ class OrderController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     *  for Auth user
+     * 
      */
     public function store(OrderRequest $request)
     {
@@ -48,6 +64,9 @@ class OrderController extends Controller
      *
      * @param  Order $order
      * @return \Illuminate\Http\Response
+     * 
+     * for admin only 
+     * 
      */
     public function show(Order $order)
     {
@@ -63,6 +82,9 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  Order $order
      * @return \Illuminate\Http\Response
+     * 
+     * for admin only 
+     * 
      */
     public function update(OrderRequest $request, Order $order)
     {
@@ -87,6 +109,9 @@ class OrderController extends Controller
      *
      * @param  Order $order
      * @return \Illuminate\Http\Response
+     * 
+     * for admin only 
+     * 
      */
     public function destroy(Order $order)
     {

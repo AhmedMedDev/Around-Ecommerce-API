@@ -28,7 +28,7 @@ class OrderRequest extends FormRequest
             'user_id'        =>'exists:App\User,id|in' . Auth::user()->id,
             'payment_method' =>'required|in:'. implode(',',['Credit Card','PayPal','Cash on delivery']),
             'total_price'    =>'integer',
-            'address_id'     =>'exists:App\Models\Address,id', //Must make Sure that this id belonge to auth user
+            'address_id'     =>'exists:App\Models\Address,id', 
         ];
     }
 }
