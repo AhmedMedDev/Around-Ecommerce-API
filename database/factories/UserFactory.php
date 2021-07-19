@@ -2,10 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Favorite;
 use App\Models\Offer;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductImage;
@@ -113,5 +117,42 @@ $factory->define(Offer::class, function (Faker $faker) {
     return [
         'product_id'    => $faker->numberBetween(1,10),
         'percentage'      => $faker->numberBetween(30,100),
+    ];
+});
+
+$factory->define(Address::class, function (Faker $faker) {
+    return [
+        'compony_name'  => $faker->company,
+        'country'       => $faker->country,
+        'street'        => $faker->streetName,
+        'apartment'     => $faker->buildingNumber,
+        'city'          => $faker->city,
+        'postcode'      => $faker->postcode,
+        'phone'         => $faker->phoneNumber,
+    ];
+});
+
+$factory->define(Favorite::class, function (Faker $faker) {
+    return [
+        'product_id' => $faker->numberBetween(1,10),
+        'user_id'    => $faker->numberBetween(1,10),
+    ];
+});
+
+$factory->define(Order::class, function (Faker $faker) {
+    return [
+        'user_id'           => $faker->numberBetween(1,10),
+        'date'              => $faker->date,
+        'payment_method'    => $faker->creditCardType,
+        'total_price'       => $faker->numberBetween(50,200),
+        'address_id'        => $faker->numberBetween(1,10),
+    ];
+});
+
+$factory->define(OrderProduct::class, function (Faker $faker) {
+    return [
+        'product_id' => $faker->numberBetween(1,10),
+        'quantity'   => $faker->randomDigit,
+        'order_id'   => $faker->numberBetween(1,10),
     ];
 });

@@ -169,12 +169,46 @@ Route::group([
     //Size CRUD
 
     Route::apiResource('sizes', 'Api\SizeController');
+
+    /***********************************************************************/
+
+    /**
+     * Favorite APIs 
+     */
+
+    //Favorite CRUD
+
+    Route::apiResource('favorites', 'Api\FavoriteController');
+
+    /**
+     * Address APIs 
+     */
+
+    //Address CRUD
+
+    Route::apiResource('addresses', 'Api\AddressController');
+
+    /**
+     * Order APIs 
+     */
+
+    //Order CRUD
+
+    Route::apiResource('orders', 'Api\OrderController');
+
+    /**
+     * Orderproducts APIs 
+     */
+
+    //Orderproducts CRUD
+
+    Route::apiResource('orderProducts', 'Api\OrderProductController');
     
 });
 
+// Favorite Module
 // Address Module
 // Order Module
 // Orderproducts Module
-// Favorite Module
 
 // return to Handling Middlewares, Securty

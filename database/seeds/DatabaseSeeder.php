@@ -1,9 +1,13 @@
 <?php
 
+use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Favorite;
 use App\Models\Offer;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductImage;
@@ -32,6 +36,10 @@ class DatabaseSeeder extends Seeder
         // factory(Cart::class, 15)->create();
         // factory(ProductColor::class, 15)->create();
         // factory(ProductSize::class, 15)->create();
-        factory(Offer::class, 15)->create();
+        // factory(Offer::class, 15)->create();
+        factory(Address::class, 15)->create();
+        factory(Favorite::class, 15)->create();
+        factory(Order::class, 15)->create();
+        factory(OrderProduct::class, 15)->create();
     }
 }
