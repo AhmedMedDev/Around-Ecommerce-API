@@ -32,25 +32,15 @@ Route::group([
 
 });
 
-/**
- * Nav
- */
 
-//search 
+Route::group([
 
-/************************************************/
+    'middleware' => 'api',
 
- Route::group([
+], function () {
 
-    'middleware' => [
-        'api',
-        'auth:api',
-    ],
-
-], function ($router) {
-
-    /**
-     * Product APIs //For admin only Except index, show, productImages, reviews // Secured
+    /** 
+     * Product APIs //For admin only Except index, show, productImages, reviews, proSearch, proCatSearch // Secured
      */
 
     //Product CRUD
@@ -64,6 +54,14 @@ Route::group([
     //Product's Reviews
 
     Route::get('product/{product}/reviews', 'Api\ProductController@reviews');
+
+    //Search in product
+
+    Route::get('product/search/{query}', 'Api\ProductController@proSearch');
+
+    //Search in Category's product 
+
+    Route::get('product/{category}/search/{query}', 'Api\ProductController@proCatSearch');
 
     /**
      * Product Images APIs //For admin only Except index, show // Secured
@@ -104,6 +102,20 @@ Route::group([
     //Reviews CRUD
 
     Route::apiResource('reviews', 'Api\ReviewController');
+
+});
+
+
+
+ Route::group([
+
+    'middleware' => [
+        'api',
+        'auth:api',
+    ],
+
+], function () {
+
 
     /**
      * Cart APIs //For Admin only Except Store, Update, Destroy  // Secured
@@ -180,6 +192,7 @@ Route::group([
 });
 
 //For admin only
+
 Route::group([
 
     'middleware' => [

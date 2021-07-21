@@ -18,7 +18,10 @@ class OfferController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['index','show']]);
+        $this->middleware(
+            ['auth:api','admin'],
+            ['except' => ['index','show']]
+        );
     }
 
     /**
@@ -26,7 +29,7 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user
+     * X X Roles
      * 
      */
     public function index() // Secured Endpoint
@@ -66,7 +69,7 @@ class OfferController extends Controller
      * @param  Offer $offer
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user
+     * X X Roles
      * 
      */
     public function show(Offer $offer) // Secured Endpoint

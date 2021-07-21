@@ -18,7 +18,10 @@ class ProductSizeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['index','show']]);
+        $this->middleware(
+            ['auth:api','admin'],
+            ['except' => ['index','show']]
+        );
     }
 
     /**
@@ -26,7 +29,7 @@ class ProductSizeController extends Controller
      *
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user 
+     * X X Roles
      * 
      */
     public function index() // Secured Endpoint
@@ -83,7 +86,7 @@ class ProductSizeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user 
+     * X X Roles
      * 
      */
     public function show(ProductSize $productsize) // Secured Endpoint

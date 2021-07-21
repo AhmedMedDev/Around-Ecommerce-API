@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,10 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['index','show','productImages','reviews']]);
+        $this->middleware(
+            ['auth:api','admin'],
+            ['except' => ['index','show','productImages','reviews','proSearch','proCatSearch']]
+        );
     }
 
     /**
@@ -26,7 +30,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user 
+     * X X Roles
      * 
      */
     public function index() // Secured Endpoint
@@ -66,7 +70,7 @@ class ProductController extends Controller
      * @param  Product $product
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user 
+     * X X Roles
      * 
      */
     public function show(Product $product) // Secured Endpoint
@@ -121,7 +125,7 @@ class ProductController extends Controller
      * 
      * @param Product $product
      * 
-     * Just For auth user 
+     * X X Roles
      * 
      */
     public function productImages(Product $product) // Secured Endpoint
@@ -142,7 +146,7 @@ class ProductController extends Controller
      * 
      * @param Product $product
      * 
-     * Just For auth user 
+     * X X Roles
      * 
      */
     public function reviews(Product $product) // Secured Endpoint
@@ -155,6 +159,51 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'payload' => $productReviews
+        ]);
+    }
+
+    /** 
+     * Search in Product Model
+     * 
+     * @param Request $request
+     * 
+     * X X Roles
+     * 
+     */
+    public function proSearch($query) // Secured Endpoint
+    {
+        $filteredProducts = DB::table('products')
+        ->where('pro_name','like','%' . $query . '%')
+        ->orWhere('pro_des','like','%' . $query . '%')
+        ->orWhere('price','like','%' . $query . '%')
+        ->get();
+
+        return response()->json([
+            'success' => true,
+            'payload' => $filteredProducts
+        ]);
+    }
+
+    /** 
+     * Search in Product Model by category
+     * 
+     * @param Request $request
+     * 
+     * X X Roles
+     * 
+     */
+    public function proCatSearch(Category $category, $query) // Secured Endpoint
+    {
+        $filteredProducts = DB::table('products')
+        ->where('category_id',$category->id)
+        ->where('pro_name','like','%' . $query . '%')
+        ->orWhere('pro_des','like','%' . $query . '%')
+        ->orWhere('price','like','%' . $query . '%')
+        ->get();
+
+        return response()->json([
+            'success' => true,
+            'payload' => $filteredProducts
         ]);
     }
 }

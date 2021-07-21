@@ -18,7 +18,10 @@ class ProductImageController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['index','show']]);
+        $this->middleware(
+            ['auth:api','admin'],
+            ['except' => ['index','show']]
+        );
     }
 
     /**
@@ -26,7 +29,7 @@ class ProductImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user 
+     * X X Roles
      * 
      */
     public function index()  // Secured Endpoint
@@ -83,7 +86,7 @@ class ProductImageController extends Controller
      * @param  ProductImage $productImage
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user 
+     * X X Roles
      * 
      */
     public function show(ProductImage $productImage) // Secured Endpoint

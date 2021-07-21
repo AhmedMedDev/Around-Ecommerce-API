@@ -13,11 +13,24 @@ use Illuminate\Support\Facades\DB;
 class ReviewController extends Controller
 {
     /**
+     * Create a new ProductSizeController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(
+            ['auth:api'],
+            ['except' => ['index','show']]
+        );
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user 
+     * X X Roles
      */
     public function index() // Secured Endpoint 
     {
@@ -57,7 +70,7 @@ class ReviewController extends Controller
      * @param  Review $review
      * @return \Illuminate\Http\Response
      * 
-     * Just For auth user
+     * X X Roles
      */
     public function show(Review $review) // Secured Endpoint 
     {
