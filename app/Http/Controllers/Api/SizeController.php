@@ -39,6 +39,7 @@ class SizeController extends Controller
 
         return response()->json([
             'success' => true,
+            'payload' => $size
         ]);
     }
 

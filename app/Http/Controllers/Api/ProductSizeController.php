@@ -59,15 +59,21 @@ class ProductSizeController extends Controller
         for ($i = 0; $i < count($request['size_id']); $i++) 
         { 
             $editedRequest[$i]['product_id'] = $request['product_id'];
+
             $editedRequest[$i]['size_id'] = $request['size_id'][$i];
         }
 
         /* Turn request into Associative Array */
 
-        $productsize = ProductSize::insert( $editedRequest );
+        ProductSize::insert( $editedRequest );
+
+        $productsize = ProductSize::orderByDesc('id')
+        ->limit(count($request['size_id']))
+        ->get();
 
         return response()->json([
             'success' => true,
+            'payload' => $productsize
         ]);
     }
 

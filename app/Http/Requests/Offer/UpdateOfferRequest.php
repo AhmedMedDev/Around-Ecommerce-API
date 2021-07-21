@@ -24,7 +24,7 @@ class UpdateOfferRequest extends FormRequest
     public function rules()
     {
         return [
-            'percentage' => 'integer',
+            'percentage' => 'required|integer|min:1|max:100',
         ];
     }
 }

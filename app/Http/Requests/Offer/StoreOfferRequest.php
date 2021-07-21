@@ -24,8 +24,8 @@ class StoreOfferRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => 'exists:App\Models\Product,id',
-            'percentage' => 'integer',
+            'product_id' => 'required|exists:App\Models\Product,id',
+            'percentage' => 'required|between:0,99.99|min:1|max:100',
         ];
     }
 }

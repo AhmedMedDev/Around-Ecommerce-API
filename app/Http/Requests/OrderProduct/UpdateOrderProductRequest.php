@@ -24,7 +24,7 @@ class UpdateOrderProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'quantity' => 'integer',
+            'quantity' => 'required|integer',
         ];
     }
 }

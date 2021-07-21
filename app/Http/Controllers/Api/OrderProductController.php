@@ -56,6 +56,7 @@ class OrderProductController extends Controller
 
         return response()->json([
             'success' => true,
+            'payload' => $order_product
         ]);
     }
 

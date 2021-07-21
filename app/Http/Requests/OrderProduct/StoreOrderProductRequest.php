@@ -24,9 +24,9 @@ class StoreOrderProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => 'exists:App\Models\Product,id',
-            'quantity' => 'integer',
-            'order_id' => 'exists:App\Models\Order,id',
+            'product_id' => 'required|exists:App\Models\Product,id',
+            'quantity'   => 'required|integer',
+            'order_id'   => 'required|exists:App\Models\Order,id',
         ];
     }
 }

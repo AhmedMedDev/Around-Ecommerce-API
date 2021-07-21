@@ -147,7 +147,9 @@ Route::group([
     Route::apiResource('orderProducts', 'Api\OrderProductController');
 
     /**
-     * User APIs //For admin only Except cart, Update, Destroy, changePassword // Secured
+     * User APIs //For admin only Except cart, Update, Destroy,
+     * changePassword, User's Favorite, 
+     * User's Addresses, User's Orders // Secured
      */
 
     //User CRUD

@@ -24,14 +24,14 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'pro_name'      => 'string|regex:/^[a-zA-Z ]+$/',
-            'pro_des'       => 'string',
-            'price'         => 'between:0,99.99',
-            'category_id'   => 'exists:App\Models\Category,id',
-            'pro_rate'      => 'integer|digits_between:1,5',
-            'pro_gender'    => 'required|in:'. implode(',',['M','F','B']),
-            'favHeader'     => 'boolean',
-            'trending'      => 'boolean',
+            'pro_name'      => 'required|string|regex:/^[a-zA-Z ]+$/',
+            'pro_des'       => 'required|string',
+            'price'         => 'required|between:0,99.99',
+            'category_id'   => 'required|exists:App\Models\Category,id',
+            'pro_rate'      => 'required|integer|digits_between:1,5',
+            'pro_gender'    => 'required|required|in:'. implode(',',['M','F','B']),
+            'favHeader'     => 'required|boolean',
+            'trending'      => 'required|boolean',
         ];
     }
 }

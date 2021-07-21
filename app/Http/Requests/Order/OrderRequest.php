@@ -25,10 +25,9 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id'        =>'exists:App\User,id|in' . Auth::user()->id,
             'payment_method' =>'required|in:'. implode(',',['Credit Card','PayPal','Cash on delivery']),
-            'total_price'    =>'integer',
-            'address_id'     =>'exists:App\Models\Address,id', 
+            'total_price'    =>'required|between:0,99.99',
+            'address_id'     =>'required|exists:App\Models\Address,id', 
         ];
     }
 }

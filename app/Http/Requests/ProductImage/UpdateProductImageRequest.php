@@ -24,9 +24,7 @@ class UpdateProductImageRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'pro_img'   => 'image',
             'pro_img'   => 'required',
-            // 'product_id' => 'exists:App\Models\Product,id',
         ];
     }
 }

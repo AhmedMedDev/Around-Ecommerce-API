@@ -40,6 +40,7 @@ class CategoryController extends Controller
 
         return response()->json([
             'success' => true,
+            'payload' => $category
         ]);
     }
 

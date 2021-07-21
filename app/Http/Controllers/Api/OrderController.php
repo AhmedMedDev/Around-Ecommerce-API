@@ -52,10 +52,13 @@ class OrderController extends Controller
     {
         $request = $request->validated();
 
+        $request['user_id'] = Auth::user()->id;
+
         $order = Order::create( $request );
 
         return response()->json([
             'success' => true,
+            'payload' => $order
         ]);
     }
 
@@ -88,13 +91,6 @@ class OrderController extends Controller
      */
     public function update(OrderRequest $request, Order $order)
     {
-        if ($order->user_id != Auth::user()->id ) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
-        
         $request = $request->validated();
 
         $order = $order->update( $request );
@@ -115,13 +111,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        if ($order->user_id != Auth::user()->id ) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
-
         $order = $order->delete( $order );
 
         if ($order) return response()->json([

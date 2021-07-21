@@ -52,10 +52,13 @@ class FavoriteController extends Controller
     {
         $request = $request->validated();
 
+        $request['user_id'] = Auth::user()->id;
+
         $favorite = Favorite::create( $request );
 
         return response()->json([
             'success' => true,
+            'payload' => $favorite
         ]);
     }
 

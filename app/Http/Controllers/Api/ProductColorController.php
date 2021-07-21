@@ -65,10 +65,16 @@ class ProductColorController extends Controller
 
         /* Turn request into Associative Array */
 
-        $productcolor = ProductColor::insert( $editedRequest );
+        ProductColor::insert( $editedRequest );
+
+        $productcolor = ProductColor::orderByDesc('id')
+        ->limit(count($request['color_id']))
+        ->get();
+
 
         return response()->json([
             'success' => true,
+            'payload' => $productcolor
         ]);
     }
 

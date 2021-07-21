@@ -24,7 +24,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'cat_name' => 'string|regex:/^[a-zA-Z ]+$/',
+            'cat_name' => 'required|string|regex:/^[a-zA-Z ]+$/',
         ];
     }
 }

@@ -56,6 +56,7 @@ class AddressController extends Controller
 
         return response()->json([
             'success' => true,
+            'payload' => $address
         ]);
     }
 
@@ -83,18 +84,11 @@ class AddressController extends Controller
      * @param  Address $address
      * @return \Illuminate\Http\Response
      * 
-     * for specific user, who created this recored 
+     * for admin only 
      * 
      */
     public function update(AddressRequest $request, Address $address) // Secured Endpoint
     {
-        if ($address->user_id != Auth::user()->id ) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
-        
         $request = $request->validated();
 
         $address = $address->update( $request );
@@ -115,13 +109,6 @@ class AddressController extends Controller
      */
     public function destroy(Address $address) // Secured Endpoint
     {
-        if ($address->user_id != Auth::user()->id ) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
-
         $address = $address->delete( $address );
 
         if ($address) return response()->json([

@@ -59,15 +59,21 @@ class ProductImageController extends Controller
         for ($i = 0; $i < count($request['pro_img']); $i++) 
         { 
             $editedRequest[$i]['product_id'] = $request['product_id'];
+            
             $editedRequest[$i]['pro_img'] = $request['pro_img'][$i];
         }
 
         /* Turn request into Associative Array */
         
-        $productImage = ProductImage::insert( $editedRequest );
+        ProductImage::insert( $editedRequest );
+
+        $productImage = ProductImage::orderByDesc('id')
+        ->limit(count($request['pro_img']))
+        ->get();
 
         return response()->json([
             'success' => true,
+            'payload' => $productImage
         ]);
     }
 

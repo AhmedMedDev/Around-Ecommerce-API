@@ -24,8 +24,8 @@ class StoreProductColorRequest extends FormRequest
     public function rules()
     {
         return [
-            'color_id' => 'exists:App\Models\Color,id',
-            'product_id' => 'exists:App\Models\Product,id',
+            'color_id'   => 'required|exists:App\Models\Color,id',
+            'product_id' => 'required|exists:App\Models\Product,id',
         ];
     }
 }

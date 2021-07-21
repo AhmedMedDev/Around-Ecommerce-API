@@ -56,6 +56,7 @@ class OfferController extends Controller
 
         return response()->json([
             'success' => true,
+            'payload' => $offer
         ]);
     }
 

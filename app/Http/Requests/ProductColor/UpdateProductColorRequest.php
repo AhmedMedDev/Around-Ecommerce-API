@@ -24,7 +24,7 @@ class UpdateProductColorRequest extends FormRequest
     public function rules()
     {
         return [
-            'color_id' => 'exists:App\Models\Color,id',
+            'color_id' => 'required|exists:App\Models\Color,id',
         ];
     }
 }

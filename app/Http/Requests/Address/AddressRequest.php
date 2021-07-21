@@ -24,13 +24,13 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'compony_name'  => 'string',
-            'country'       => 'string',
-            'street'        => 'string',
-            'apartment'     => 'string',
-            'city'          => 'string',
-            'postcode'      => 'string',
-            'phone'         => 'string',
+            'compony_name'  => 'required|string|regex:/^[a-zA-Z ]+$/',
+            'country'       => 'required|string|regex:/^[a-zA-Z ]+$/',
+            'street'        => 'required|string|regex:/^[a-zA-Z ]+$/',
+            'apartment'     => 'required|string',
+            'city'          => 'required|string|regex:/^[a-zA-Z ]+$/',
+            'postcode'      => 'required|string',
+            'phone'         => 'required|string|numeric',
         ];
     }
 }

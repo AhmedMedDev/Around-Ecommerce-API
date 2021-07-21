@@ -24,7 +24,7 @@ class UpdateProductSizeRequest extends FormRequest
     public function rules()
     {
         return [
-            'size_id' => 'exists:App\Models\Size,id',
+            'size_id' => 'required|exists:App\Models\Size,id',
         ];
     }
 }

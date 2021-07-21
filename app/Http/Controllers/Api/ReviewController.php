@@ -41,10 +41,13 @@ class ReviewController extends Controller
     {
         $request = $request->validated();
 
+        $request['user_id'] = Auth::user()->id;
+
         $review = Review::create( $request );
 
         return response()->json([
             'success' => true,
+            'payload' => $review
         ]);
     }
 

@@ -25,8 +25,8 @@ class UpdateReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            're_des'     =>'string|max:255',
-            're_rate'    =>'integer|digits_between:1,5',
+            're_des'   => 'required|string|max:255',
+            're_rate'  => 'required|integer|digits_between:1,5',
         ];
     }
 }

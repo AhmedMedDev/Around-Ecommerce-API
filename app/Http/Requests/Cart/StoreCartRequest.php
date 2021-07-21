@@ -25,11 +25,10 @@ class StoreCartRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id'    => 'exists:App\Models\Product,id',
-            'user_id'       =>'exists:App\User,id|in:' . Auth::user()->id ,
-            'quantity'      => 'integer',
-            'size_id'       => 'exists:App\Models\Size,id',
-            'color_id'      => 'exists:App\Models\Color,id',
+            'product_id'    => 'required|exists:App\Models\Product,id',
+            'quantity'      => 'required|integer',
+            'size_id'       => 'required|exists:App\Models\Size,id',
+            'color_id'      => 'required|exists:App\Models\Color,id',
         ];
     }
 }

@@ -25,10 +25,9 @@ class StoreReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            're_des'     =>'string|max:255',
-            're_rate'    =>'integer|digits_between:1,5',
-            'product_id' => 'exists:App\Models\Product,id',
-            'user_id'    =>'exists:App\User,id|in:' . Auth::user()->id ,
+            're_des'     => 'required|string|max:255',
+            're_rate'    => 'required|integer|digits_between:1,5',
+            'product_id' => 'required|exists:App\Models\Product,id',
         ];
     }
 }

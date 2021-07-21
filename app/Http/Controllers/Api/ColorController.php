@@ -39,6 +39,7 @@ class ColorController extends Controller
 
         return response()->json([
             'success' => true,
+            'payload' => $color
         ]);
     }
 

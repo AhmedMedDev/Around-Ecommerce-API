@@ -24,8 +24,8 @@ class StoreProductSizeRequest extends FormRequest
     public function rules()
     {
         return [
-            'size_id' => 'exists:App\Models\Size,id',
-            'product_id' => 'exists:App\Models\Product,id',
+            'size_id'    => 'required|exists:App\Models\Size,id',
+            'product_id' => 'required|exists:App\Models\Product,id',
         ];
     }
 }

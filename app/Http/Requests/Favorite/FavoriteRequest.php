@@ -25,8 +25,7 @@ class FavoriteRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => 'exists:App\Models\Product,id',
-            'user_id'    =>'exists:App\User,id|in:' . Auth::user()->id ,
+            'product_id' => 'required|exists:App\Models\Product,id',
         ];
     }
 }

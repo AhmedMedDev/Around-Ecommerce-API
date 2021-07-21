@@ -51,10 +51,13 @@ class CartController extends Controller
     {
         $request = $request->validated();
 
+        $request['user_id'] = Auth::user()->id;
+
         $cart = Cart::create( $request );
 
         return response()->json([
             'success' => true,
+            'payload' => $cart
         ]);
     }
 

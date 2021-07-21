@@ -52,10 +52,11 @@ class ProductController extends Controller
     {
         $request = $request->validated();
 
-        $category = Product::create( $request );
+        $product = Product::create( $request );
 
         return response()->json([
             'success' => true,
+            'payload' => $product
         ]);
     }
 
