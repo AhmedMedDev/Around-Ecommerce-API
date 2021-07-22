@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Observers\ProductObserver;
+
 
 class Product extends Model
 {
@@ -28,4 +30,12 @@ class Product extends Model
      * @var bool
      */
     public $timestamps = false;
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        Product::observe(ProductObserver::class);
+    }
 }

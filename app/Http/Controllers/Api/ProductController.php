@@ -8,6 +8,7 @@ use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -35,7 +36,9 @@ class ProductController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $products = DB::table('products')->paginate(5);
+        $products = Cache::rememberForever('products', function () {
+            return DB::table('products')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,
