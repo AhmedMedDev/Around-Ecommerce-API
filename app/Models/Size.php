@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\SizeObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class Size extends Model
@@ -23,4 +24,11 @@ class Size extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        Size::observe(SizeObserver::class);
+    }
 }

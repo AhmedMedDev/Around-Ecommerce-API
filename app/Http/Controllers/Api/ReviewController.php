@@ -8,6 +8,7 @@ use App\Http\Requests\Review\UpdateReviewRequest;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ReviewController extends Controller
@@ -34,7 +35,10 @@ class ReviewController extends Controller
      */
     public function index() // Secured Endpoint 
     {
-        $reviews = DB::table('reviews')->paginate(5);
+        $reviews = Cache::rememberForever('reviews', function () {
+            
+            return DB::table('reviews')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,

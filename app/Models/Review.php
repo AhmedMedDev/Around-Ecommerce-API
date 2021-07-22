@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\ReviewObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
@@ -24,4 +25,11 @@ class Review extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        Review::observe(ReviewObserver::class);
+    }
 }

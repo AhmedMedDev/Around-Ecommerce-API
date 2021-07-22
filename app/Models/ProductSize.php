@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\ProductSizeObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductSize extends Model
@@ -24,4 +25,11 @@ class ProductSize extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        ProductSize::observe(ProductSizeObserver::class);
+    }
 }

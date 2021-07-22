@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Size\SizeRequest;
 use App\Models\Size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class SizeController extends Controller
@@ -17,7 +18,10 @@ class SizeController extends Controller
      */
     public function index()
     {
-        $sizes = DB::table('sizes')->paginate(5);
+        $sizes = Cache::rememberForever('sizes', function () {
+            
+            return DB::table('sizes')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,
