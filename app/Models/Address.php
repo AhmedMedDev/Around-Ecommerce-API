@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Observers\AddressObserver;
+
 
 class Address extends Model
 {
@@ -27,4 +29,13 @@ class Address extends Model
      * @var bool
      */
     public $timestamps = false;
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        Address::observe(AddressObserver::class);
+    }
+
 }

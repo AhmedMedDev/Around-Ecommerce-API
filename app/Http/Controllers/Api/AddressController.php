@@ -7,6 +7,7 @@ use App\Http\Requests\Address\AddressRequest;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class AddressController extends Controller
@@ -31,7 +32,10 @@ class AddressController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $addresses = DB::table('addresses')->paginate(5);
+        $addresses = Cache::rememberForever('addresses', function () {
+            
+            return DB::table('addresses')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,

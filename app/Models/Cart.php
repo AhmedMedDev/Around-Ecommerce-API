@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Observers\CartObserver;
+
 class Cart extends Model
 {
     /**
@@ -25,4 +27,11 @@ class Cart extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        Cart::observe(CartObserver::class);
+    }
 }

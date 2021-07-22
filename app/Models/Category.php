@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\CategoryObservr;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -21,4 +22,11 @@ class Category extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        Category::observe(CategoryObservr::class);
+    }
 }

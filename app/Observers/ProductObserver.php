@@ -39,26 +39,4 @@ class ProductObserver
     {
         Cache::forget('products');
     }
-
-    /**
-     * Handle the product "restored" event.
-     *
-     * @param  \App\Models\Product  $product
-     * @return void
-     */
-    public function restored(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Handle the product "force deleted" event.
-     *
-     * @param  \App\Models\Product  $product
-     * @return void
-     */
-    public function forceDeleted(Product $product)
-    {
-        //
-    }
 }

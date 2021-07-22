@@ -8,6 +8,7 @@ use App\Http\Requests\Cart\UpdateCartRequest;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
@@ -31,7 +32,10 @@ class CartController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $carts = DB::table('carts')->paginate(5);
+        $carts = Cache::rememberForever('carts', function () {
+            
+            return DB::table('carts')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,
