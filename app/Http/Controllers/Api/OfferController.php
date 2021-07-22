@@ -7,6 +7,7 @@ use App\Http\Requests\Offer\StoreOfferRequest;
 use App\Http\Requests\Offer\UpdateOfferRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class OfferController extends Controller
@@ -34,7 +35,10 @@ class OfferController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $offers = DB::table('offers')->paginate(5);
+        $offers = Cache::rememberForever('offers', function () {
+            
+            return DB::table('offers')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\OfferObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
@@ -22,4 +23,12 @@ class Offer extends Model
      * @var bool
      */
     public $timestamps = false;
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        Offer::observe(OfferObserver::class);
+    }
 }

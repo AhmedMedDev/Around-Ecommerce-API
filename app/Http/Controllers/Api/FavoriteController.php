@@ -7,6 +7,7 @@ use App\Http\Requests\Favorite\FavoriteRequest;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class FavoriteController extends Controller
@@ -31,7 +32,10 @@ class FavoriteController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $favorites = DB::table('favorites')->paginate(5);
+        $favorites = Cache::rememberForever('favorites', function () {
+            
+            return DB::table('favorites')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,

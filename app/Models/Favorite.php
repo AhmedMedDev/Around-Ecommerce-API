@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\FavoriteObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class Favorite extends Model
@@ -22,4 +23,11 @@ class Favorite extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        Favorite::observe(FavoriteObserver::class);
+    }
 }

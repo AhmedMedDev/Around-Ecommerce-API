@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Color\ColorRequest;
 use App\Models\Color;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ColorController extends Controller
@@ -17,7 +18,10 @@ class ColorController extends Controller
      */
     public function index()
     {
-        $colors = DB::table('colors')->paginate(5);
+        $colors = Cache::rememberForever('colors', function () {
+            
+            return DB::table('colors')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,
