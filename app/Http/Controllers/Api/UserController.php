@@ -32,11 +32,11 @@ class UserController extends Controller
      */
     public function index() // Secured Endpoint 
     {
-        $sizes = DB::table('sizes')->paginate(5);
+        $users = DB::table('users')->paginate(5);
         
         return response()->json([
             'success' => true,
-            'payload' => $sizes
+            'payload' => $users
         ]);
     }
 
