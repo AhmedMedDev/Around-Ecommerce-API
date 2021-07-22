@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\ProductColorObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductColor extends Model
@@ -24,4 +25,11 @@ class ProductColor extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        ProductColor::observe(ProductColorObserver::class);
+    }
 }

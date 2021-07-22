@@ -7,6 +7,7 @@ use App\Http\Requests\ProductImage\StoreProductImageRequest;
 use App\Http\Requests\ProductImage\UpdateProductImageRequest;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ProductImageController extends Controller
@@ -34,7 +35,10 @@ class ProductImageController extends Controller
      */
     public function index()  // Secured Endpoint
     {
-        $products = DB::table('product_images')->paginate(5);
+        $products = Cache::rememberForever('product_images', function () {
+            
+            return DB::table('product_images')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,

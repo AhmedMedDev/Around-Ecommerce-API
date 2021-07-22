@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\ProductImageObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductImage extends Model
@@ -24,5 +25,12 @@ class ProductImage extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        ProductImage::observe(ProductImageObserver::class);
+    }
 
 }

@@ -7,6 +7,7 @@ use App\Http\Requests\ProductSize\StoreProductSizeRequest;
 use App\Http\Requests\ProductSize\UpdateProductSizeRequest;
 use App\Models\ProductSize;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ProductSizeController extends Controller
@@ -34,7 +35,10 @@ class ProductSizeController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $productsizes = DB::table('product_sizes')->paginate(5);
+        $productsizes = Cache::rememberForever('product_sizes', function () {
+            
+            return DB::table('product_sizes')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,

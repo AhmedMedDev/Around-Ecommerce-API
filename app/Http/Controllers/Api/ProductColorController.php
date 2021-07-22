@@ -7,6 +7,7 @@ use App\Http\Requests\ProductColor\StoreProductColorRequest;
 use App\Http\Requests\ProductColor\UpdateProductColorRequest;
 use App\Models\ProductColor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ProductColorController extends Controller
@@ -34,7 +35,10 @@ class ProductColorController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $productcolors = DB::table('product_colors')->paginate(5);
+        $productcolors = Cache::rememberForever('product_colors', function () {
+            
+            return DB::table('product_colors')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,

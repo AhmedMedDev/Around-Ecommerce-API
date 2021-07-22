@@ -7,6 +7,7 @@ use App\Http\Requests\OrderProduct\StoreOrderProductRequest;
 use App\Http\Requests\OrderProduct\UpdateOrderProductRequest;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class OrderProductController extends Controller
@@ -31,7 +32,10 @@ class OrderProductController extends Controller
      */
     public function index()
     {
-        $order_products = DB::table('order_products')->paginate(5);
+        $order_products = Cache::rememberForever('order_products', function () {
+            
+            return DB::table('order_products')->paginate(5);
+        });
         
         return response()->json([
             'success' => true,
