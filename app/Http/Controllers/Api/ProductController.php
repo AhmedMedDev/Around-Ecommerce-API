@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function index() // Secured Endpoint
     {
         $products = Cache::rememberForever('products', function () {
-            return DB::table('products')->paginate(5);
+            return DB::table('products')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([
@@ -136,7 +136,7 @@ class ProductController extends Controller
         $productImages = DB::table('products')
         ->join('product_images','products.id','product_images.product_id')
         ->where('product_images.product_id',$product->id)
-        ->paginate(5);
+        ->paginate(PAGINATION_COUNT);
 
         return response()->json([
             'success' => true,
@@ -157,7 +157,7 @@ class ProductController extends Controller
         $productReviews = DB::table('products')
         ->join('reviews','products.id','reviews.product_id')
         ->where('reviews.product_id',$product->id)
-        ->paginate(5);
+        ->paginate(PAGINATION_COUNT);
 
         return response()->json([
             'success' => true,
@@ -179,7 +179,7 @@ class ProductController extends Controller
         ->where('pro_name','like','%' . $query . '%')
         ->orWhere('pro_des','like','%' . $query . '%')
         ->orWhere('price','like','%' . $query . '%')
-        ->get();
+        ->paginate(PAGINATION_COUNT);
 
         return response()->json([
             'success' => true,
@@ -202,7 +202,7 @@ class ProductController extends Controller
         ->where('pro_name','like','%' . $query . '%')
         ->orWhere('pro_des','like','%' . $query . '%')
         ->orWhere('price','like','%' . $query . '%')
-        ->get();
+        ->paginate(PAGINATION_COUNT);
 
         return response()->json([
             'success' => true,

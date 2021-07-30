@@ -34,7 +34,7 @@ class CartController extends Controller
     {
         $carts = Cache::rememberForever('carts', function () {
             
-            return DB::table('carts')->paginate(5);
+            return DB::table('carts')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

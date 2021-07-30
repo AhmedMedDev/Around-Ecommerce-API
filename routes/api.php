@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+define("PAGINATION_COUNT",5);
+
 /*
 |--------------------------------------------------------------------------
 | API Routes

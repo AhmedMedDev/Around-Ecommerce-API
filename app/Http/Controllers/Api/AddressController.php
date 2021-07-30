@@ -34,7 +34,7 @@ class AddressController extends Controller
     {
         $addresses = Cache::rememberForever('addresses', function () {
             
-            return DB::table('addresses')->paginate(5);
+            return DB::table('addresses')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

@@ -20,7 +20,7 @@ class ColorController extends Controller
     {
         $colors = Cache::rememberForever('colors', function () {
             
-            return DB::table('colors')->paginate(5);
+            return DB::table('colors')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

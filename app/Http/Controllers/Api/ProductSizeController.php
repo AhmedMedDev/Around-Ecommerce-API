@@ -37,7 +37,7 @@ class ProductSizeController extends Controller
     {
         $productsizes = Cache::rememberForever('product_sizes', function () {
             
-            return DB::table('product_sizes')->paginate(5);
+            return DB::table('product_sizes')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

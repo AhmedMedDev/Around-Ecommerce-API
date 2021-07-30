@@ -20,7 +20,7 @@ class SizeController extends Controller
     {
         $sizes = Cache::rememberForever('sizes', function () {
             
-            return DB::table('sizes')->paginate(5);
+            return DB::table('sizes')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

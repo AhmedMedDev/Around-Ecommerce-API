@@ -37,7 +37,7 @@ class ReviewController extends Controller
     {
         $reviews = Cache::rememberForever('reviews', function () {
             
-            return DB::table('reviews')->paginate(5);
+            return DB::table('reviews')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

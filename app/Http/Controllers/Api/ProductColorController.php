@@ -37,7 +37,7 @@ class ProductColorController extends Controller
     {
         $productcolors = Cache::rememberForever('product_colors', function () {
             
-            return DB::table('product_colors')->paginate(5);
+            return DB::table('product_colors')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

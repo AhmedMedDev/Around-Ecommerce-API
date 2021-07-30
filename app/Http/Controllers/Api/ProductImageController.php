@@ -37,7 +37,7 @@ class ProductImageController extends Controller
     {
         $products = Cache::rememberForever('product_images', function () {
             
-            return DB::table('product_images')->paginate(5);
+            return DB::table('product_images')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

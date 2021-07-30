@@ -21,7 +21,7 @@ class CategoryController extends Controller
     {
         $categories = Cache::rememberForever('categories', function () {
             
-            return DB::table('categories')->paginate(5);
+            return DB::table('categories')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

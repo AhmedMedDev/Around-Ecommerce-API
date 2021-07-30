@@ -34,7 +34,7 @@ class FavoriteController extends Controller
     {
         $favorites = Cache::rememberForever('favorites', function () {
             
-            return DB::table('favorites')->paginate(5);
+            return DB::table('favorites')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

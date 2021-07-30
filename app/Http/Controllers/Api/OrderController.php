@@ -34,7 +34,7 @@ class OrderController extends Controller
     {
         $orders = Cache::rememberForever('orders', function () {
 
-            return DB::table('orders')->paginate(5);
+            return DB::table('orders')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([

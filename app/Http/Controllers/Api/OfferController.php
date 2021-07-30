@@ -37,7 +37,7 @@ class OfferController extends Controller
     {
         $offers = Cache::rememberForever('offers', function () {
             
-            return DB::table('offers')->paginate(5);
+            return DB::table('offers')->paginate(PAGINATION_COUNT);
         });
         
         return response()->json([
