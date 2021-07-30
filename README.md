@@ -15,6 +15,7 @@ php artisan jwt:secret
 ```
 To start the server 
 ```bash
+
 php artisan serve
 ```
 
