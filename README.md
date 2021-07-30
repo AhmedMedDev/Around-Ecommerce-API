@@ -11,6 +11,8 @@ Copy .env.example to a new file and rename it to .env, then write this command i
 ```
 php artisan key:generate
 ```
+php artisan jwt:secret
+```
 To start the server 
 ```bash
 php artisan serve
