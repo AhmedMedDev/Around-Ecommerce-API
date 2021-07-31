@@ -7,12 +7,24 @@ use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Traits\ImgUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Images upload traits 
+    |--------------------------------------------------------------------------
+    |
+    | This Trait to save img in PC
+    |
+    */
+
+    use ImgUpload;
+
     /**
      * Create a new ProductController instance.
      *
@@ -57,6 +69,10 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request) // Secured Endpoint
     {
         $request = $request->validated();
+
+        $fileName = $this->saveImage($request['mainImage'], 'uploads/products/mainImg');
+
+        $request['mainImage'] = "uploads/products/mainImg/$fileName";
 
         $product = Product::create( $request );
 
