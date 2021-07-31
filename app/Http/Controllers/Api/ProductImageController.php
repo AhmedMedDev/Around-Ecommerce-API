@@ -35,10 +35,8 @@ class ProductImageController extends Controller
      */
     public function index()  // Secured Endpoint
     {
-        $products = Cache::rememberForever('product_images', function () {
-            
-            return DB::table('product_images')->paginate(PAGINATION_COUNT);
-        });
+        $products = Cache::rememberForever('product_images', 
+        fn() => DB::table('product_images')->paginate(PAGINATION_COUNT));
         
         return response()->json([
             'success' => true,

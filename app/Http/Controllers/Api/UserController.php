@@ -8,6 +8,7 @@ use App\Http\Requests\User\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,7 +33,8 @@ class UserController extends Controller
      */
     public function index() // Secured Endpoint 
     {
-        $users = DB::table('users')->paginate(PAGINATION_COUNT);
+        $users = Cache::rememberForever('users', 
+        fn() => DB::table('users')->paginate(PAGINATION_COUNT));
         
         return response()->json([
             'success' => true,

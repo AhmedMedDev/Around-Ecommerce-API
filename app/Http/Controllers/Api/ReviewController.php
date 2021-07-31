@@ -35,10 +35,8 @@ class ReviewController extends Controller
      */
     public function index() // Secured Endpoint 
     {
-        $reviews = Cache::rememberForever('reviews', function () {
-            
-            return DB::table('reviews')->paginate(PAGINATION_COUNT);
-        });
+        $reviews = Cache::rememberForever('reviews', 
+        fn() => DB::table('reviews')->paginate(PAGINATION_COUNT));
         
         return response()->json([
             'success' => true,

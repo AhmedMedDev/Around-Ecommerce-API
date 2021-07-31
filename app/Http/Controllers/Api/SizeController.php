@@ -18,10 +18,8 @@ class SizeController extends Controller
      */
     public function index()
     {
-        $sizes = Cache::rememberForever('sizes', function () {
-            
-            return DB::table('sizes')->paginate(PAGINATION_COUNT);
-        });
+        $sizes = Cache::rememberForever('sizes', 
+        fn() => DB::table('sizes')->paginate(PAGINATION_COUNT));
         
         return response()->json([
             'success' => true,

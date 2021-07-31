@@ -32,10 +32,8 @@ class OrderProductController extends Controller
      */
     public function index()
     {
-        $order_products = Cache::rememberForever('order_products', function () {
-            
-            return DB::table('order_products')->paginate(PAGINATION_COUNT);
-        });
+        $order_products = Cache::rememberForever('order_products', 
+        fn() => DB::table('order_products')->paginate(PAGINATION_COUNT));
         
         return response()->json([
             'success' => true,

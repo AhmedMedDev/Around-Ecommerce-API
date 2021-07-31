@@ -36,9 +36,8 @@ class ProductController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $products = Cache::rememberForever('products', function () {
-            return DB::table('products')->paginate(PAGINATION_COUNT);
-        });
+        $products = Cache::rememberForever('products', 
+        fn() => DB::table('products')->paginate(PAGINATION_COUNT));
         
         return response()->json([
             'success' => true,

@@ -32,10 +32,8 @@ class AddressController extends Controller
      */
     public function index() // Secured Endpoint
     {
-        $addresses = Cache::rememberForever('addresses', function () {
-            
-            return DB::table('addresses')->paginate(PAGINATION_COUNT);
-        });
+        $addresses = Cache::rememberForever('addresses', 
+        fn() => DB::table('addresses')->paginate(PAGINATION_COUNT) );
         
         return response()->json([
             'success' => true,
