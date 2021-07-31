@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+
 
 class CartController extends Controller
 {
@@ -91,7 +93,7 @@ class CartController extends Controller
      */
     public function update(UpdateCartRequest $request, Cart $cart) // Secured Endpoint
     {
-        if ($cart->user_id != Auth::user()->id ) 
+        if (!Gate::inspect('update',$cart)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -118,7 +120,7 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart) // Secured Endpoint
     {
-        if ($cart->user_id != Auth::user()->id ) 
+        if (!Gate::inspect('destroy',$cart)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
