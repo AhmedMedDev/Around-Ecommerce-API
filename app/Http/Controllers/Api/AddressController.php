@@ -106,7 +106,7 @@ class AddressController extends Controller
      * @param  Address $address
      * @return \Illuminate\Http\Response
      * 
-     * for specific user, who created this recored 
+     * for admin only 
      * 
      */
     public function destroy(Address $address) // Secured Endpoint

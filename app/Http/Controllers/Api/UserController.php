@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Requests\User\UserRequest;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -69,12 +70,12 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id) 
+        if (!Gate::inspect('update',$user)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
             ],401);
-        }
+        } 
 
         $request = $request->validated();
 
@@ -96,7 +97,7 @@ class UserController extends Controller
      */
     public function changePassword(ChangePasswordRequest $request, User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id) 
+        if (!Gate::inspect('changePassword',$user)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -132,7 +133,7 @@ class UserController extends Controller
      */
     public function destroy(User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id) 
+        if (!Gate::inspect('destroy',$user)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -156,7 +157,7 @@ class UserController extends Controller
      */
     public function cart(User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id) 
+        if (!Gate::inspect('cart',$user)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -184,7 +185,7 @@ class UserController extends Controller
      */
     public function favorite(User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id) 
+        if (!Gate::inspect('favorite',$user)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -212,7 +213,7 @@ class UserController extends Controller
      */
     public function orders(User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id) 
+        if (!Gate::inspect('orders',$user)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
@@ -239,7 +240,7 @@ class UserController extends Controller
      */
     public function addresses(User $user) // Secured Endpoint
     {
-        if ($user->id != Auth::user()->id) 
+        if (!Gate::inspect('addresses',$user)->allowed()) 
         {
             return response()->json([
                 'message' => "Unauthenticated, this action for specific user only",
