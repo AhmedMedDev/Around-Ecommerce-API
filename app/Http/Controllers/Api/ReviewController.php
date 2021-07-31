@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ReviewController extends Controller
 {
@@ -94,12 +95,7 @@ class ReviewController extends Controller
      */
     public function update(UpdateReviewRequest $request, Review $review) // Secured Endpoint 
     {
-        if ($review->user_id != Auth::user()->id ) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('update',$review);
 
         $request = $request->validated();
 
@@ -121,12 +117,7 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review) // Secured Endpoint 
     {
-        if ($review->user_id != Auth::user()->id ) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('destroy',$review);
 
         $review = $review->delete( $review );
 

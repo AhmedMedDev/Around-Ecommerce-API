@@ -23,6 +23,7 @@ class UserPolicy
         return $model->id == Auth::user()->id
                 ? Response::allow()
                 : Response::deny('Unauthenticated, this action for specific user only',401);
+                // : Response::deny('Unauthenticated, this action for specific user only',401);
     }
 
     /**

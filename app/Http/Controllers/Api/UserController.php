@@ -70,12 +70,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user) // Secured Endpoint
     {
-        if (!Gate::inspect('update',$user)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        } 
+        Gate::authorize('update',$user);
 
         $request = $request->validated();
 
@@ -97,12 +92,7 @@ class UserController extends Controller
      */
     public function changePassword(ChangePasswordRequest $request, User $user) // Secured Endpoint
     {
-        if (!Gate::inspect('changePassword',$user)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('changePassword',$user);
         
         $request = $request->validated();
 
@@ -133,12 +123,7 @@ class UserController extends Controller
      */
     public function destroy(User $user) // Secured Endpoint
     {
-        if (!Gate::inspect('destroy',$user)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('destroy',$user);
 
         $user = $user->delete( $user );
 
@@ -157,12 +142,7 @@ class UserController extends Controller
      */
     public function cart(User $user) // Secured Endpoint
     {
-        if (!Gate::inspect('cart',$user)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('cart',$user);
 
         $usercart = DB::table('products')
         ->join('carts','products.id','carts.product_id')
@@ -185,12 +165,7 @@ class UserController extends Controller
      */
     public function favorite(User $user) // Secured Endpoint
     {
-        if (!Gate::inspect('favorite',$user)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('favorite',$user);
 
         $userfavorite = DB::table('products')
         ->join('favorites','products.id','favorites.product_id')
@@ -213,12 +188,7 @@ class UserController extends Controller
      */
     public function orders(User $user) // Secured Endpoint
     {
-        if (!Gate::inspect('orders',$user)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('orders',$user);
 
         $userorders = DB::table('orders')
         ->where('orders.user_id',$user->id)
@@ -240,12 +210,7 @@ class UserController extends Controller
      */
     public function addresses(User $user) // Secured Endpoint
     {
-        if (!Gate::inspect('addresses',$user)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('addresses',$user);
         
         $useraddresses = DB::table('orders')
         ->join('addresses','orders.address_id','addresses.id')

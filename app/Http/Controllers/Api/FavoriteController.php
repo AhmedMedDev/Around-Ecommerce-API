@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class FavoriteController extends Controller
 {
@@ -93,12 +94,7 @@ class FavoriteController extends Controller
      */
     public function update(FavoriteRequest $request, Favorite $favorite) // Secured Endpoint
     {
-        if ($favorite->user_id != Auth::user()->id ) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('update',$favorite);
         
         $request = $request->validated();
 
@@ -120,12 +116,7 @@ class FavoriteController extends Controller
      */
     public function destroy(Favorite $favorite) // Secured Endpoint
     {
-        if ($favorite->user_id != Auth::user()->id ) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('destroy',$favorite);
 
         $favorite = $favorite->delete( $favorite );
 

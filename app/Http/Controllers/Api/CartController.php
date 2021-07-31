@@ -93,12 +93,7 @@ class CartController extends Controller
      */
     public function update(UpdateCartRequest $request, Cart $cart) // Secured Endpoint
     {
-        if (!Gate::inspect('update',$cart)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('update',$cart);
         
         $request = $request->validated();
 
@@ -120,12 +115,7 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart) // Secured Endpoint
     {
-        if (!Gate::inspect('destroy',$cart)->allowed()) 
-        {
-            return response()->json([
-                'message' => "Unauthenticated, this action for specific user only",
-            ],401);
-        }
+        Gate::authorize('destroy',$cart);
 
         $cart = $cart->delete( $cart );
 
