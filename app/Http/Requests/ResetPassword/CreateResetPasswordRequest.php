@@ -25,7 +25,7 @@ class CreateResetPasswordRequest extends FormRequest
     {
         return [
             'pin' => 'required|integer',
-            'password' => 'required',
+            'password' => 'required|string|min:4|confirmed',
         ];
     }
 }

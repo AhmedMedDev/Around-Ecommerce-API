@@ -38,6 +38,7 @@ Route::group([
 Route::group([
 
     'middleware' => 'api',
+    'namespace' => 'Api',
 
 ], function () {
 
@@ -47,23 +48,23 @@ Route::group([
 
     //Product CRUD
 
-    Route::apiResource('products', 'Api\ProductController');
+    Route::apiResource('products', 'ProductController');
 
     //Product's Images
 
-    Route::get('product/{product}/productImages', 'Api\ProductController@productImages');
+    Route::get('product/{product}/productImages', 'ProductController@productImages');
 
     //Product's Reviews
 
-    Route::get('product/{product}/reviews', 'Api\ProductController@reviews');
+    Route::get('product/{product}/reviews', 'ProductController@reviews');
 
     //Search in product
 
-    Route::get('product/search/{query}', 'Api\ProductController@proSearch');
+    Route::get('product/search/{query}', 'ProductController@proSearch');
 
     //Search in Category's product 
 
-    Route::get('product/{category}/search/{query}', 'Api\ProductController@proCatSearch');
+    Route::get('product/{category}/search/{query}', 'ProductController@proCatSearch');
 
     /**
      * Product Images APIs //For admin only Except index, show // Secured
@@ -71,7 +72,7 @@ Route::group([
 
     //Product Images CRUD
 
-    Route::apiResource('productImages', 'Api\ProductImageController');
+    Route::apiResource('productImages', 'ProductImageController');
 
     /**
      * Product Colors APIs //For admin only Except index, show // Secured
@@ -79,7 +80,7 @@ Route::group([
 
     //Product Colors CRUD
 
-    Route::apiResource('productColors', 'Api\ProductColorController');
+    Route::apiResource('productColors', 'ProductColorController');
 
     /**
      * Product Sizes APIs //For admin only Except index, show // Secured
@@ -87,7 +88,7 @@ Route::group([
 
     //Product Sizes CRUD
 
-    Route::apiResource('productSizes', 'Api\ProductSizeController');
+    Route::apiResource('productSizes', 'ProductSizeController');
 
     /**
      * Offer APIs //For admin only Except index, show // Secured
@@ -95,7 +96,7 @@ Route::group([
 
     //Offer CRUD
 
-    Route::apiResource('offers', 'Api\OfferController');
+    Route::apiResource('offers', 'OfferController');
 
     /**
      * Reviews APIs //For admin only Except index, show // Secured
@@ -103,7 +104,7 @@ Route::group([
 
     //Reviews CRUD
 
-    Route::apiResource('reviews', 'Api\ReviewController');
+    Route::apiResource('reviews', 'ReviewController');
 
 });
 
@@ -115,6 +116,7 @@ Route::group([
         'api',
         'auth:api',
     ],
+    'namespace' => 'Api',
 
 ], function () {
 
@@ -126,7 +128,7 @@ Route::group([
 
     //Cart CRUD
 
-    Route::apiResource('carts', 'Api\CartController');
+    Route::apiResource('carts', 'CartController');
 
     /** 
      * Favorite APIs //For Admin only Except Store, Update, Destroy // Secured
@@ -134,7 +136,7 @@ Route::group([
 
     //Favorite CRUD
 
-    Route::apiResource('favorites', 'Api\FavoriteController');
+    Route::apiResource('favorites', 'FavoriteController');
 
     /**
      * Address APIs //For Admin only Except Store, Update, Destroy // Secured
@@ -142,7 +144,7 @@ Route::group([
 
     //Address CRUD
 
-    Route::apiResource('addresses', 'Api\AddressController');
+    Route::apiResource('addresses', 'AddressController');
 
     /**
      * Order APIs //For Admin only Except Store // Secured
@@ -150,7 +152,7 @@ Route::group([
 
     //Order CRUD
 
-    Route::apiResource('orders', 'Api\OrderController');
+    Route::apiResource('orders', 'OrderController');
 
     /**
      * Orderproducts APIs //For Admin only Except Store // Secured
@@ -158,7 +160,7 @@ Route::group([
 
     //Orderproducts CRUD
 
-    Route::apiResource('orderProducts', 'Api\OrderProductController');
+    Route::apiResource('orderProducts', 'OrderProductController');
 
     /**
      * User APIs //For admin only Except cart, Update, Destroy,
@@ -168,27 +170,27 @@ Route::group([
 
     //User CRUD
 
-    Route::apiResource('users', 'Api\UserController');
+    Route::apiResource('users', 'UserController');
 
     //User Cart
 
-    Route::get('user/{user}/cart', 'Api\UserController@cart');
+    Route::get('user/{user}/cart', 'UserController@cart');
     
     //Change Pasword
 
-    Route::put('user/{user}/changePassword', 'Api\UserController@changePassword');
+    Route::put('user/{user}/changePassword', 'UserController@changePassword');
 
     //User's Favorite
 
-    Route::get('user/{user}/favorite', 'Api\UserController@favorite');
+    Route::get('user/{user}/favorite', 'UserController@favorite');
 
     //User's Addresses
 
-    Route::get('user/{user}/addresses', 'Api\UserController@addresses');
+    Route::get('user/{user}/addresses', 'UserController@addresses');
 
     //User's Orders
 
-    Route::get('user/{user}/orders', 'Api\UserController@orders');
+    Route::get('user/{user}/orders', 'UserController@orders');
 
     
 });
@@ -196,12 +198,14 @@ Route::group([
 //For admin only
 
 Route::group([
-
+    
     'middleware' => [
         'api',
         'auth:api',
         'admin',
     ],
+    'prefix' => 'admin',
+    'namespace' => 'Api',
 
 ], function () {
 
@@ -214,7 +218,7 @@ Route::group([
 
     //Category CRUD
 
-    Route::apiResource('categories', 'Api\CategoryController');
+    Route::apiResource('categories', 'CategoryController');
 
     /**
      * Color APIs 
@@ -222,7 +226,7 @@ Route::group([
 
     //Color CRUD
 
-    Route::apiResource('colors', 'Api\ColorController');
+    Route::apiResource('colors', 'ColorController');
 
     /**
      * Size APIs 
@@ -230,6 +234,6 @@ Route::group([
 
     //Size CRUD
 
-    Route::apiResource('sizes', 'Api\SizeController');
+    Route::apiResource('sizes', 'SizeController');
 
 });

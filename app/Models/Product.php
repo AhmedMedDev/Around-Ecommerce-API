@@ -17,11 +17,14 @@ class Product extends Model
         'pro_name',
         'pro_des',
         'price',
+        'mainImage',
         'category_id',
         'pro_rate',
         'pro_gender',
         'favHeader',
         'trending',
+        'defaultSize_id',
+        'defaultColor_id',
     ];
 
      /**

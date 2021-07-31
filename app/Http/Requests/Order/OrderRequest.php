@@ -25,7 +25,8 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'payment_method' =>'required|in:'. implode(',',['Credit Card','PayPal','Cash on delivery']),
+            // 'payment_method' =>'required|in:'. implode(',',['Credit Card','PayPal','Cash on delivery']),
+            'payment_method' =>'required|in:Credit Card,PayPal,Cash on delivery',
             'total_price'    =>'required|between:0,99.99',
             'address_id'     =>'required|exists:App\Models\Address,id', 
         ];

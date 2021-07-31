@@ -26,7 +26,7 @@ class StoreCartRequest extends FormRequest
     {
         return [
             'product_id'    => 'required|exists:App\Models\Product,id',
-            'quantity'      => 'required|integer',
+            'quantity'      => 'integer',
             'size_id'       => 'required|exists:App\Models\Size,id',
             'color_id'      => 'required|exists:App\Models\Color,id',
         ];
