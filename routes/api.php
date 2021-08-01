@@ -54,19 +54,19 @@ Route::group([
 
     //Product's Images
 
-    Route::get('product/{product}/productImages', 'ProductController@productImages');
+    Route::get('products/{product}/productImages', 'ProductController@productImages');
 
     //Product's Reviews
 
-    Route::get('product/{product}/reviews', 'ProductController@reviews');
+    Route::get('products/{product}/reviews', 'ProductController@reviews');
 
     //Search in product
 
-    Route::get('product/search/{query}', 'ProductController@proSearch');
+    Route::get('products/search/{query}', 'ProductController@proSearch');
 
     //Search in Category's product 
 
-    Route::get('product/{category}/search/{query}', 'ProductController@proCatSearch');
+    Route::get('products/{category}/search/{query}', 'ProductController@proCatSearch');
 
     /**
      * Product Images APIs //For admin only Except index, show // Secured
@@ -178,23 +178,23 @@ Route::group([
 
     //User Cart
 
-    Route::get('user/{user}/cart', 'UserController@cart');
+    Route::get('users/{user}/cart', 'UserController@cart');
     
     //Change Pasword
 
-    Route::put('user/{user}/changePassword', 'UserController@changePassword');
+    Route::put('users/{user}/changePassword', 'UserController@changePassword');
 
     //User's Favorite
 
-    Route::get('user/{user}/favorite', 'UserController@favorite');
+    Route::get('users/{user}/favorite', 'UserController@favorite');
 
     //User's Addresses
 
-    Route::get('user/{user}/addresses', 'UserController@addresses');
+    Route::get('users/{user}/addresses', 'UserController@addresses');
 
     //User's Orders
 
-    Route::get('user/{user}/orders', 'UserController@orders');
+    Route::get('users/{user}/orders', 'UserController@orders');
 
     
 });
