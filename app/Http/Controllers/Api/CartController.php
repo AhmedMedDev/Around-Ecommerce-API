@@ -115,7 +115,7 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart) // Secured Endpoint
     {
-        Gate::authorize('destroy',$cart);
+        Gate::authorize('delete',$cart);
 
         $cart = $cart->delete( $cart );
 

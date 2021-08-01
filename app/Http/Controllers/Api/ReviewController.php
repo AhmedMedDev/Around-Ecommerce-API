@@ -117,7 +117,7 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review) // Secured Endpoint 
     {
-        Gate::authorize('destroy',$review);
+        Gate::authorize('delete',$review);
 
         $review = $review->delete( $review );
 

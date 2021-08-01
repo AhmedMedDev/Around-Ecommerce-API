@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class ProductObserver
 {
@@ -38,5 +39,18 @@ class ProductObserver
     public function deleted(Product $product)
     {
         Cache::forget('products');
+
+        /**
+         * Delete main image
+         */
+
+        // File::delete(public_path($product->mainImage));
+
+        /**
+         * Delete other images
+         */
+
+        // File::deleteDirectory(public_path("uploads/products/images/$product->id"));
+
     }
 }

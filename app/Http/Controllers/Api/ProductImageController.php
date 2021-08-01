@@ -75,9 +75,9 @@ class ProductImageController extends Controller
 
         for ($i = 0; $i < count($request['pro_img']); $i++) 
         { 
-            // $fileName = $this->saveImage($request['pro_img'][$i], 'uploads/products/images');
+            // $fileName = $this->saveImage($request['pro_img'][$i], 'uploads/products/images/$request['product_id']');
 
-            // $request['pro_img'][$i] = "uploads/products/images/$fileName";
+            // $request['pro_img'][$i] = "uploads/products/images/$request['product_id']/$fileName";
 
             $editedRequest[$i]['product_id'] = $request['product_id'];
             

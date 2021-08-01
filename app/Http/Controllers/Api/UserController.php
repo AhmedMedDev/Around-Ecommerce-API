@@ -144,7 +144,7 @@ class UserController extends Controller
      */
     public function destroy(User $user) // Secured Endpoint
     {
-        Gate::authorize('destroy',$user);
+        Gate::authorize('delete',$user);
 
         $user = $user->delete( $user );
 

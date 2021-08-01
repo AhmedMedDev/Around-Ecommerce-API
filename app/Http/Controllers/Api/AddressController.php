@@ -33,7 +33,7 @@ class AddressController extends Controller
     public function index() // Secured Endpoint
     {
         $addresses = Cache::rememberForever('addresses', 
-        fn() => DB::table('addresses')->paginate(PAGINATION_COUNT) );
+        fn() => DB::table('addresses')->paginate(PAGINATION_COUNT));
         
         return response()->json([
             'success' => true,

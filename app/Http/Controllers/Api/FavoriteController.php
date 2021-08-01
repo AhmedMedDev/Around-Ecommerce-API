@@ -116,7 +116,7 @@ class FavoriteController extends Controller
      */
     public function destroy(Favorite $favorite) // Secured Endpoint
     {
-        Gate::authorize('destroy',$favorite);
+        Gate::authorize('delete',$favorite);
 
         $favorite = $favorite->delete( $favorite );
 
