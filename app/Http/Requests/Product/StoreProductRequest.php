@@ -27,15 +27,14 @@ class StoreProductRequest extends FormRequest
             'pro_name'         => 'required|string|regex:/^[a-zA-Z ]+$/',
             'pro_des'          => 'required|string',
             'price'            => 'required|between:0,99.99',
-            'mainImage'        => 'required',
+            'mainImage'        => 'required|image',
             'category_id'      => 'required|exists:App\Models\Category,id',
             'pro_rate'         => 'required|integer|digits_between:1,5',
-            'pro_gender'       => 'required|required|in:M,F,B',
+            'pro_gender'       => 'required|in:M,F,B',
             'favHeader'        => 'required|boolean',
             'trending'         => 'required|boolean',
             'defaultSize_id'   => 'required|exists:App\Models\Size,id',
             'defaultColor_id'  => 'required|exists:App\Models\Color,id',
-            // 'pro_gender'       => 'required|required|in:'. implode(',',['M','F','B']),
         ];
     }
 }

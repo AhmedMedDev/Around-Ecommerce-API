@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Requests\User\UserRequest;
+use App\Traits\ImgUpload;
 use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -15,6 +16,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Images upload traits 
+    |--------------------------------------------------------------------------
+    |
+    | This Trait to save img in PC
+    |
+    */
+
+    use ImgUpload;
+
     /**
      * Create a new UserController instance.
      *
@@ -73,6 +85,15 @@ class UserController extends Controller
         Gate::authorize('update',$user);
 
         $request = $request->validated();
+
+        if (isset($request['img']))
+        {
+            \File::delete(public_path($user->img));
+
+            $fileName = $this->saveImage($request['img'], 'uploads/users/img');
+
+            $request['img'] = "uploads/users/img/$fileName";
+        }
 
         $user = $user->update( $request );
 

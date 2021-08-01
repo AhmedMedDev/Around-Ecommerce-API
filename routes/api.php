@@ -48,7 +48,9 @@ Route::group([
 
     //Product CRUD
 
-    Route::apiResource('products', 'ProductController');
+    Route::apiResource('products', 'ProductController')->except(['update']);
+
+    Route::post('products/{product}', 'ProductController@update');
 
     //Product's Images
 
@@ -170,7 +172,9 @@ Route::group([
 
     //User CRUD
 
-    Route::apiResource('users', 'UserController');
+    Route::apiResource('users', 'UserController')->except(["update"]);
+
+    Route::post('users/{user}', 'UserController@update');
 
     //User Cart
 

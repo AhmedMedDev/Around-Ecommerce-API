@@ -113,6 +113,15 @@ class ProductController extends Controller
     {
         $request = $request->validated();
 
+        if (isset($request['mainImage']))
+        {
+            \File::delete(public_path($product->mainImage));
+
+            $fileName = $this->saveImage($request['mainImage'], 'uploads/products/mainImg');
+
+            $request['mainImage'] = "uploads/products/mainImg/$fileName";
+        }
+
         $product = $product->update( $request );
 
         return response()->json([

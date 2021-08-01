@@ -24,9 +24,9 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'Fname'         => ['string', 'max:255'],
-            'Lname'         => ['string', 'max:255'],
-            'img'           => ['nullable', 'ends_with:.png,.jpeg,.gif'],
+            'Fname'   => 'string|max:255',
+            'Lname'   => 'string|max:255',
+            'img'     => 'image',
         ];
     }
 }

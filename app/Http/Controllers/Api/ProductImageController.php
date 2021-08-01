@@ -6,12 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductImage\StoreProductImageRequest;
 use App\Http\Requests\ProductImage\UpdateProductImageRequest;
 use App\Models\ProductImage;
+use App\Traits\ImgUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ProductImageController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Images upload traits 
+    |--------------------------------------------------------------------------
+    |
+    | This Trait to save img in PC
+    |
+    */
+
+    use ImgUpload;
+
     /**
      * Create a new ProductImageController instance.
      *
@@ -63,6 +75,10 @@ class ProductImageController extends Controller
 
         for ($i = 0; $i < count($request['pro_img']); $i++) 
         { 
+            // $fileName = $this->saveImage($request['pro_img'][$i], 'uploads/products/images');
+
+            // $request['pro_img'][$i] = "uploads/products/images/$fileName";
+
             $editedRequest[$i]['product_id'] = $request['product_id'];
             
             $editedRequest[$i]['pro_img'] = $request['pro_img'][$i];
@@ -70,7 +86,7 @@ class ProductImageController extends Controller
 
         /* Turn request into Associative Array */
         
-        ProductImage::insert( $editedRequest );
+        $productImage = ProductImage::insert( $editedRequest );
 
         $productImage = ProductImage::orderByDesc('id')
         ->limit(count($request['pro_img']))
