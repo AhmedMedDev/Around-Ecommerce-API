@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\OrderRequest;
+use App\Http\Requests\Order\UpdateOrderRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,7 +92,7 @@ class OrderController extends Controller
      * for admin only 
      * 
      */
-    public function update(OrderRequest $request, Order $order)
+    public function update(UpdateOrderRequest $request, Order $order)
     {
         $request = $request->validated();
 

@@ -5,7 +5,7 @@ namespace App\Http\Requests\Order;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class OrderRequest extends FormRequest
+class UpdateOrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'payment_method' =>'required|in:Credit Card,PayPal,Cash on delivery',
-            'total_price'    =>'required|between:0,99.99',
-            'address_id'     =>'required|exists:App\Models\Address,id', 
+            'payment_method' =>'in:Credit Card,PayPal,Cash on delivery',
+            'total_price'    =>'between:0,99.99',
+            'address_id'     =>'exists:App\Models\Address,id', 
         ];
     }
 }

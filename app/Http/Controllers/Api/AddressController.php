@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Address\AddressRequest;
+use App\Http\Requests\Address\UpdateAddressRequest;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,7 +90,7 @@ class AddressController extends Controller
      * for admin only 
      * 
      */
-    public function update(AddressRequest $request, Address $address) // Secured Endpoint
+    public function update(UpdateAddressRequest $request, Address $address) // Secured Endpoint
     {
         $request = $request->validated();
 
