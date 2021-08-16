@@ -108,8 +108,34 @@ Route::group([
 
     Route::apiResource('reviews', 'ReviewController');
 
-});
+    /**
+     * Category APIs //For admin only Except index, show // Secured
+     * 
+     * Model, Factory, Controller, Route, Postman
+     * 
+     */
 
+    //Category CRUD
+
+    Route::apiResource('categories', 'CategoryController');
+
+    /**
+     * Color APIs //For admin only Except index, show // Secured
+     */
+
+    //Color CRUD
+
+    Route::apiResource('colors', 'ColorController');
+
+    /**
+     * Size APIs //For admin only Except index, show // Secured
+     */
+
+    //Size CRUD
+
+    Route::apiResource('sizes', 'SizeController');
+
+});
 
 
  Route::group([
@@ -121,7 +147,6 @@ Route::group([
     'namespace' => 'Api',
 
 ], function () {
-
 
     /**
      * Cart APIs //For Admin only Except Store, Update, Destroy  // Secured
@@ -195,49 +220,6 @@ Route::group([
     //User's Orders
 
     Route::get('users/{user}/orders', 'UserController@orders');
-
     
 });
 
-//For admin only
-
-Route::group([
-    
-    'middleware' => [
-        'api',
-        'auth:api',
-        'admin',
-    ],
-    'prefix' => 'admin',
-    'namespace' => 'Api',
-
-], function () {
-
-    /**
-     * Category APIs 
-     * 
-     * Model, Factory, Controller, Route, Postman
-     * 
-     */
-
-    //Category CRUD
-
-    Route::apiResource('categories', 'CategoryController');
-
-    /**
-     * Color APIs 
-     */
-
-    //Color CRUD
-
-    Route::apiResource('colors', 'ColorController');
-
-    /**
-     * Size APIs 
-     */
-
-    //Size CRUD
-
-    Route::apiResource('sizes', 'SizeController');
-
-});

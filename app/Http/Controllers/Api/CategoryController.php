@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     /**
+     * Create a new OfferController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(
+            ['auth:api','admin'],
+            ['except' => ['index','show']]
+        );
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
