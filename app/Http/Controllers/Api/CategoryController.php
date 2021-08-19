@@ -6,12 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Traits\ImgUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Images upload traits 
+    |--------------------------------------------------------------------------
+    |
+    | This Trait to save img in PC
+    |
+    */
+
+    use ImgUpload;
+
     /**
      * Create a new OfferController instance.
      *
@@ -21,7 +33,7 @@ class CategoryController extends Controller
     {
         $this->middleware(
             ['auth:api','admin'],
-            ['except' => ['index','show']]
+            ['except' => ['index','show','cheapestProduct']]
         );
     }
 
@@ -50,6 +62,10 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         $request = $request->validated();
+
+        $fileName = $this->saveImage($request['cat_img'], 'uploads/categories/img');
+
+        $request['cat_img'] = "uploads/categories/img/$fileName";
 
         $category = Category::create( $request );
 
@@ -103,6 +119,27 @@ class CategoryController extends Controller
 
         if ($category) return response()->json([
             'success' => true,
+        ]);
+    }
+
+    /**
+     * cheapest Product 
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cheapestProduct()
+    {
+         $sql = "SELECT categories.id as cat_id, cat_name, cat_img, MIN(price) as cheapestProduct 
+                 FROM products 
+                 JOIN categories ON categories.id=products.category_id 
+                 GROUP BY products.category_id";
+
+         $cheapestProduct = DB::select($sql);
+
+        return response()->json([
+            'success' => true,
+            'payload' => $cheapestProduct
         ]);
     }
 }

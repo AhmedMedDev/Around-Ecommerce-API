@@ -119,6 +119,10 @@ Route::group([
 
     Route::apiResource('categories', 'CategoryController');
 
+    // Get The cheapest product in each category
+
+    Route::get('category/cheapestProduct', 'CategoryController@cheapestProduct');
+
     /**
      * Color APIs //For admin only Except index, show // Secured
      */

@@ -25,6 +25,7 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'cat_name' => 'required|string|regex:/^[a-zA-Z ]+$/',
+            'cat_img' => 'required',
         ];
     }
 }
