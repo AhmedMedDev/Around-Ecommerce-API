@@ -100,6 +100,15 @@ class CategoryController extends Controller
     {
         $request = $request->validated();
 
+        if (isset($request['cat_img']))
+        {
+            \File::delete(public_path($category->cat_img));
+
+            $fileName = $this->saveImage($request['cat_img'], 'uploads/categories/img');
+
+            $request['cat_img'] = "uploads/categories/img/$fileName";
+        }
+
         $category = $category->update( $request );
 
         return response()->json([

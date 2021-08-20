@@ -50,6 +50,7 @@ Route::group([
 
     Route::apiResource('products', 'ProductController')->except(['update']);
 
+    // Product Update
     Route::post('products/{product}', 'ProductController@update');
 
     //Product's Images
@@ -117,7 +118,11 @@ Route::group([
 
     //Category CRUD
 
-    Route::apiResource('categories', 'CategoryController');
+    Route::apiResource('categories', 'CategoryController')->except(['update']);
+
+    // Category Update
+
+    Route::post('categories/{category}', 'CategoryController@update');
 
     // Get The cheapest product in each category
 
