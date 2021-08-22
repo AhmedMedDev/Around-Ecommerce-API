@@ -49,7 +49,7 @@ class ProductController extends Controller
     public function index() // Secured Endpoint
     {
         $products = Cache::rememberForever('products', 
-        fn() => DB::table('products')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('products')->get());
         
         return response()->json([
             'success' => true,
@@ -160,7 +160,7 @@ class ProductController extends Controller
         $productImages = DB::table('products')
         ->join('product_images','products.id','product_images.product_id')
         ->where('product_images.product_id',$product->id)
-        ->get();
+        ->paginate(PAGINATION_COUNT);
 
         return response()->json([
             'success' => true,
