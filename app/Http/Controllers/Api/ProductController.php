@@ -160,7 +160,7 @@ class ProductController extends Controller
         $productImages = DB::table('products')
         ->join('product_images','products.id','product_images.product_id')
         ->where('product_images.product_id',$product->id)
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,
