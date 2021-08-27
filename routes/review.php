@@ -17,4 +17,6 @@ Route::group([
 
     Route::apiResource('reviews', 'ReviewController');
 
+    Route::get('reviewsWithUsers', 'ReviewController@indexWithUser');
+
 });

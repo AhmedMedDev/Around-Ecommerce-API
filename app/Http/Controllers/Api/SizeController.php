@@ -32,7 +32,7 @@ class SizeController extends Controller
     public function index()
     {
         $sizes = Cache::rememberForever('sizes', 
-        fn() => DB::table('sizes')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('sizes')->get());
         
         return response()->json([
             'success' => true,

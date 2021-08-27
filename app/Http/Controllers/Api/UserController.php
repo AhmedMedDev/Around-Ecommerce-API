@@ -47,7 +47,7 @@ class UserController extends Controller
     public function index() // Secured Endpoint 
     {
         $users = Cache::rememberForever('users', 
-        fn() => DB::table('users')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('users')->get());
         
         return response()->json([
             'success' => true,
@@ -168,7 +168,7 @@ class UserController extends Controller
         $usercart = DB::table('products')
         ->join('carts','products.id','carts.product_id')
         ->where('carts.user_id',$user->id)
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,
@@ -191,7 +191,7 @@ class UserController extends Controller
         $userfavorite = DB::table('products')
         ->join('favorites','products.id','favorites.product_id')
         ->where('favorites.user_id',$user->id)
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,
@@ -213,7 +213,7 @@ class UserController extends Controller
 
         $userorders = DB::table('orders')
         ->where('orders.user_id',$user->id)
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,
@@ -236,7 +236,7 @@ class UserController extends Controller
         $useraddresses = DB::table('orders')
         ->join('addresses','orders.address_id','addresses.id')
         ->where('orders.user_id',$user->id)
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,

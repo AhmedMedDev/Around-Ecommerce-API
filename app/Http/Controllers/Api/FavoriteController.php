@@ -34,7 +34,7 @@ class FavoriteController extends Controller
     public function index() // Secured Endpoint
     {
         $favorites = Cache::rememberForever('favorites',
-        fn() => DB::table('favorites')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('favorites')->get());
         
         return response()->json([
             'success' => true,

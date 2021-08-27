@@ -23,7 +23,7 @@ class ReviewController extends Controller
     {
         $this->middleware(
             ['auth:api'],
-            ['except' => ['index','show']]
+            ['except' => ['index','show','indexWithUser']]
         );
     }
 
@@ -37,7 +37,7 @@ class ReviewController extends Controller
     public function index() // Secured Endpoint 
     {
         $reviews = Cache::rememberForever('reviews', 
-        fn() => DB::table('reviews')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('reviews')->get());
         
         return response()->json([
             'success' => true,
@@ -125,4 +125,26 @@ class ReviewController extends Controller
             'success' => true,
         ]);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     * 
+     * X X Roles
+     */
+    public function indexWithUser() // Secured Endpoint 
+    {
+        $reviews = Cache::rememberForever('reviewsWihUsers', 
+        fn() => DB::table('users')
+        ->join('reviews','users.id', 'reviews.user_id')
+        ->select('reviews.id', 're_des', 're_rate', 'product_id', 'Fname', 'img')
+        ->get());
+
+        return response()->json([
+            'success' => true,
+            'payload' => $reviews
+        ]);
+    }
+
 }

@@ -35,7 +35,7 @@ class CartController extends Controller
     public function index() // Secured Endpoint
     {
         $carts = Cache::rememberForever('carts',
-        fn() => DB::table('carts')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('carts')->get());
         
         return response()->json([
             'success' => true,

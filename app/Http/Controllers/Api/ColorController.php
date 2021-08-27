@@ -32,7 +32,7 @@ class ColorController extends Controller
     public function index()
     {
         $colors = Cache::rememberForever('colors', 
-        fn() => DB::table('colors')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('colors')->get());
         
         return response()->json([
             'success' => true,

@@ -36,7 +36,7 @@ class ProductColorController extends Controller
     public function index() // Secured Endpoint
     {
         $productcolors = Cache::rememberForever('product_colors', 
-        fn() => DB::table('product_colors')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('product_colors')->get());
         
         return response()->json([
             'success' => true,

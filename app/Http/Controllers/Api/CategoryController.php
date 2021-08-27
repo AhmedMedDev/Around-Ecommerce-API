@@ -45,7 +45,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Cache::rememberForever('categories', 
-        fn() => DB::table('categories')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('categories')->get());
         
         return response()->json([
             'success' => true,

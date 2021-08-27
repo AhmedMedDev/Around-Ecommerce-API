@@ -160,7 +160,7 @@ class ProductController extends Controller
         $productImages = DB::table('products')
         ->join('product_images','products.id','product_images.product_id')
         ->where('product_images.product_id',$product->id)
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,
@@ -181,7 +181,7 @@ class ProductController extends Controller
         $productReviews = DB::table('products')
         ->join('reviews','products.id','reviews.product_id')
         ->where('reviews.product_id',$product->id)
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,
@@ -203,7 +203,7 @@ class ProductController extends Controller
         ->where('pro_name','like','%' . $query . '%')
         ->orWhere('pro_des','like','%' . $query . '%')
         ->orWhere('price','like','%' . $query . '%')
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,
@@ -226,7 +226,7 @@ class ProductController extends Controller
         ->where('pro_name','like','%' . $query . '%')
         ->orWhere('pro_des','like','%' . $query . '%')
         ->orWhere('price','like','%' . $query . '%')
-        ->paginate(PAGINATION_COUNT);
+        ->get();
 
         return response()->json([
             'success' => true,

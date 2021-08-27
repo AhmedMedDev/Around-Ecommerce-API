@@ -36,7 +36,7 @@ class OfferController extends Controller
     public function index() // Secured Endpoint
     {
         $offers = Cache::rememberForever('offers', 
-        fn() => DB::table('offers')->paginate(PAGINATION_COUNT));
+        fn() => DB::table('offers')->get());
         
         return response()->json([
             'success' => true,
