@@ -139,12 +139,16 @@ class CategoryController extends Controller
      */
     public function cheapestProduct()
     {
-         $sql = "SELECT categories.id as cat_id, cat_name, cat_img, MIN(price) as cheapestProduct 
-                 FROM products 
-                 JOIN categories ON categories.id=products.category_id 
-                 GROUP BY products.category_id";
+        //  $sql = "SELECT categories.id as cat_id, cat_name, cat_img, MIN(price) as cheapestProduct 
+        //          FROM products 
+        //          JOIN categories ON categories.id=products.category_id 
+        //          GROUP BY products.category_id";
 
-         $cheapestProduct = DB::select($sql);
+         $cheapestProduct = DB::table('products')
+         ->select('categories.id as cat_id', 'cat_name', 'cat_img', DB::raw('min(price) as cheapestProduct'))
+         ->join('categories','categories.id', 'products.category_id')
+         ->groupBy('categories.id')
+         ->get();
 
         return response()->json([
             'success' => true,
