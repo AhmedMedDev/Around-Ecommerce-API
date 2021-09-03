@@ -14,6 +14,7 @@ Copy .env.example to a new file and rename it to .env, then write this command i
 ```
 php artisan key:generate
 
+```bash
 php artisan jwt:secret
 ```
 
