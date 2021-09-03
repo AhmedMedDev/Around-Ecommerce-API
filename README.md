@@ -11,10 +11,11 @@ Open terminal (ctrl+`) and write
 ```bash
 composer install
 ```
-
 Copy .env.example to a new file and rename it to .env, then write this command in terminal 
-```
+
+```bash
 php artisan key:generate
+```
 
 To Generate JWT Secrete
 
