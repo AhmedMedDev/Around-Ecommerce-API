@@ -7,12 +7,16 @@
 Open the project in your VS Code editor 
 
 Open terminal (ctrl+`) and write 
+
 ```bash
 composer install
 ```
+
 Copy .env.example to a new file and rename it to .env, then write this command in terminal 
 ```
 php artisan key:generate
+
+To Generate JWT Secrete
 
 ```bash
 php artisan jwt:secret
