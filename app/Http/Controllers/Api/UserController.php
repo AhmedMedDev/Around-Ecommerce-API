@@ -34,7 +34,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['cart','show','update','changePassword','destroy']]);
+        $this->middleware('admin', ['except' => ['cart','favorite','show','update','changePassword','destroy']]);
     }
 
     /**
@@ -171,7 +171,7 @@ class UserController extends Controller
         ->get();
 
         return response()->json([
-            'success' => true,
+            'success' => true, 
             'payload' => $usercart
         ]);
     }
