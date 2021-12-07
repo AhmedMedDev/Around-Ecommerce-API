@@ -33,8 +33,8 @@ class UpdateProductRequest extends FormRequest
             'pro_gender'       => 'in:M,F,B',
             'favHeader'        => 'boolean',
             'trending'         => 'boolean',
-            'defaultSize_id'   => 'exists:App\Models\Size,id',
-            'defaultColor_id'  => 'exists:App\Models\Color,id',
+            'defaultSize'      => 'exists:App\Models\Size,id',
+            'defaultColor'     => 'exists:App\Models\Color,id',
         ];
     }
 }

@@ -33,8 +33,8 @@ class StoreProductRequest extends FormRequest
             'pro_gender'       => 'required|in:M,F,B',
             'favHeader'        => 'required|boolean',
             'trending'         => 'required|boolean',
-            'defaultSize_id'   => 'required|exists:App\Models\Size,id',
-            'defaultColor_id'  => 'required|exists:App\Models\Color,id',
+            'defaultSize'      => 'required|exists:App\Models\Size,id',
+            'defaultColor'     => 'required|exists:App\Models\Color,id',
         ];
     }
 }

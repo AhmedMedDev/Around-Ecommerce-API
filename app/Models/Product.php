@@ -23,8 +23,8 @@ class Product extends Model
         'pro_gender',
         'favHeader',
         'trending',
-        'defaultSize_id',
-        'defaultColor_id',
+        'defaultSize',
+        'defaultColor',
     ];
 
      /**

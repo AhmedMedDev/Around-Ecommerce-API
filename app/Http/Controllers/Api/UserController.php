@@ -165,9 +165,8 @@ class UserController extends Controller
     {
         Gate::authorize('cart',$user);
 
-        $usercart = DB::table('products')
-        ->join('carts','products.id','carts.product_id')
-        ->where('carts.user_id',$user->id)
+        $usercart = DB::table('cart_boxs')
+        ->where('user_id',$user->id)
         ->get();
 
         return response()->json([
