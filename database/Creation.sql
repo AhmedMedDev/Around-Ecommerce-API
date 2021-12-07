@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2021 at 03:57 PM
--- Server version: 5.7.30-log
+-- Generation Time: Dec 07, 2021 at 10:08 PM
+-- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -142,7 +142,7 @@ CREATE TABLE `carts` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT '1',
+  `quantity` int(11) NOT NULL DEFAULT 1,
   `size_id` int(11) NOT NULL,
   `color_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -152,11 +152,11 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `product_id`, `user_id`, `quantity`, `size_id`, `color_id`) VALUES
-(1, 31, 26, 5, 43, 30),
+(1, 31, 3, 5, 43, 30),
 (2, 8, 20, 8, 40, 25),
 (3, 12, 6, 6, 43, 30),
-(4, 12, 40, 4, 48, 14),
-(5, 40, 22, 3, 37, 48),
+(4, 6, 3, 4, 48, 14),
+(5, 40, 2, 3, 37, 48),
 (6, 7, 25, 5, 29, 13),
 (7, 4, 35, 6, 17, 38),
 (8, 46, 14, 7, 23, 41),
@@ -174,10 +174,10 @@ INSERT INTO `carts` (`id`, `product_id`, `user_id`, `quantity`, `size_id`, `colo
 (20, 31, 32, 7, 43, 14),
 (21, 43, 6, 1, 26, 28),
 (22, 15, 13, 0, 31, 22),
-(23, 34, 42, 9, 4, 15),
+(23, 34, 57, 9, 4, 15),
 (24, 28, 32, 7, 39, 21),
 (25, 31, 7, 1, 6, 33),
-(26, 34, 11, 4, 11, 33),
+(26, 8, 2, 4, 11, 33),
 (27, 37, 42, 1, 16, 7),
 (28, 4, 45, 6, 5, 12),
 (29, 22, 13, 3, 22, 41),
@@ -199,9 +199,161 @@ INSERT INTO `carts` (`id`, `product_id`, `user_id`, `quantity`, `size_id`, `colo
 (45, 37, 47, 4, 24, 6),
 (46, 26, 13, 8, 13, 41),
 (47, 30, 4, 5, 13, 15),
-(48, 49, 3, 9, 1, 36),
+(48, 49, 2, 9, 1, 36),
 (49, 3, 4, 0, 39, 15),
-(50, 36, 9, 6, 1, 13);
+(50, 36, 9, 6, 1, 13),
+(51, 5, 2, 8, 4, 4),
+(52, 1, 2, 8, 4, 4),
+(53, 5, 2, 1, 45, 8),
+(54, 5, 2, 2, 45, 8),
+(55, 5, 2, 2, 45, 8),
+(56, 5, 2, 2, 45, 8),
+(57, 5, 2, 2, 13, 17),
+(58, 5, 2, 2, 13, 17),
+(59, 5, 2, 1, 42, 21),
+(60, 5, 2, 1, 42, 21),
+(61, 5, 2, 1, 42, 17),
+(62, 5, 2, 3, 42, 17),
+(63, 5, 2, 3, 45, 8),
+(64, 5, 2, 1, 42, 21),
+(65, 5, 2, 2, 13, 21),
+(66, 5, 2, 2, 13, 21),
+(67, 5, 2, 2, 13, 21),
+(68, 5, 2, 2, 13, 21),
+(69, 5, 2, 2, 13, 21),
+(70, 5, 2, 1, 42, 17),
+(71, 5, 2, 2, 45, 8),
+(72, 5, 2, 2, 45, 8),
+(73, 5, 2, 3, 45, 21),
+(74, 5, 2, 2, 42, 21),
+(75, 5, 2, 2, 42, 21),
+(76, 5, 2, 3, 45, 8),
+(77, 1, 2, 2, 32, 33),
+(78, 1, 2, 2, 37, 33),
+(79, 5, 2, 3, 13, 17),
+(80, 5, 2, 4, 45, 8),
+(81, 5, 2, 2, 42, 21),
+(82, 5, 2, 2, 42, 21),
+(83, 5, 2, 2, 42, 17),
+(84, 5, 2, 1, 42, 21),
+(85, 5, 2, 2, 42, 21),
+(86, 5, 2, 1, 45, 17),
+(87, 5, 2, 3, 45, 8),
+(88, 5, 2, 2, 45, 8),
+(89, 5, 2, 2, 45, 8),
+(90, 1, 2, 1, 37, 33),
+(91, 1, 2, 1, 37, 33),
+(92, 1, 2, 1, 37, 33),
+(93, 1, 2, 1, 37, 33),
+(94, 1, 2, 1, 37, 33),
+(95, 1, 2, 2, 37, 33),
+(96, 1, 2, 1, 37, 33),
+(97, 1, 2, 2, 37, 33),
+(98, 1, 2, 2, 37, 33),
+(99, 1, 2, 2, 37, 33),
+(100, 1, 2, 2, 37, 33),
+(101, 1, 2, 2, 37, 33),
+(102, 1, 2, 1, 37, 33),
+(103, 1, 2, 2, 37, 33),
+(104, 1, 2, 2, 37, 33),
+(105, 1, 2, 2, 37, 33),
+(106, 1, 2, 1, 37, 33),
+(107, 1, 2, 1, 37, 33),
+(108, 1, 2, 2, 37, 33),
+(109, 1, 2, 2, 37, 33),
+(110, 1, 2, 2, 37, 33),
+(111, 5, 2, 2, 45, 8),
+(112, 5, 2, 1, 45, 8),
+(113, 5, 2, 1, 45, 8),
+(114, 5, 2, 1, 45, 8),
+(115, 5, 2, 1, 45, 8),
+(116, 5, 2, 2, 45, 8),
+(117, 5, 2, 2, 45, 8),
+(118, 5, 2, 2, 45, 8),
+(119, 5, 2, 2, 45, 8),
+(120, 5, 2, 1, 45, 8),
+(121, 5, 2, 1, 45, 8),
+(122, 5, 2, 2, 45, 8),
+(123, 1, 2, 2, 37, 33),
+(124, 1, 2, 2, 37, 33),
+(125, 1, 2, 1, 37, 33),
+(126, 1, 2, 1, 37, 33),
+(127, 1, 2, 2, 37, 33),
+(128, 1, 2, 2, 37, 33),
+(129, 1, 2, 1, 37, 33),
+(130, 1, 2, 1, 37, 33),
+(131, 1, 2, 1, 37, 33),
+(132, 1, 2, 2, 37, 33),
+(133, 1, 2, 2, 37, 33),
+(134, 3, 2, 2, 44, 10),
+(135, 7, 2, 2, 1, 46),
+(136, 2, 2, 1, 27, 39),
+(138, 1, 2, 1, 37, 33),
+(139, 1, 4, 2, 37, 33),
+(140, 5, 4, 1, 45, 8),
+(141, 6, 4, 2, 36, 19),
+(142, 45, 2, 2, 7, 5),
+(143, 44, 2, 1, 44, 38),
+(144, 44, 7, 3, 44, 38),
+(145, 47, 10, 1, 42, 15),
+(146, 40, 10, 1, 45, 47),
+(147, 49, 2, 1, 47, 33),
+(148, 41, 10, 1, 14, 25),
+(149, 49, 8, 1, 47, 33),
+(150, 43, 10, 1, 5, 42),
+(151, 31, 10, 2, 47, 5),
+(152, 1, 2, 2, 31, 37),
+(153, 5, 2, 1, 45, 8),
+(154, 4, 2, 1, 44, 32),
+(155, 6, 2, 1, 36, 19),
+(156, 6, 2, 1, 36, 19),
+(157, 5, 2, 1, 45, 8),
+(158, 5, 2, 1, 45, 8),
+(159, 40, 2, 1, 45, 47),
+(160, 19, 2, 1, 47, 5),
+(189, 5, 2, 8, 4, 4),
+(190, 5, 2, 8, 4, 4),
+(192, 49, 3, 2, 47, 32),
+(193, 5, 2, 8, 4, 4),
+(194, 44, 3, 2, 31, 35),
+(195, 5, 2, 8, 4, 4),
+(196, 5, 2, 8, 4, 4),
+(197, 5, 2, 8, 4, 4),
+(198, 5, 2, 8, 4, 4),
+(199, 5, 2, 8, 4, 4),
+(200, 5, 2, 8, 4, 4),
+(201, 5, 2, 8, 4, 4),
+(202, 5, 2, 8, 4, 4),
+(203, 42, 3, 2, 47, 29),
+(204, 5, 2, 8, 4, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `cart_boxs`
+-- (See below for the actual view)
+--
+CREATE TABLE `cart_boxs` (
+`id` int(11)
+,`product_id` int(11)
+,`user_id` int(11)
+,`quantity` int(11)
+,`size_id` int(11)
+,`color_id` int(11)
+,`pro_name` varchar(255)
+,`pro_des` varchar(255)
+,`price` int(11)
+,`mainImage` varchar(255)
+,`category_id` int(11)
+,`cat_name` varchar(255)
+,`cat_img` varchar(255)
+,`pro_rate` int(5)
+,`pro_gender` varchar(1)
+,`favHeader` tinyint(1)
+,`trending` tinyint(1)
+,`pro_size` float
+,`pro_color` varchar(25)
+);
 
 -- --------------------------------------------------------
 
@@ -220,56 +372,56 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `cat_name`, `cat_img`) VALUES
-(1, 'Bertrand Williamson', 'https://lorempixel.com/283/241/?24515'),
-(2, 'Frieda Hill', 'https://lorempixel.com/283/241/?48277'),
-(3, 'Georgette Flatley', 'https://lorempixel.com/283/241/?50052'),
-(4, 'Sierra Rosenbaum IV', 'https://lorempixel.com/283/241/?57607'),
-(5, 'Hunter Lang', 'https://lorempixel.com/283/241/?13526'),
-(6, 'Dr. Alberto Wuckert', 'https://lorempixel.com/283/241/?33332'),
-(7, 'Dr. Skyla Jacobson', 'https://lorempixel.com/283/241/?53155'),
-(8, 'Kareem Mraz', 'https://lorempixel.com/283/241/?31711'),
-(9, 'Ms. Rowena Keeling DDS', 'https://lorempixel.com/283/241/?61815'),
-(10, 'Chad Corwin MD', 'https://lorempixel.com/283/241/?60376'),
-(11, 'Prof. Hipolito Funk', 'https://lorempixel.com/283/241/?56414'),
-(12, 'Craig Denesik', 'https://lorempixel.com/283/241/?21940'),
-(13, 'Rickey Grimes', 'https://lorempixel.com/283/241/?37177'),
-(14, 'Dr. Tyson Cassin IV', 'https://lorempixel.com/283/241/?38235'),
-(15, 'Ms. Aida Kerluke', 'https://lorempixel.com/283/241/?32591'),
-(16, 'Prof. Imelda Vandervort', 'https://lorempixel.com/283/241/?70386'),
-(17, 'Angeline Casper', 'https://lorempixel.com/283/241/?11149'),
-(18, 'Malcolm Gislason DVM', 'https://lorempixel.com/283/241/?84741'),
-(19, 'Prince Considine', 'https://lorempixel.com/283/241/?73953'),
-(20, 'Maudie Lowe', 'https://lorempixel.com/283/241/?82770'),
-(21, 'Chris Collins', 'https://lorempixel.com/283/241/?43431'),
-(22, 'Elise Blick', 'https://lorempixel.com/283/241/?22954'),
-(23, 'Ms. Mozell Armstrong', 'https://lorempixel.com/283/241/?24607'),
-(24, 'Morgan Conn', 'https://lorempixel.com/283/241/?41369'),
-(25, 'Dr. Eliza Romaguera', 'https://lorempixel.com/283/241/?21926'),
-(26, 'Odessa Jast', 'https://lorempixel.com/283/241/?98873'),
-(27, 'Lavonne Hegmann', 'https://lorempixel.com/283/241/?63847'),
-(28, 'Mr. Dawson Bartell', 'https://lorempixel.com/283/241/?87397'),
-(29, 'Jacklyn Waters', 'https://lorempixel.com/283/241/?30550'),
-(30, 'Krista Schmidt', 'https://lorempixel.com/283/241/?43098'),
-(31, 'Nikita Simonis III', 'https://lorempixel.com/283/241/?56067'),
-(32, 'Sigurd Schroeder Jr.', 'https://lorempixel.com/283/241/?49231'),
-(33, 'Anahi Rosenbaum', 'https://lorempixel.com/283/241/?83771'),
-(34, 'Mervin Reichel', 'https://lorempixel.com/283/241/?48880'),
-(35, 'Martine Trantow', 'https://lorempixel.com/283/241/?19517'),
-(36, 'Heath Thompson', 'https://lorempixel.com/283/241/?72528'),
-(37, 'Jakayla Kiehn', 'https://lorempixel.com/283/241/?90988'),
-(38, 'Skylar Kertzmann', 'https://lorempixel.com/283/241/?22314'),
-(39, 'Asha Bahringer PhD', 'https://lorempixel.com/283/241/?36232'),
-(40, 'Monty Hudson', 'https://lorempixel.com/283/241/?43568'),
-(41, 'Ardith Ratke', 'https://lorempixel.com/283/241/?62513'),
-(42, 'Martina Ankunding', 'https://lorempixel.com/283/241/?39340'),
-(43, 'Emily Morissette', 'https://lorempixel.com/283/241/?68163'),
-(44, 'Stan Mitchell', 'https://lorempixel.com/283/241/?58339'),
-(45, 'Erik Marks', 'https://lorempixel.com/283/241/?15548'),
-(46, 'Akeem Auer DVM', 'https://lorempixel.com/283/241/?44823'),
-(47, 'Gisselle Cremin', 'https://lorempixel.com/283/241/?37630'),
-(48, 'Anabel O\'Connell Sr.', 'https://lorempixel.com/283/241/?82119'),
-(49, 'Odell Casper', 'https://lorempixel.com/283/241/?78481'),
-(50, 'Asa Frami', 'https://lorempixel.com/283/241/?28782');
+(1, 'Bertrand Williamson', 'uploads/categories/img/collection1.jpg'),
+(2, 'Frieda Hill', 'uploads/categories/img/collection2.jpg'),
+(3, 'Georgette Flatley', 'uploads/categories/img/collection3.jpg'),
+(4, 'Sierra Rosenbaum IV', 'uploads/categories/img/collection4.jpg'),
+(5, 'Hunter Lang', 'uploads/categories/img/collection2.jpg'),
+(6, 'Dr. Alberto Wuckert', 'uploads/categories/img/collection1.jpg'),
+(7, 'Dr. Skyla Jacobson', 'uploads/categories/img/collection2.jpg'),
+(8, 'Kareem Mraz', 'uploads/categories/img/collection4.jpg'),
+(9, 'Ms. Rowena Keeling DDS', 'uploads/categories/img/collection1.jpg'),
+(10, 'Chad Corwin MD', 'uploads/categories/img/collection2.jpg'),
+(11, 'Prof. Hipolito Funk', 'uploads/categories/img/collection3.jpg'),
+(12, 'Craig Denesik', 'uploads/categories/img/collection4.jpg'),
+(13, 'Rickey Grimes', 'uploads/categories/img/collection3.jpg'),
+(14, 'Dr. Tyson Cassin IV', 'uploads/categories/img/collection1.jpg'),
+(15, 'Ms. Aida Kerluke', 'uploads/categories/img/collection4.jpg'),
+(16, 'Prof. Imelda Vandervort', 'uploads/categories/img/collection2.jpg'),
+(17, 'Angeline Casper', 'uploads/categories/img/collection1.jpg'),
+(18, 'Malcolm Gislason DVM', 'uploads/categories/img/collection4.jpg'),
+(19, 'Prince Considine', 'uploads/categories/img/collection3.jpg'),
+(20, 'Maudie Lowe', 'uploads/categories/img/collection1.jpg'),
+(21, 'Chris Collins', 'uploads/categories/img/collection2.jpg'),
+(22, 'Elise Blick', 'uploads/categories/img/collection4.jpg'),
+(23, 'Ms. Mozell Armstrong', 'uploads/categories/img/collection3.jpg'),
+(24, 'Morgan Conn', 'uploads/categories/img/collection2.jpg'),
+(25, 'Dr. Eliza Romaguera', 'uploads/categories/img/collection1.jpg'),
+(26, 'Odessa Jast', 'uploads/categories/img/collection4.jpg'),
+(27, 'Lavonne Hegmann', 'uploads/categories/img/collection3.jpg'),
+(28, 'Mr. Dawson Bartell', 'uploads/categories/img/collection1.jpg'),
+(29, 'Jacklyn Waters', 'uploads/categories/img/collection4.jpg'),
+(30, 'Krista Schmidt', 'uploads/categories/img/collection3.jpg'),
+(31, 'Nikita Simonis III', 'uploads/categories/img/collection1.jpg'),
+(32, 'Sigurd Schroeder Jr.', 'uploads/categories/img/collection3.jpg'),
+(33, 'Anahi Rosenbaum', 'uploads/categories/img/collection2.jpg'),
+(34, 'Mervin Reichel', 'uploads/categories/img/collection1.jpg'),
+(35, 'Martine Trantow', 'uploads/categories/img/collection2.jpg'),
+(36, 'Heath Thompson', 'uploads/categories/img/collection4.jpg'),
+(37, 'Jakayla Kiehn', 'uploads/categories/img/collection3.jpg'),
+(38, 'Skylar Kertzmann', 'uploads/categories/img/collection2.jpg'),
+(39, 'Asha Bahringer PhD', 'uploads/categories/img/collection1.jpg'),
+(40, 'Monty Hudson', 'uploads/categories/img/collection2.jpg'),
+(41, 'Ardith Ratke', 'uploads/categories/img/collection4.jpg'),
+(42, 'Martina Ankunding', 'uploads/categories/img/collection3.jpg'),
+(43, 'Emily Morissette', 'uploads/categories/img/collection1.jpg'),
+(44, 'Stan Mitchell', 'uploads/categories/img/collection2.jpg'),
+(45, 'Erik Marks', 'uploads/categories/img/collection4.jpg'),
+(46, 'Akeem Auer DVM', 'uploads/categories/img/collection1.jpg'),
+(47, 'Gisselle Cremin', 'uploads/categories/img/collection2.jpg'),
+(48, 'Anabel O\'Connell Sr.', 'uploads/categories/img/collection3.jpg'),
+(49, 'Odell Casper', 'uploads/categories/img/collection4.jpg'),
+(50, 'Asa Frami', 'uploads/categories/img/collection2.jpg');
 
 -- --------------------------------------------------------
 
@@ -355,30 +507,30 @@ CREATE TABLE `favorites` (
 --
 
 INSERT INTO `favorites` (`id`, `product_id`, `user_id`) VALUES
-(1, 41, 30),
+(1, 8, 2),
 (2, 13, 40),
-(3, 32, 33),
+(3, 5, 2),
 (4, 35, 25),
-(5, 2, 23),
+(5, 2, 2),
 (6, 47, 28),
 (7, 27, 12),
-(8, 22, 24),
+(8, 22, 2),
 (9, 49, 37),
 (10, 10, 8),
 (11, 50, 7),
-(12, 49, 22),
+(12, 4, 2),
 (13, 15, 28),
-(14, 17, 26),
+(14, 17, 2),
 (15, 20, 9),
 (16, 5, 23),
-(17, 47, 31),
-(18, 10, 39),
+(17, 47, 2),
+(18, 10, 2),
 (19, 30, 22),
 (20, 22, 39),
-(21, 23, 31),
+(21, 23, 2),
 (22, 22, 29),
 (23, 30, 1),
-(24, 17, 6),
+(24, 17, 2),
 (25, 1, 33),
 (26, 33, 28),
 (27, 36, 47),
@@ -483,7 +635,7 @@ INSERT INTO `offers` (`id`, `product_id`, `percentage`) VALUES
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `payment_method` varchar(50) NOT NULL,
   `total_price` int(11) NOT NULL,
   `address_id` int(11) NOT NULL
@@ -629,67 +781,67 @@ CREATE TABLE `products` (
   `category_id` int(11) NOT NULL,
   `pro_rate` int(5) NOT NULL,
   `pro_gender` varchar(1) NOT NULL,
-  `favHeader` tinyint(1) NOT NULL DEFAULT '0',
-  `trending` tinyint(1) NOT NULL DEFAULT '0',
-  `defaultSize_id` int(11) NOT NULL,
-  `defaultColor_id` int(11) NOT NULL
+  `favHeader` tinyint(1) NOT NULL DEFAULT 0,
+  `trending` tinyint(1) NOT NULL DEFAULT 0,
+  `defaultSize` varchar(50) NOT NULL,
+  `defaultColor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `pro_name`, `pro_des`, `price`, `mainImage`, `category_id`, `pro_rate`, `pro_gender`, `favHeader`, `trending`, `defaultSize_id`, `defaultColor_id`) VALUES
-(1, 'Ms. Evelyn Becker DVM', 'Consequuntur architecto nisi aut. Enim eius dicta quo dolores qui et. Ea numquam voluptatem reprehenderit aut molestiae id minima.', 3, 'https://lorempixel.com/283/241/?83609', 19, 5, 'M', 0, 0, 37, 33),
-(2, 'Prof. Theodore Mayert', 'In animi ab animi atque omnis repellendus dolores. Est perferendis nihil omnis id qui enim omnis nobis. Ut ut qui est sapiente ducimus.', 64083703, 'https://lorempixel.com/283/241/?68794', 30, 4, 'B', 0, 0, 27, 39),
-(3, 'Jalon Leannon', 'Fuga consectetur rerum officia iure. Explicabo ut enim velit sed totam. Soluta blanditiis excepturi id deserunt est. Neque omnis possimus et quam repudiandae nemo.', 61726337, 'https://lorempixel.com/283/241/?55392', 17, 5, 'F', 0, 0, 44, 10),
-(4, 'Joshua Kuhn', 'Dolor eos sequi ipsam quod ut aut accusantium. Eveniet dolorem tempore nostrum corrupti. Molestias porro neque ex id sed porro fuga. Temporibus est optio accusamus id.', 0, 'https://lorempixel.com/283/241/?45594', 44, 3, 'F', 0, 0, 44, 32),
-(5, 'Modesto Kling', 'Saepe consequatur maxime quo omnis magni maiores dicta doloribus. Nihil ea placeat saepe non quis iusto. Aut fugit praesentium nesciunt non enim aliquam quasi.', 1214, 'https://lorempixel.com/283/241/?50845', 23, 4, 'F', 0, 0, 45, 8),
-(6, 'Kamryn Robel', 'Eum explicabo qui vel qui non repudiandae quae ab. Sunt ab est vero voluptas voluptas qui. Accusamus eius distinctio rem quod. Pariatur itaque vitae labore placeat maiores totam in.', 149, 'https://lorempixel.com/283/241/?48131', 6, 1, 'M', 0, 0, 36, 19),
-(7, 'Dr. Elton Aufderhar III', 'Id vitae officiis ut quod voluptatem. Dolorem iste sint aspernatur nisi placeat et esse. Laborum expedita voluptatem aut vel et incidunt aut. Velit corrupti veniam ex alias neque et.', 15468, 'https://lorempixel.com/283/241/?88697', 2, 1, 'M', 0, 0, 1, 46),
-(8, 'Prof. Emmett Maggio III', 'Ab perspiciatis natus iusto est quod consequuntur. Molestiae ratione atque enim minima. Veniam et ipsa magnam doloremque esse beatae quaerat.', 54455189, 'https://lorempixel.com/283/241/?17695', 6, 4, 'M', 0, 0, 31, 37),
-(9, 'Judy Jacobson', 'Consectetur nulla est tempore labore corporis minus. Quod explicabo pariatur alias ab et veritatis facilis. Nihil excepturi rem reprehenderit omnis. Ut et nemo in hic amet.', 3360602, 'https://lorempixel.com/283/241/?64242', 25, 3, 'F', 0, 0, 1, 11),
-(10, 'Irwin Auer', 'Et aliquid quos ab occaecati error qui itaque. Beatae eligendi assumenda aut qui placeat. Dolore eaque enim voluptate vel quis.', 160649220, 'https://lorempixel.com/283/241/?66196', 3, 4, 'F', 0, 0, 12, 35),
-(11, 'Libbie McClure', 'Qui facere accusantium et corporis inventore dolores. Quia quo et rem eos vitae porro. Saepe in officia quo rerum tempore. Facere vel qui repudiandae qui odio.', 1, 'https://lorempixel.com/283/241/?71135', 46, 2, 'B', 0, 0, 48, 44),
-(12, 'Stephanie Hoeger V', 'Sed odio officiis est suscipit. Dicta sint minima et voluptas quaerat. Occaecati quis doloremque quia repellat culpa. Debitis dolorem atque voluptatum laboriosam natus commodi. Sit voluptate ab sit.', 237459, 'https://lorempixel.com/283/241/?57104', 42, 4, 'B', 0, 0, 19, 10),
-(13, 'Dr. Niko Pouros', 'Aut harum ullam et officiis qui quaerat. Eos id quae est est et sit. Commodi quo minus id cumque.', 127311894, 'https://lorempixel.com/283/241/?51880', 46, 3, 'F', 0, 0, 50, 39),
-(14, 'Mrs. Tiffany Haag IV', 'Est quibusdam mollitia voluptatem fuga eum nostrum. Quod corrupti assumenda esse incidunt nihil suscipit et.', 10268177, 'https://lorempixel.com/283/241/?30613', 13, 1, 'M', 0, 0, 33, 1),
-(15, 'Jackson Friesen', 'Sint dolorem numquam itaque laboriosam nihil. Quia architecto ab et delectus. Vel asperiores sint officiis dicta.', 11453602, 'https://lorempixel.com/283/241/?97775', 21, 3, 'F', 0, 0, 16, 24),
-(16, 'Meredith Olson Jr.', 'Quidem sed quibusdam tenetur ut sunt. Voluptatibus sunt recusandae nemo voluptatem quia. Facere aliquam autem ex.', 5, 'https://lorempixel.com/283/241/?52020', 35, 3, 'M', 0, 0, 21, 33),
-(17, 'Abbie Kilback', 'Dolor a excepturi consequuntur doloribus ad nam. Vitae aut esse saepe deleniti. Aliquid velit repudiandae voluptatem accusamus. Nulla voluptatem porro cupiditate repellat ducimus consequatur est.', 42517, 'https://lorempixel.com/283/241/?25222', 22, 3, 'M', 0, 0, 34, 44),
-(18, 'Columbus Schuster V', 'Eveniet praesentium est ut itaque. Doloremque est consectetur sunt cupiditate dolores similique. Vel cupiditate eius possimus sed.', 200363, 'https://lorempixel.com/283/241/?29408', 34, 4, 'B', 0, 0, 35, 47),
-(19, 'Pearl Feeney', 'Voluptatum optio aut esse et velit aliquam. Eum et eum id minima qui. Distinctio maxime ut officiis ipsum autem animi sapiente. Est quia nihil vero doloremque iure.', 331721333, 'https://lorempixel.com/283/241/?62112', 34, 5, 'F', 0, 0, 47, 5),
-(20, 'Prof. Chanel Ledner MD', 'Blanditiis voluptate et quia sed eveniet sit. Voluptas molestiae dolores eos quaerat odio natus temporibus.', 9, 'https://lorempixel.com/283/241/?75736', 2, 1, 'B', 0, 0, 13, 5),
-(21, 'Dr. Wyman Paucek', 'Quia aliquam quaerat voluptates atque. Magni ut ratione amet.', 1049, 'https://lorempixel.com/283/241/?75979', 15, 3, 'F', 0, 0, 23, 16),
-(22, 'Prof. Hilton Marquardt', 'Occaecati maxime enim officiis itaque illo. Aut dolor praesentium quia velit. Modi incidunt tenetur voluptas accusantium voluptas voluptatum. Inventore nihil maxime quaerat quia.', 1820665, 'https://lorempixel.com/283/241/?41080', 26, 2, 'M', 0, 0, 46, 19),
-(23, 'Wayne Larkin III', 'Nisi ut consequatur in et aut ea. Sit neque ipsa ipsam voluptatem rerum enim. A modi fuga totam aspernatur.', 3230, 'https://lorempixel.com/283/241/?11733', 7, 4, 'M', 0, 0, 48, 24),
-(24, 'Mr. Osbaldo Crona', 'Atque molestiae non architecto voluptas qui et quia. Nostrum odit facere et qui. Ut recusandae qui qui incidunt error facere. Ex cupiditate et aut debitis eum modi quam. Sit non placeat quis ut.', 7909949, 'https://lorempixel.com/283/241/?95285', 46, 3, 'B', 0, 0, 15, 7),
-(25, 'Mrs. Myah Hahn', 'Sed doloribus fugiat sunt odit. Aperiam explicabo excepturi aliquam qui. Temporibus sunt et veniam. Quos illum asperiores quis ut.', 688, 'https://lorempixel.com/283/241/?48918', 15, 2, 'F', 0, 0, 45, 5),
-(26, 'Mr. Murphy Lemke', 'Ut blanditiis officiis ab est dolores. Dolores distinctio deserunt fuga aliquid nam vel nesciunt quasi. Neque a in esse eaque et qui.', 6558, 'https://lorempixel.com/283/241/?11697', 21, 1, 'M', 0, 0, 25, 7),
-(27, 'Kamille Kutch', 'Vel quia autem vel est nesciunt rerum qui consectetur. Molestiae voluptas sint iure et. Et culpa est dolorum voluptatem molestiae accusantium. Eos autem quia doloremque rerum.', 21258, 'https://lorempixel.com/283/241/?52348', 2, 2, 'B', 0, 0, 49, 46),
-(28, 'Hipolito Fahey', 'Quaerat quas error aut vero. Beatae nemo vel quia veritatis. Ipsa sint et soluta eaque tenetur non.', 27448, 'https://lorempixel.com/283/241/?84117', 16, 4, 'F', 0, 0, 12, 47),
-(29, 'Alessandro Rice', 'Aut voluptas fugiat commodi quam. Quisquam placeat deserunt ut quaerat fuga enim. Saepe ex ullam officia maxime voluptatem et dolorem.', 0, 'https://lorempixel.com/283/241/?74288', 31, 4, 'F', 0, 0, 27, 34),
-(30, 'Prof. Aiyana Gusikowski', 'Qui voluptatum voluptatem in qui placeat aliquam autem nemo. Voluptatibus blanditiis et voluptate laudantium. Eos explicabo ut in totam quia at dolore.', 41239, 'https://lorempixel.com/283/241/?70815', 26, 2, 'F', 0, 0, 6, 44),
-(31, 'Herta Legros III', 'Officia ea neque eveniet non. Non velit et quasi totam libero delectus. Ut expedita occaecati soluta. Et vero eos rerum iusto voluptas saepe et.', 60, 'https://lorempixel.com/283/241/?42627', 42, 2, 'F', 0, 0, 5, 42),
-(32, 'Selmer Wilderman', 'Similique fugiat delectus excepturi repudiandae itaque placeat non. Aperiam quia placeat ratione quia officiis. Ratione non nesciunt excepturi sed autem architecto perspiciatis.', 19, 'https://lorempixel.com/283/241/?44128', 37, 3, 'F', 0, 0, 13, 20),
-(33, 'Elizabeth Hettinger I', 'Nobis modi magni repellendus eum fuga provident. Eligendi minima et voluptate tempore reprehenderit. Repellat eum quis ut asperiores aut. Est animi aut ut odit recusandae dolorem a.', 772, 'https://lorempixel.com/283/241/?48584', 13, 5, 'M', 0, 0, 3, 30),
-(34, 'Jasper Langworth II', 'Mollitia quaerat molestiae minus ut. Quis error omnis commodi eveniet at. Qui veritatis cumque ut sequi. Dolorum molestias sit officiis vitae incidunt.', 33721658, 'https://lorempixel.com/283/241/?32510', 48, 2, 'M', 0, 0, 28, 24),
-(35, 'Gregg Smitham', 'Voluptatum illum tenetur aut atque. Nemo nisi eum modi nihil et autem maiores.', 388, 'https://lorempixel.com/283/241/?80505', 31, 5, 'F', 0, 0, 36, 4),
-(36, 'Mrs. Georgianna Price DDS', 'Ex rem sint ea nulla. Quo itaque magni molestias ea tempore inventore.', 233, 'https://lorempixel.com/283/241/?47062', 12, 3, 'B', 0, 0, 18, 5),
-(37, 'Oswaldo Armstrong', 'Voluptatem omnis aperiam aliquam neque impedit vitae dolorum consequatur. Dolore dolores culpa molestias aut. Nihil aut adipisci ipsa autem ab qui blanditiis. Id in eum quia repellendus.', 4302388, 'https://lorempixel.com/283/241/?74122', 3, 5, 'F', 0, 0, 19, 21),
-(38, 'Desiree Franecki', 'Veritatis voluptates consequatur qui nemo dolores saepe et nihil. Quod et perspiciatis placeat minus. Molestiae quos est voluptatem. Fugit est temporibus enim.', 38509643, 'https://lorempixel.com/283/241/?52289', 25, 5, 'F', 0, 0, 34, 50),
-(39, 'Trudie Hegmann', 'Quo voluptatem odit sint sunt. Magnam ullam quia voluptates sed doloribus tempora.', 168204, 'https://lorempixel.com/283/241/?71537', 28, 2, 'M', 0, 0, 38, 46),
-(40, 'Christina Lockman', 'Consequatur perferendis eveniet vel occaecati sit odit. Beatae incidunt eaque in quod dolorem. Labore dolorem sed ut reprehenderit nobis deleniti enim. Est dolorem incidunt magni nihil aut occaecati.', 0, 'https://lorempixel.com/283/241/?86629', 29, 2, 'F', 0, 0, 45, 47),
-(41, 'Mr. Marlin Deckow III', 'Quo eius similique aut perferendis. Sed a animi aut error. Ullam dolorem aut eligendi expedita porro quo. Quia et aperiam quae blanditiis molestiae.', 8912398, 'https://lorempixel.com/283/241/?66436', 13, 5, 'B', 0, 0, 14, 25),
-(42, 'Darrel Nitzsche', 'Aut a ut ut dolores. Impedit qui tenetur molestias fugiat tempore adipisci corporis. Dolorem officia autem id alias reiciendis ratione dolores.', 1, 'https://lorempixel.com/283/241/?33208', 9, 4, 'B', 0, 0, 30, 29),
-(43, 'Vicente Jakubowski II', 'Aut consectetur vero assumenda autem est nam exercitationem. Numquam eaque non quidem aut ex aliquam nobis. Nemo odio qui sunt officia error.', 29689948, 'https://lorempixel.com/283/241/?49701', 16, 2, 'M', 0, 0, 5, 42),
-(44, 'Grover Towne', 'Maxime omnis explicabo odit accusamus nisi et. Eum magnam suscipit eligendi ducimus totam accusantium. Asperiores rerum vel aut et. Illo id sit omnis et.', 10820, 'https://lorempixel.com/283/241/?66337', 36, 4, 'F', 0, 0, 44, 38),
-(45, 'Lura Zulauf', 'In culpa quia laudantium in. Fugit aut aliquid est expedita sapiente. Et dolorem facilis aut.', 4, 'https://lorempixel.com/283/241/?75982', 46, 4, 'M', 0, 0, 7, 5),
-(46, 'Hillard Feest', 'Odit iusto dolorum exercitationem maxime in iste. Occaecati quas nihil dignissimos dignissimos. Eligendi qui molestiae repellat soluta adipisci.', 2, 'https://lorempixel.com/283/241/?34474', 16, 4, 'M', 0, 0, 45, 11),
-(47, 'Cornell Bayer', 'Facere possimus quasi excepturi quasi ducimus nulla. Quia et voluptatibus et ipsum quia nulla pariatur. Nihil officia odio earum quia.', 5, 'https://lorempixel.com/283/241/?56870', 47, 1, 'F', 0, 0, 42, 15),
-(48, 'Ms. Rosa Franecki', 'Doloribus ut odit quod qui. Eius quo repudiandae aut non iure. In ipsa qui omnis exercitationem. Placeat voluptatum unde quaerat dolor.', 2769639, 'https://lorempixel.com/283/241/?34653', 26, 5, 'M', 0, 0, 38, 42),
-(49, 'Ms. Aracely Hane DVM', 'Nulla repellendus harum voluptas dolorem beatae voluptas et. Soluta id quasi nesciunt et consequuntur ipsa ducimus accusamus. Non sequi dolores animi.', 413076, 'https://lorempixel.com/283/241/?76089', 21, 4, 'B', 0, 0, 47, 33),
-(50, 'Angelo Denesik', 'Necessitatibus sunt magnam alias accusantium. Sit vel eum ea earum.', 26475, 'https://lorempixel.com/283/241/?88056', 18, 5, 'M', 0, 0, 29, 24);
+INSERT INTO `products` (`id`, `pro_name`, `pro_des`, `price`, `mainImage`, `category_id`, `pro_rate`, `pro_gender`, `favHeader`, `trending`, `defaultSize`, `defaultColor`) VALUES
+(1, 'Ms. Evelyn Becker DVM', 'Consequuntur architecto nisi aut. Enim eius dicta quo dolores qui et. Ea numquam voluptatem reprehenderit aut molestiae id minima.', 3, 'uploads/products/img/product1.jpg', 19, 5, 'M', 0, 0, '37', '#530cd2'),
+(2, 'Prof. Theodore Mayert', 'In animi ab animi atque omnis repellendus dolores. Est perferendis nihil omnis id qui enim omnis nobis. Ut ut qui est sapiente ducimus.', 22, 'uploads/products/img/product2.jpg', 30, 4, 'B', 0, 0, '27', '#530cd2'),
+(3, 'Jalon Leannon', 'Fuga consectetur rerum officia iure. Explicabo ut enim velit sed totam. Soluta blanditiis excepturi id deserunt est. Neque omnis possimus et quam repudiandae nemo.', 41, 'uploads/products/img/product3.jpg', 17, 5, 'F', 0, 0, '44', '#530cd2'),
+(4, 'Joshua Kuhn', 'Dolor eos sequi ipsam quod ut aut accusantium. Eveniet dolorem tempore nostrum corrupti. Molestias porro neque ex id sed porro fuga. Temporibus est optio accusamus id.', 24, 'uploads/products/img/product4.jpg', 44, 3, 'F', 0, 0, '44', '#530cd2'),
+(5, 'Modesto Kling', 'Saepe consequatur maxime quo omnis magni maiores dicta doloribus. Nihil ea placeat saepe non quis iusto. Aut fugit praesentium nesciunt non enim aliquam quasi.', 24, 'uploads/products/img/product5.jpg', 23, 4, 'F', 0, 0, '45', '#530cd2'),
+(6, 'Kamryn Robel', 'Eum explicabo qui vel qui non repudiandae quae ab. Sunt ab est vero voluptas voluptas qui. Accusamus eius distinctio rem quod. Pariatur itaque vitae labore placeat maiores totam in.', 45, 'uploads/products/img/product6.jpg', 6, 1, 'M', 0, 0, '36', '#530cd2'),
+(7, 'Dr. Elton Aufderhar III', 'Id vitae officiis ut quod voluptatem. Dolorem iste sint aspernatur nisi placeat et esse. Laborum expedita voluptatem aut vel et incidunt aut. Velit corrupti veniam ex alias neque et.', 45, 'uploads/products/img/product7.jpg', 2, 1, 'M', 0, 0, '1', '#530cd2'),
+(8, 'Prof. Emmett Maggio III', 'Ab perspiciatis natus iusto est quod consequuntur. Molestiae ratione atque enim minima. Veniam et ipsa magnam doloremque esse beatae quaerat.', 22, 'uploads/products/img/product8.jpg', 6, 4, 'M', 0, 0, '31', '#530cd2'),
+(9, 'Judy Jacobson', 'Consectetur nulla est tempore labore corporis minus. Quod explicabo pariatur alias ab et veritatis facilis. Nihil excepturi rem reprehenderit omnis. Ut et nemo in hic amet.', 45, 'uploads/products/img/product3.jpg', 25, 3, 'F', 0, 0, '1', '#530cd2'),
+(10, 'Irwin Auer', 'Et aliquid quos ab occaecati error qui itaque. Beatae eligendi assumenda aut qui placeat. Dolore eaque enim voluptate vel quis.', 87, 'uploads/products/img/product6.jpg', 3, 4, 'F', 0, 0, '12', '#530cd2'),
+(11, 'Libbie McClure', 'Qui facere accusantium et corporis inventore dolores. Quia quo et rem eos vitae porro. Saepe in officia quo rerum tempore. Facere vel qui repudiandae qui odio.', 1, 'uploads/products/img/product1.jpg', 46, 2, 'B', 0, 0, '48', '#530cd2'),
+(12, 'Stephanie Hoeger V', 'Sed odio officiis est suscipit. Dicta sint minima et voluptas quaerat. Occaecati quis doloremque quia repellat culpa. Debitis dolorem atque voluptatum laboriosam natus commodi. Sit voluptate ab sit.', 74, 'uploads/products/img/product7.jpg', 42, 4, 'B', 0, 0, '19', '#530cd2'),
+(13, 'Dr. Niko Pouros', 'Aut harum ullam et officiis qui quaerat. Eos id quae est est et sit. Commodi quo minus id cumque.', 41, 'uploads/products/img/product2.jpg', 46, 3, 'F', 0, 0, '50', '#530cd2'),
+(14, 'Mrs. Tiffany Haag IV', 'Est quibusdam mollitia voluptatem fuga eum nostrum. Quod corrupti assumenda esse incidunt nihil suscipit et.', 21, 'uploads/products/img/product8.jpg', 13, 1, 'M', 0, 0, '33', '#530cd2'),
+(15, 'Jackson Friesen', 'Sint dolorem numquam itaque laboriosam nihil. Quia architecto ab et delectus. Vel asperiores sint officiis dicta.', 34, 'uploads/products/img/product5.jpg', 21, 3, 'F', 0, 0, '16', '#530cd2'),
+(16, 'Meredith Olson Jr.', 'Quidem sed quibusdam tenetur ut sunt. Voluptatibus sunt recusandae nemo voluptatem quia. Facere aliquam autem ex.', 58, 'uploads/products/img/product4.jpg', 35, 3, 'M', 0, 0, '21', '#530cd2'),
+(17, 'Abbie Kilback', 'Dolor a excepturi consequuntur doloribus ad nam. Vitae aut esse saepe deleniti. Aliquid velit repudiandae voluptatem accusamus. Nulla voluptatem porro cupiditate repellat ducimus consequatur est.', 81, 'uploads/products/img/product1.jpg', 22, 3, 'M', 0, 0, '34', '#530cd2'),
+(18, 'Columbus Schuster V', 'Eveniet praesentium est ut itaque. Doloremque est consectetur sunt cupiditate dolores similique. Vel cupiditate eius possimus sed.', 45, 'uploads/products/img/product2.jpg', 34, 4, 'B', 0, 0, '35', '#530cd2'),
+(19, 'Pearl Feeney', 'Voluptatum optio aut esse et velit aliquam. Eum et eum id minima qui. Distinctio maxime ut officiis ipsum autem animi sapiente. Est quia nihil vero doloremque iure.', 50, 'uploads/products/img/product3.jpg', 34, 5, 'F', 0, 0, '47', '#530cd2'),
+(20, 'Prof. Chanel Ledner MD', 'Blanditiis voluptate et quia sed eveniet sit. Voluptas molestiae dolores eos quaerat odio natus temporibus.', 9, 'uploads/products/img/product4.jpg', 2, 1, 'B', 0, 0, '13', '#530cd2'),
+(21, 'Dr. Wyman Paucek', 'Quia aliquam quaerat voluptates atque. Magni ut ratione amet.', 70, 'uploads/products/img/product8.jpg', 15, 3, 'F', 0, 0, '23', '#530cd2'),
+(22, 'Prof. Hilton Marquardt', 'Occaecati maxime enim officiis itaque illo. Aut dolor praesentium quia velit. Modi incidunt tenetur voluptas accusantium voluptas voluptatum. Inventore nihil maxime quaerat quia.', 80, 'uploads/products/img/product7.jpg', 26, 2, 'M', 0, 0, '46', '#530cd2'),
+(23, 'Wayne Larkin III', 'Nisi ut consequatur in et aut ea. Sit neque ipsa ipsam voluptatem rerum enim. A modi fuga totam aspernatur.', 60, 'uploads/products/img/product6.jpg', 7, 4, 'M', 0, 0, '48', '#530cd2'),
+(24, 'Mr. Osbaldo Crona', 'Atque molestiae non architecto voluptas qui et quia. Nostrum odit facere et qui. Ut recusandae qui qui incidunt error facere. Ex cupiditate et aut debitis eum modi quam. Sit non placeat quis ut.', 88, 'uploads/products/img/product5.jpg', 46, 3, 'B', 0, 0, '15', '#530cd2'),
+(25, 'Mrs. Myah Hahn', 'Sed doloribus fugiat sunt odit. Aperiam explicabo excepturi aliquam qui. Temporibus sunt et veniam. Quos illum asperiores quis ut.', 100, 'uploads/products/img/product7.jpg', 15, 2, 'F', 0, 0, '45', '#530cd2'),
+(26, 'Mr. Murphy Lemke', 'Ut blanditiis officiis ab est dolores. Dolores distinctio deserunt fuga aliquid nam vel nesciunt quasi. Neque a in esse eaque et qui.', 77, 'uploads/products/img/product2.jpg', 21, 1, 'M', 0, 0, '25', '#530cd2'),
+(27, 'Kamille Kutch', 'Vel quia autem vel est nesciunt rerum qui consectetur. Molestiae voluptas sint iure et. Et culpa est dolorum voluptatem molestiae accusantium. Eos autem quia doloremque rerum.', 57, 'uploads/products/img/product8.jpg', 2, 2, 'B', 0, 0, '49', '#530cd2'),
+(28, 'Hipolito Fahey', 'Quaerat quas error aut vero. Beatae nemo vel quia veritatis. Ipsa sint et soluta eaque tenetur non.', 14, 'uploads/products/img/product1.jpg', 16, 4, 'F', 0, 0, '12', '#530cd2'),
+(29, 'Alessandro Rice', 'Aut voluptas fugiat commodi quam. Quisquam placeat deserunt ut quaerat fuga enim. Saepe ex ullam officia maxime voluptatem et dolorem.', 50, 'uploads/products/img/product3.jpg', 31, 4, 'F', 0, 0, '27', '#530cd2'),
+(30, 'Prof. Aiyana Gusikowski', 'Qui voluptatum voluptatem in qui placeat aliquam autem nemo. Voluptatibus blanditiis et voluptate laudantium. Eos explicabo ut in totam quia at dolore.', 42, 'uploads/products/img/product5.jpg', 26, 2, 'F', 0, 0, '6', '#530cd2'),
+(31, 'Herta Legros III', 'Officia ea neque eveniet non. Non velit et quasi totam libero delectus. Ut expedita occaecati soluta. Et vero eos rerum iusto voluptas saepe et.', 60, 'uploads/products/img/product7.jpg', 42, 2, 'F', 0, 0, '5', '#530cd2'),
+(32, 'Selmer Wilderman', 'Similique fugiat delectus excepturi repudiandae itaque placeat non. Aperiam quia placeat ratione quia officiis. Ratione non nesciunt excepturi sed autem architecto perspiciatis.', 19, 'uploads/products/img/product4.jpg', 37, 3, 'F', 0, 0, '13', '#530cd2'),
+(33, 'Elizabeth Hettinger I', 'Nobis modi magni repellendus eum fuga provident. Eligendi minima et voluptate tempore reprehenderit. Repellat eum quis ut asperiores aut. Est animi aut ut odit recusandae dolorem a.', 33, 'uploads/products/img/product8.jpg', 13, 5, 'M', 0, 0, '3', '#530cd2'),
+(34, 'Jasper Langworth II', 'Mollitia quaerat molestiae minus ut. Quis error omnis commodi eveniet at. Qui veritatis cumque ut sequi. Dolorum molestias sit officiis vitae incidunt.', 43, 'uploads/products/img/product7.jpg', 48, 2, 'M', 0, 0, '28', '#530cd2'),
+(35, 'Gregg Smitham', 'Voluptatum illum tenetur aut atque. Nemo nisi eum modi nihil et autem maiores.', 73, 'uploads/products/img/product2.jpg', 31, 5, 'F', 0, 0, '36', '#530cd2'),
+(36, 'Mrs. Georgianna Price DDS', 'Ex rem sint ea nulla. Quo itaque magni molestias ea tempore inventore.', 37, 'uploads/products/img/product5.jpg', 12, 3, 'B', 0, 0, '18', '#530cd2'),
+(37, 'Oswaldo Armstrong', 'Voluptatem omnis aperiam aliquam neque impedit vitae dolorum consequatur. Dolore dolores culpa molestias aut. Nihil aut adipisci ipsa autem ab qui blanditiis. Id in eum quia repellendus.', 54, 'uploads/products/img/product1.jpg', 3, 5, 'F', 0, 0, '19', '#530cd2'),
+(38, 'Desiree Franecki', 'Veritatis voluptates consequatur qui nemo dolores saepe et nihil. Quod et perspiciatis placeat minus. Molestiae quos est voluptatem. Fugit est temporibus enim.', 60, 'uploads/products/img/product3.jpg', 25, 5, 'F', 0, 0, '34', '#530cd2'),
+(39, 'Trudie Hegmann', 'Quo voluptatem odit sint sunt. Magnam ullam quia voluptates sed doloribus tempora.', 70, 'uploads/products/img/product6.jpg', 28, 2, 'M', 0, 0, '38', '#530cd2'),
+(40, 'Christina Lockman', 'Consequatur perferendis eveniet vel occaecati sit odit. Beatae incidunt eaque in quod dolorem. Labore dolorem sed ut reprehenderit nobis deleniti enim. Est dolorem incidunt magni nihil aut occaecati.', 55, 'uploads/products/img/product5.jpg', 29, 2, 'F', 0, 0, '45', '#530cd2'),
+(41, 'Mr. Marlin Deckow III', 'Quo eius similique aut perferendis. Sed a animi aut error. Ullam dolorem aut eligendi expedita porro quo. Quia et aperiam quae blanditiis molestiae.', 10, 'uploads/products/img/product1.jpg', 13, 5, 'B', 0, 0, '14', '#530cd2'),
+(42, 'Darrel Nitzsche', 'Aut a ut ut dolores. Impedit qui tenetur molestias fugiat tempore adipisci corporis. Dolorem officia autem id alias reiciendis ratione dolores.', 15, 'uploads/products/img/product2.jpg', 9, 4, 'B', 0, 0, '30', '#530cd2'),
+(43, 'Vicente Jakubowski II', 'Aut consectetur vero assumenda autem est nam exercitationem. Numquam eaque non quidem aut ex aliquam nobis. Nemo odio qui sunt officia error.', 16, 'uploads/products/img/product3.jpg', 16, 2, 'M', 0, 0, '5', '#530cd2'),
+(44, 'Grover Towne', 'Maxime omnis explicabo odit accusamus nisi et. Eum magnam suscipit eligendi ducimus totam accusantium. Asperiores rerum vel aut et. Illo id sit omnis et.', 88, 'uploads/products/img/product4.jpg', 36, 4, 'F', 0, 0, '44', '#530cd2'),
+(45, 'Lura Zulauf', 'In culpa quia laudantium in. Fugit aut aliquid est expedita sapiente. Et dolorem facilis aut.', 4, 'uploads/products/img/product5.jpg', 46, 4, 'M', 0, 0, '7', '#530cd2'),
+(46, 'Hillard Feest', 'Odit iusto dolorum exercitationem maxime in iste. Occaecati quas nihil dignissimos dignissimos. Eligendi qui molestiae repellat soluta adipisci.', 2, 'uploads/products/img/product6.jpg', 16, 4, 'M', 0, 0, '45', '#530cd2'),
+(47, 'Cornell Bayer', 'Facere possimus quasi excepturi quasi ducimus nulla. Quia et voluptatibus et ipsum quia nulla pariatur. Nihil officia odio earum quia.', 5, 'uploads/products/img/product7.jpg', 47, 1, 'F', 0, 0, '42', '#530cd2'),
+(48, 'Ms. Rosa Franecki', 'Doloribus ut odit quod qui. Eius quo repudiandae aut non iure. In ipsa qui omnis exercitationem. Placeat voluptatum unde quaerat dolor.', 50, 'uploads/products/img/product8.jpg', 26, 5, 'M', 0, 0, '38', '#530cd2'),
+(49, 'Ms. Aracely Hane DVM', 'Nulla repellendus harum voluptas dolorem beatae voluptas et. Soluta id quasi nesciunt et consequuntur ipsa ducimus accusamus. Non sequi dolores animi.', 55, 'uploads/products/img/product1.jpg', 21, 4, 'B', 0, 0, '47', '#530cd2'),
+(50, 'Angelo Denesik', 'Necessitatibus sunt magnam alias accusantium. Sit vel eum ea earum.', 25, 'uploads/products/img/product5.jpg', 18, 5, 'M', 0, 0, '29', '#530cd2');
 
 -- --------------------------------------------------------
 
@@ -844,7 +996,7 @@ CREATE TABLE `product_sizes` (
 --
 
 INSERT INTO `product_sizes` (`id`, `product_id`, `size_id`) VALUES
-(1, 9, 42),
+(1, 5, 42),
 (2, 28, 45),
 (3, 27, 29),
 (4, 32, 32),
@@ -852,7 +1004,7 @@ INSERT INTO `product_sizes` (`id`, `product_id`, `size_id`) VALUES
 (6, 32, 37),
 (7, 1, 32),
 (8, 37, 34),
-(9, 19, 13),
+(9, 5, 13),
 (10, 47, 45),
 (11, 44, 10),
 (12, 38, 50),
@@ -935,16 +1087,16 @@ INSERT INTO `reviews` (`id`, `re_des`, `re_rate`, `product_id`, `user_id`) VALUE
 (8, 'Nesciunt magni et qui sit eligendi enim assumenda. Dolorem deleniti omnis vero. Laudantium quam illo quibusdam fuga aspernatur tempore. Unde debitis sed soluta. Corrupti placeat illo rerum.', 2, 40, 9),
 (9, 'Aut consequatur in atque. Consequatur doloribus omnis aut mollitia. Eos delectus dolorem qui blanditiis quis. Nobis reiciendis voluptas natus nihil in fugit quae. Et ratione labore nihil quidem.', 4, 22, 11),
 (10, 'Quos voluptatum recusandae voluptatem nobis temporibus aut repudiandae voluptatem. Asperiores ea quia nihil necessitatibus asperiores. Ut aut nam libero beatae nesciunt facere qui. Ut et incidunt ut est.', 5, 7, 5),
-(11, 'Id animi ea est repellat adipisci in in. Culpa possimus voluptatum adipisci tenetur. Iure ipsa nostrum recusandae facere quis impedit. Aut blanditiis quas et recusandae corporis aut.', 5, 15, 33),
-(12, 'Exercitationem voluptates beatae rem illum. Doloribus quam repellat id aut deleniti ea. Ut temporibus possimus occaecati quo autem. Eos aut nihil non enim sit distinctio.', 1, 10, 9),
+(11, 'Id animi ea est repellat adipisci in in. Culpa possimus voluptatum adipisci tenetur. Iure ipsa nostrum recusandae facere quis impedit. Aut blanditiis quas et recusandae corporis aut.', 5, 5, 33),
+(12, 'Exercitationem voluptates beatae rem illum. Doloribus quam repellat id aut deleniti ea. Ut temporibus possimus occaecati quo autem. Eos aut nihil non enim sit distinctio.', 1, 5, 9),
 (13, 'Alias aliquid voluptatem libero non vel consectetur ut. Nihil expedita aut ut doloribus nisi. Voluptatem est sint optio incidunt.', 4, 46, 24),
-(14, 'Doloribus occaecati sit non at omnis. Non sapiente accusantium quisquam omnis voluptates. Cumque ipsa et aut nulla adipisci occaecati fugit aut.', 2, 31, 14),
+(14, 'Doloribus occaecati sit non at omnis. Non sapiente accusantium quisquam omnis voluptates. Cumque ipsa et aut nulla adipisci occaecati fugit aut.', 2, 5, 14),
 (15, 'Rerum autem molestiae totam voluptatem ex aut ducimus. Sed dolores amet molestiae omnis qui. Necessitatibus est veniam dolore reprehenderit harum.', 2, 46, 36),
 (16, 'Sit dolorem quia error error corporis. Temporibus non voluptatem ducimus ut. Et omnis est quibusdam delectus quia est cupiditate. Voluptas est nemo voluptatem odit.', 2, 45, 13),
 (17, 'Et sint autem et dolores ducimus veritatis et. Qui ut corporis facere sint tenetur aspernatur odio. Vitae corporis dolor dolor optio. Provident ab est quod optio accusamus praesentium.', 1, 23, 25),
 (18, 'Rerum eos explicabo sunt. Amet quia velit est molestiae quo accusantium qui adipisci. Magni et et rerum et laudantium cumque. Voluptas et enim quis necessitatibus quia odit et explicabo.', 2, 19, 9),
 (19, 'Natus accusantium aperiam eos dolor impedit enim. Ducimus nemo perferendis dicta. Dolorem enim sit aut iure quia.', 3, 6, 47),
-(20, 'Magnam fuga eos quibusdam aspernatur voluptas architecto. Cupiditate qui consequatur sint assumenda tempore officia voluptates. Rerum libero autem iusto perferendis eaque voluptatem. Est facilis nihil aut deleniti qui quas labore.', 2, 22, 4),
+(20, 'Magnam fuga eos quibusdam aspernatur voluptas architecto. Cupiditate qui consequatur sint assumenda tempore officia voluptates. Rerum libero autem iusto perferendis eaque voluptatem. Est facilis nihil aut deleniti qui quas labore.', 2, 5, 4),
 (21, 'Atque non vero minima amet ipsam minus iusto consectetur. Autem architecto impedit sapiente placeat dolor. Deleniti ipsa consequuntur dolor omnis.', 5, 6, 47),
 (22, 'Ratione voluptatem officia vero aperiam iste et voluptas quas. Commodi doloribus est quaerat. Ea porro reprehenderit illum soluta et quasi non. Nihil dignissimos vel tempore corrupti assumenda velit.', 3, 31, 48),
 (23, 'Et voluptatibus optio vero rerum est odio dicta. Voluptatem sint rerum repellendus qui rerum. Odit est alias ex sed iusto. Itaque optio rem soluta voluptatem.', 2, 24, 2),
@@ -972,7 +1124,92 @@ INSERT INTO `reviews` (`id`, `re_des`, `re_rate`, `product_id`, `user_id`) VALUE
 (45, 'Quisquam dolores saepe praesentium sit molestiae repudiandae. Temporibus rem earum reprehenderit quisquam voluptatem perspiciatis. Sunt non labore dolores omnis sit totam aliquam itaque. Ex quaerat ut asperiores voluptatem odit et.', 2, 9, 48),
 (46, 'Velit provident ut fugiat dolores. Odit assumenda nisi cum ducimus. Ipsam et vero omnis quo voluptate veniam iure.', 1, 25, 40),
 (47, 'Reprehenderit quia repudiandae recusandae. Iure rerum rerum officiis rerum perspiciatis pariatur. Esse ut neque quae debitis. Occaecati enim fugit est et reprehenderit.', 2, 29, 25),
-(48, 'Sit minima ea error tempora. Repellat exercitationem iusto iusto quidem facere autem. Repudiandae est fugit ea cum. Et vel qui et nemo voluptatum perspiciatis.', 4, 37, 17);
+(48, 'Sit minima ea error tempora. Repellat exercitationem iusto iusto quidem facere autem. Repudiandae est fugit ea cum. Et vel qui et nemo voluptatum perspiciatis.', 4, 37, 17),
+(49, 'Explicabo aliquid veritatis illum. Animi eos incidunt temporibus fuga iste nisi.', 4, 33, 2),
+(50, 's', 4, 33, 2),
+(51, 'token', 4, 5, 2),
+(52, 'asdasdasd', 5, 5, 2),
+(53, 'asdasdasd', 4, 5, 2),
+(54, 'action.payload', 3, 5, 2),
+(55, 'state.product_reviews.push(action.payload)', 4, 5, 2),
+(56, 'asdasdasdasd', 4, 5, 2),
+(57, 'reviews', 4, 5, 2),
+(58, 'reviews', 4, 5, 2),
+(59, 'test', 3, 5, 2),
+(60, 'test', 3, 5, 2),
+(61, 'test', 4, 5, 2),
+(62, 'product_reviews', 4, 5, 2),
+(63, 'product_reviews', 4, 5, 2),
+(64, 'test', 4, 5, 2),
+(65, 'test', 4, 5, 2),
+(66, 'zxc', 4, 5, 2),
+(67, 'zxc', 4, 5, 2),
+(68, 'asdasd', 3, 5, 2),
+(69, 'Reviews', 3, 5, 2),
+(70, 'as', 4, 5, 2),
+(71, 'as', 4, 5, 2),
+(72, 'asasfd', 4, 5, 2),
+(73, '.oneOfType([\n    PropTypes.string,\n    PropTypes.number,\n    PropTypes.instanceOf(Message)\n  ])', 4, 5, 2),
+(74, '2015202102102021021021020', 3, 5, 2),
+(75, 'as', 3, 5, 2),
+(76, 'subscribe', 4, 5, 2),
+(77, 'subscribe', 4, 5, 2),
+(78, 'sddfsdf', 4, 5, 2),
+(79, 'Azafz', 4, 5, 2),
+(80, 'asdasd', 4, 5, 2),
+(81, 'asdasd', 4, 5, 2),
+(82, 'asdasdasd', 4, 5, 2),
+(83, 'asdasdasd', 4, 5, 2),
+(84, 'asdasd', 4, 5, 2),
+(85, 'zdfdf', 3, 5, 2),
+(86, 'asdasd', 4, 5, 2),
+(87, 'let reviews = useSelector(state => state.shopReducer.product_reviews)', 3, 5, 2),
+(88, 'asdasd', 4, 5, 2),
+(89, 'asdasdasd', 4, 5, 2),
+(90, 'asdasdasd', 4, 5, 2),
+(91, 'asda', 5, 5, 2),
+(92, 'asdasd', 3, 5, 2),
+(93, 'sadasdasd', 3, 5, 2),
+(94, 'sadasdasdasd', 4, 5, 2),
+(95, 'sadasdasdasdasd', 3, 5, 2),
+(96, 'asdasd', 4, 5, 2),
+(97, 'asdasd', 3, 5, 2),
+(98, 'asdasdasd', 4, 5, 2),
+(99, 'asdasd', 3, 5, 2),
+(100, 'dsadsad', 3, 5, 2),
+(101, 'ssssssssss', 4, 5, 2),
+(102, 'welcome', 4, 5, 2),
+(103, 'asdasdasd', 3, 5, 2),
+(104, 'asdasd', 3, 5, 2),
+(105, 'asdasdasd', 3, 5, 2),
+(106, 'sad', 2, 5, 2),
+(107, 'sad', 5, 5, 2),
+(108, 'ahmed samy', 3, 5, 2),
+(109, 'asdasdasd', 4, 5, 2),
+(110, 'asdasd', 4, 5, 2),
+(111, 'asdasd', 4, 5, 2),
+(112, '7pp wllah', 3, 5, 2),
+(113, 'sadasdasd', 3, 5, 2),
+(114, 'asdasd', 4, 5, 2),
+(115, 'aaaaa', 4, 5, 2),
+(116, '20', 4, 5, 2),
+(117, '20', 3, 5, 2),
+(126, 'asdasd', 4, 15, 2),
+(127, 'sadasd', 3, 10, 2),
+(128, 'dsadasd', 3, 22, 2),
+(129, 'asdasdasd', 4, 13, 2),
+(130, 'asdsad', 3, 4, 2),
+(131, 'sadasdasdasd', 5, 22, 2),
+(132, 'asdasd', 4, 10, 2),
+(133, 'sadasd', 3, 10, 22),
+(134, 'asdasd', 4, 1, 2),
+(135, 'asddas', 4, 1, 2),
+(136, 'asdsad', 3, 1, 2),
+(137, 'dasdsadasd', 3, 1, 2),
+(138, 'ahmed said', 5, 1, 2),
+(139, 'wow is good it\'s amazing.', 4, 6, 4),
+(140, 'good product', 4, 1, 3),
+(141, 'good prod', 4, 20, 3);
 
 -- --------------------------------------------------------
 
@@ -1031,7 +1268,7 @@ INSERT INTO `sizes` (`id`, `pro_size`) VALUES
 (39, 45),
 (40, 38),
 (41, 40),
-(42, 44),
+(42, 41),
 (43, 38),
 (44, 40),
 (45, 38),
@@ -1054,12 +1291,12 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `verify_code` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `IsAdmin` tinyint(1) NOT NULL DEFAULT '0',
+  `IsAdmin` tinyint(1) NOT NULL DEFAULT 0,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `img` varchar(255) NOT NULL DEFAULT 'uploads/users/img/default.png',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1067,10 +1304,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `Fname`, `Lname`, `email`, `verify_code`, `password`, `IsAdmin`, `email_verified_at`, `remember_token`, `img`, `created_at`, `updated_at`) VALUES
-(1, 'Prof. Dorothy Waters', 'Randy Romaguera Sr.', 'pdavis@example.net', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'JYqat3IM9G', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
-(2, 'Darrion Mohr', 'Lewis Bartell', 'sanford.alysha@example.net', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'M7y6eyKEZl', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
-(3, 'Josephine Auer', 'Magali McKenzie', 'kim.brakus@example.org', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'QnQ4lTbL55', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
-(4, 'Dr. Carissa Kohler', 'Titus Mayert I', 'umitchell@example.org', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'nqOYAfqhhu', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
+(2, 'Ahmed', 'Samy', 'samy@samy.com', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'M7y6eyKEZl', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
+(3, 'Josephine Auer', 'Magali McKenzie', 'samy@samy.commm', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'QnQ4lTbL55', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
+(4, 'Dr. Carissa Kohler', 'Titus Mayert I', 'samy@samy.commmm', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'nqOYAfqhhu', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
 (5, 'Dino Becker', 'Keaton Powlowski', 'lhoeger@example.com', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', '7f95KS2DDz', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
 (6, 'Janis Jones', 'Kylee Kuhlman III', 'carissa93@example.com', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'QeBkL90WPN', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
 (7, 'Prof. Meta Okuneva DVM', 'Jammie Nolan', 'deonte.spinka@example.org', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'OCND8z7sdq', 'uploads/users/img/default.png', '2021-08-20 19:08:22', '2021-08-20 19:08:22'),
@@ -1117,7 +1353,16 @@ INSERT INTO `users` (`id`, `Fname`, `Lname`, `email`, `verify_code`, `password`,
 (48, 'Nasir White I', 'Hilbert West', 'natalia.doyle@example.net', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'jMmU9EGmTM', 'uploads/users/img/default.png', '2021-08-20 19:08:23', '2021-08-20 19:08:23'),
 (49, 'Nichole Gleason', 'Miss Jaquelin Haag II', 'eusebio71@example.com', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'BbA72kRZBU', 'uploads/users/img/default.png', '2021-08-20 19:08:23', '2021-08-20 19:08:23'),
 (50, 'Aaliyah Ernser', 'Brooke Cremin', 'roob.weston@example.net', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0, '2021-08-20 19:08:22', 'oNoo2j4wbX', 'uploads/users/img/default.png', '2021-08-20 19:08:24', '2021-08-20 19:08:24'),
-(54, 'Ahmed', 'Said', 'dedoa82.as@gmail.com', 'IqYSkwwiBAol1dSpSZqJyhOBBatTaZh07MN2kvuv9R1xUVIHCN', '$2y$10$tijKC7h7j8Ph7vSnheaMROt5toHYNCwgFOzGHG0fT9R0IRVzfRW0O', 0, NULL, NULL, 'storage/users/img/1629513598.jpeg', NULL, NULL);
+(57, 'ahmed', 'said', 'ahmed@ahmed.com', 'H0nNvxf8s2ZjXb0gqT9ESqTqkGh1YLKgIwnaJpKcexL0Gc5cYe', '$2y$10$.qqa7E9TPMj4c7biU0FoeOuDmNk6lF4Te8Esq1KAki2GamFHfLjCi', 0, NULL, NULL, 'uploads/users/img/default.png', '2021-12-07 18:36:29', '2021-12-07 18:36:29');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `cart_boxs`
+--
+DROP TABLE IF EXISTS `cart_boxs`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cart_boxs`  AS  select `carts`.`id` AS `id`,`carts`.`product_id` AS `product_id`,`carts`.`user_id` AS `user_id`,`carts`.`quantity` AS `quantity`,`carts`.`size_id` AS `size_id`,`carts`.`color_id` AS `color_id`,`products`.`pro_name` AS `pro_name`,`products`.`pro_des` AS `pro_des`,`products`.`price` AS `price`,`products`.`mainImage` AS `mainImage`,`products`.`category_id` AS `category_id`,`categories`.`cat_name` AS `cat_name`,`categories`.`cat_img` AS `cat_img`,`products`.`pro_rate` AS `pro_rate`,`products`.`pro_gender` AS `pro_gender`,`products`.`favHeader` AS `favHeader`,`products`.`trending` AS `trending`,`sizes`.`pro_size` AS `pro_size`,`colors`.`pro_color` AS `pro_color` from ((((`carts` join `products` on(`products`.`id` = `carts`.`product_id`)) join `categories` on(`categories`.`id` = `products`.`category_id`)) join `sizes` on(`sizes`.`id` = `carts`.`size_id`)) join `colors` on(`colors`.`id` = `carts`.`color_id`)) ;
 
 --
 -- Indexes for dumped tables
@@ -1250,7 +1495,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1316,7 +1561,7 @@ ALTER TABLE `product_sizes`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- AUTO_INCREMENT for table `sizes`
@@ -1328,7 +1573,7 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- Constraints for dumped tables
