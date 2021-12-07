@@ -20,6 +20,7 @@ Route::group([
      */
 
     //User CRUD
+    Route::get('users/{user}/cart', 'UserController@cart');
 
     Route::apiResource('users', 'UserController')->except(["update"]);
 
@@ -28,7 +29,6 @@ Route::group([
 
     //User Cart
 
-    Route::get('users/{user}/cart', 'UserController@cart');
     
     //Change Pasword
 

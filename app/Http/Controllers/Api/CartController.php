@@ -59,11 +59,15 @@ class CartController extends Controller
 
         $cart = Cart::create( $request );
 
+        $cart_id = $cart['id'];
+        
         $product = DB::table('products')
         ->where('id', $cart->product_id)->get();
 
         foreach($product[0] as $prop => $value ) 
         $cart->$prop = $value;
+
+        $cart['id'] = $cart_id;    
 
         return response()->json([
             'success' => true,

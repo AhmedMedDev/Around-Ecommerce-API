@@ -22,6 +22,11 @@ Route::group([
      */
 
     //Product Colors CRUD
+    
+    Route::get('getproductColors/{id}', 'ProductColorController@getproductColors');
+    
+    Route::get('getproductSizes/{id}', 'ProductColorController@getproductSizes');
+
 
     Route::apiResource('productColors', 'ProductColorController');
 

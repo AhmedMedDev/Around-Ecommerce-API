@@ -21,7 +21,7 @@ class ProductColorController extends Controller
     {
         $this->middleware(
             ['auth:api','admin'],
-            ['except' => ['index','show']]
+            ['except' => ['index','show','getproductColors','getproductSizes']]
         );
     }
 
@@ -138,4 +138,44 @@ class ProductColorController extends Controller
             'success' => true,
         ]);
     }
+
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     * 
+     * X X Roles 
+     * 
+     */
+    public function getproductColors($id) // Secured Endpoint
+    {
+        $productColors = DB::table('product_colors')->where('product_id',$id)->get();
+
+        return response()->json([
+            'success' => true,
+            'payload' => $productColors
+        ]);
+    }
+
+        /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     * 
+     * X X Roles 
+     * 
+     */
+    public function getproductSizes($id) // Secured Endpoint
+    {
+        $productSizes = DB::table('product_sizes')->where('product_id',$id)->get();
+
+        return response()->json([
+            'success' => true,
+            'payload' => $productSizes
+        ]);
+    }
+
 }
